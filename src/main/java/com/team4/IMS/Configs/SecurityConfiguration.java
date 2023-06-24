@@ -27,7 +27,17 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/api/v1/auth/**",
-                                 "/h2-console/**")
+                        "/h2-console/**",
+                        "/v2/api-docs",
+                        "/v3/api-docs",
+                        "/v3/api-docs/**",
+                        "/swagger-resources",
+                        "/swagger-resources/**",
+                        "/configurations/ui",
+                        "/configurations/security",
+                        "/swagger-ui/**",
+                        "/webjars/**",
+                        "/swagger-ui.html")
                 .permitAll()
                 .and()
                 .sessionManagement()

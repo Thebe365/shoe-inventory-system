@@ -21,6 +21,14 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
+    /**
+     * This method is used to register a new user
+     * @param loginDto
+
+     * @return ResponseEntity<?>
+     * may return JWT token if successful with status code 200
+     * or return a message with status code 400
+     */
     @PostMapping("authenticate")
     public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest loginDto) {
         try{
