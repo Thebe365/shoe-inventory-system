@@ -2,7 +2,10 @@ package com.team4.IMS.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
@@ -22,7 +25,6 @@ public class Inventory {
     private Long inventoryId;
 
     @ManyToOne
-    @JsonIgnore
     private Shoe shoe;
 
     private int quantity;

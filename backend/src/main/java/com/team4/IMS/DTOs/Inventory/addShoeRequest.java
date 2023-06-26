@@ -5,12 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class addShoeRequest {
-    private List<ShoeOrder> shoes;
+    private String name;
+    private String brandName;
+    private String color;
+    private String size;
+    private Double price;
+    private Integer quantity;
 }
