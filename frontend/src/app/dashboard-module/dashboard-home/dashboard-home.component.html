@@ -12,7 +12,7 @@
         
             <li>
                 <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <span class="icon"><i class="far fa-clipboard"></i></span>
+                    <span class="icon"><fa-icon [icon]="faChartBar"></fa-icon></span>
                     <span class="title">Overview</span>
                 </a>
             </li>
@@ -20,7 +20,7 @@
         
             <li>
                 <a routerLink="./order-shoes" routerLinkActive="active">
-                    <span class="icon"><i class="fas fa-calendar-check" aria-hidden="true"></i></span>
+                    <span class="icon"><fa-icon [icon]="faClipboardList"></fa-icon></span>
                     <span class="title">Order shoe</span>
                 </a>
             </li>
@@ -28,15 +28,15 @@
         
             <li>
                 <a routerLink="./manage-inventory" routerLinkActive="active">
-                    <span class="icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></span>
+                    <span class="icon"><fa-icon [icon]="faEdit"></fa-icon></span>
                     <span class="title">Manage inventory</span>
                 </a>
             </li>
         
         
             <li>
-                <a href="#">
-                    <span class="icon"><i class="fas fa-virus" aria-hidden="true"></i></span>
+                <a routerLink="./settings">
+                    <span class="icon"><fa-icon [icon]="faGears"></fa-icon></span>
                     <span class="title">Settings</span>
                 </a>
             </li>
@@ -44,7 +44,7 @@
         
             <li>
                 <a href="#">
-                    <span class="icon log"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></span>
+                    <span class="icon log"><fa-icon [icon]="faSignOut"></fa-icon></span>
                     <span class="title">Logout</span>
                 </a>
             </li>
@@ -54,21 +54,23 @@
     <!--topbar-->
     <div class="main">
         <div class="topbar">
-            <div class="toggle" onclick="toggleMenu();">
+            <div class="toggle" (click)="toggleMenu();">
                 <span class="bar">
-                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    <fa-icon [icon]="faBars"></fa-icon>
                 </span>
             </div>
                 
             <div class="search">
                 <label>
+                    <span class="icon log"><fa-icon [icon]="faSearch"></fa-icon></span>
                     <input type="text" placeholder="Search here">
-                    <i class="fas fa-search" aria-hidden="true"></i>
                 </label>
             </div>
 
-            <div class="user">
-                <img src="IMG_2786.PNG">
+            <div class="user-icon">
+                <span class="user-icon">
+                    <fa-icon [icon]="faUser"></fa-icon>
+                </span>
             </div>
             
         </div>
@@ -82,4 +84,3 @@
 </div>
 
 <!--Script-->
-<script src="script.js"></script>

@@ -7,7 +7,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { OrderShoesComponent } from './order-shoes/order-shoes.component';
 import { ManageInventoryComponent } from './manage-inventory/manage-inventory.component';
 import { SettingsComponent } from './settings/settings.component';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { SettingsComponent } from './settings/settings.component';
   imports: [
     CommonModule,
     DashboardModuleRoutingModule,
-    // FontAwesomeModule
+    FontAwesomeModule
   ]
 })
 export class DashboardModuleModule { }
