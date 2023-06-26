@@ -1,1 +1,75 @@
-<p>order-shoes works!</p>
+<div class="order-container">
+    <div class="container">
+        <div class="title">
+            <label class="main-title">Order shoes</label>
+        </div>
+        <div class="inner-container">
+            <form>
+                
+                <div class="top-select">
+                    <span class="top-select-item">
+                        <select name="brands" id="brands" class="brand-name-drop text-box-reusables" formControlName="brandName" aria-placeholder="Choose a brand">
+                            <option value="">Choose a Brand</option>
+                            <option value="adidas">Adidas</option>
+                            <option value="nike">Nike</option>
+                            <option value="puma">Puma</option>
+                            <option value="reebok">Reebok</option>
+                        </select>
+                    </span>
+                    
+                    <span class="top-select-item">
+                        <select name="names" class="shoe-name-drop text-box-reusables" formControlName="shoeName">
+                            <option value="">Shoe name</option>
+                        </select>
+                    </span>
+                </div>
+    
+                <div class="bottom-select">
+                    <span class="bottom-item">
+                        <select name="colors" class="color-drop text-box-reusables" formControlName="color">
+                            <option value="">Select a color</option>
+                        </select>
+                    </span>
+                  
+                    <span class="bottom-item">
+                        <select name="brands" id="brands" class="brand-name-drop text-box-reusables" formControlName="size">
+                            <option value="">Choose a size</option>
+                            <option value="adidas">6</option>
+                            <option value="nike">7</option>
+                            <option value="puma">8</option>
+                            <option value="reebok">9</option>
+                        </select>
+                    </span>
+    
+                    <span class="bottom-item">
+                        <input type="number" class="quantity-field text-box-reusables" placeholder="Enter quantity" formControlName="quantity"/>
+                    </span>
+    
+                    
+                    <span class="bottom-item">
+                        <button type="submit" class="order-button">Add</button>
+                    </span>
+                </div>
+    
+                <!--  -->
+                <div class="shoe-list-container">
+                    <label for="box" class="subtitle-label">List of Shoes</label>
+    
+                    <div class="box">
+    
+                    </div>
+    
+                    <div class="bottom-contain">
+                        <label class="title-2x">Total: R</label>
+                        <div class="order-btn">
+                            <button class="order-complete-btn">Complete Order</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+

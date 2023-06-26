@@ -13,11 +13,11 @@
                 <h1>Sign in</h1>
 
                 <div class="form-cont">
-                    <form action="">
+                    <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
                         <label for="">User name</label><br>
-                        <input type="text" name="userName" placeholder="Enter username"><br>
+                        <input type="text" formControlName="userName" name="userName" placeholder="Enter username"><br>
                         <label for="">Password</label><br>
-                        <input type="password" placeholder="Enter password"><br>
+                        <input type="password" formControlName="password" placeholder="Enter password"><br>
                         <button>Sign in</button>
                     </form>
                 </div>

@@ -37,15 +37,16 @@ export class OverviewComponent implements OnInit {
                 borderWidth: 1
             }]
         },
-        // options: {
-        //     scales: {
-        //         yAxes: [{
-        //             ticks: {
-        //                 beginAtZero: true
-        //             }
-        //         }]
-        //     }
-        // }
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
     });
 
 
@@ -86,11 +87,11 @@ export class OverviewComponent implements OnInit {
         //     }
         // }
     });
-  
+    
     var myChart = new Chart("myChart3", {
-      type: 'bar',
+      type: 'line',
       data: {
-          labels: ['January', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: ['January', 'February', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{
               label: 'Info',
               data: [12, 15, 3, 5, 2, 3],
@@ -113,15 +114,17 @@ export class OverviewComponent implements OnInit {
               borderWidth: 1
           }]
       },
-      // options: {
-      //     scales: {
-      //         yAxes: [{
-      //             ticks: {
-      //                 beginAtZero: true
-      //             }
-      //         }]
-      //     }
-      // }
+      options: {
+        maintainAspectRatio: false,
+        aspectRatio: 1,
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
     });
   
 }
