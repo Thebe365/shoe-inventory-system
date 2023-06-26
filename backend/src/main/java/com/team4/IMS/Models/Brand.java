@@ -17,7 +17,7 @@ public class Brand {
     private Long BrandId;
 
     @NonNull
-    private String BrandName;
+    private String name;
 
     @OneToMany(mappedBy = "brand")
     private List<Shoe> shoes;

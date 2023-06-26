@@ -14,13 +14,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     public ResponseEntity<?> authenticate(AuthenticationRequest request) {
        if(authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())).isAuthenticated()){
             var user = userRepository.findUserByEmail(request.getEmail()).orElseThrow(() -> new RuntimeException("User already exists"));
-            var jwtToken = jwtService.generateToken(user.getEmail(),user.getId());
+            var jwtToken = jwtService.generateToken(user.getEmail(),user.getAdminId());
             return ResponseEntity.ok().body(new AuthenticationResponse(jwtToken));
         }else
             return ResponseEntity.badRequest().body("User does not exist");

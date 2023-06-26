@@ -70,7 +70,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 System.out.println("authToken = " + authToken);
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)
                 );
-                System.out.println("authToken = " + authToken);
+
                 SecurityContextHolder.getContext().setAuthentication(authToken);
                 System.out.println("SecurityContextHolder.getContext().getAuthentication() = " + SecurityContextHolder.getContext().getAuthentication());
             }

@@ -24,9 +24,8 @@ public class Shoe {
     @ManyToOne
     private Brand brand;
 
-//    @NonNull
-//    @OneToMany(mappedBy = "shoe")
-//    private List<Inventory> inventory;
+    @OneToMany(mappedBy = "shoe")
+    private List<Inventory> inventory;
 
 //    @OneToMany(mappedBy = "shoe")
 //    private List<ShoeOrder> shoeOrders;
