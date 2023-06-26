@@ -1,8 +1,7 @@
 package com.team4.IMS.Controllers;
 
-import com.team4.IMS.DTOs.AuthenticationRequest;
-import com.team4.IMS.DTOs.AuthenticationResponse;
-import com.team4.IMS.Models.User;
+import com.team4.IMS.DTOs.Auth.AuthenticationRequest;
+import com.team4.IMS.DTOs.Auth.AuthenticationResponse;
 import com.team4.IMS.Services.AuthenticationService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
