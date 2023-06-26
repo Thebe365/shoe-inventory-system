@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="navigation">
+        <ul>
+            
+            <li>
+                <a>
+                    <span class="icon"></span>
+                    <span class="title"><h2>Inventory</h2></span>
+                </a>
+            </li>
+        
+        
+            <li>
+                <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <span class="icon"><i class="far fa-clipboard"></i></span>
+                    <span class="title">Overview</span>
+                </a>
+            </li>
+        
+        
+            <li>
+                <a routerLink="./order-shoes" routerLinkActive="active">
+                    <span class="icon"><i class="fas fa-calendar-check" aria-hidden="true"></i></span>
+                    <span class="title">Order shoe</span>
+                </a>
+            </li>
+        
+        
+            <li>
+                <a routerLink="./manage-inventory" routerLinkActive="active">
+                    <span class="icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></span>
+                    <span class="title">Manage inventory</span>
+                </a>
+            </li>
+        
+        
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-virus" aria-hidden="true"></i></span>
+                    <span class="title">Settings</span>
+                </a>
+            </li>
+        
+        
+            <li>
+                <a href="#">
+                    <span class="icon log"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></span>
+                    <span class="title">Logout</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <!--topbar-->
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle" onclick="toggleMenu();">
+                <span class="bar">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </span>
+            </div>
+                
+            <div class="search">
+                <label>
+                    <input type="text" placeholder="Search here">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </label>
+            </div>
+
+            <div class="user">
+                <img src="IMG_2786.PNG">
+            </div>
+            
+        </div>
+
+        <div class="link-display">
+            <router-outlet></router-outlet>
+        </div>
+
+        
+    </div>
+</div>
+
+<!--Script-->
+<script src="script.js"></script>
