@@ -6,6 +6,7 @@ import com.team4.IMS.Repositorys.BrandRepository;
 import com.team4.IMS.Repositorys.ShoeRepository;
 import com.team4.IMS.Models.Brand;
 import com.team4.IMS.Services.BrandService;
+import com.team4.IMS.Services.ShoeService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
