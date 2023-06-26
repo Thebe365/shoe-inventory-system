@@ -8,6 +8,7 @@
     display: flex;
     width: fit-content;
     justify-content: center;
+    /* justify-content: center; */
     flex-wrap: wrap;
     margin-left: auto;
 }
@@ -16,7 +17,7 @@
     width: 250px;
     height: 260px;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
     margin: 10px;
     border-radius: 10px;
     transition-duration: .5s all ease-in;
@@ -84,6 +85,28 @@ span{
 .btn{
     width: 100%;
     cursor: pointer;
+    padding: 15px 20px;
+}
+
+h4{
+    margin: 10px 0;
+}
+
+.btn{
+    padding: 8px 10px;
+    border: none;
+    background-color: #003147;
+    color: white;
+}
+
+.inner-details{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+span{
+    margin: 10px 0;
+    margin-left: auto;
 }
 
 /* MODAL */

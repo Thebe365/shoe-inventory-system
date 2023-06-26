@@ -97,6 +97,13 @@ select{
 .bottom-item{
     background-color: white;
 }
+.top-select-item{
+    background-color: white;
+}
+
+.bottom-item{
+    background-color: white;
+}
 
 .top-select-item select{
     width: 100%;
