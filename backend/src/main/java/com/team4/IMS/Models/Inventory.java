@@ -21,8 +21,8 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long inventoryId;
 
-    @ManyToOne
-    private Shoe shoe;
+//    @ManyToOne
+//    private Shoe shoe;
 
     private int quantity;
 

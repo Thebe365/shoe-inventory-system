@@ -19,9 +19,9 @@ public class ShoeOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
 
-    @NonNull
-    @ManyToMany
-    private Shoe[] shoe;
+//    @NonNull
+//    @ManyToMany
+//    private Shoe[] shoe;
 
     @NonNull
     private Double orderTotal;

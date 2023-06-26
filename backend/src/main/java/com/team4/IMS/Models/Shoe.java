@@ -24,15 +24,15 @@ public class Shoe {
     @ManyToOne
     private Brand brand;
 
-    @NonNull
-    @OneToMany(mappedBy = "shoe")
-    private List<Inventory> inventory;
+//    @NonNull
+//    @OneToMany(mappedBy = "shoe")
+//    private List<Inventory> inventory;
 
-    @OneToMany(mappedBy = "shoe")
-    private List<ShoeOrder> shoeOrders;
+//    @OneToMany(mappedBy = "shoe")
+//    private List<ShoeOrder> shoeOrders;
 
-    @ManyToOne
-    private ShoeOrder shoeOrder;
+//    @ManyToOne
+//    private ShoeOrder shoeOrder;
 
     @NonNull
     private String color;
