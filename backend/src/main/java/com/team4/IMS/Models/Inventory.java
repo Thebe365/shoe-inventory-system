@@ -2,12 +2,14 @@ package com.team4.IMS.Models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
@@ -21,8 +23,8 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long inventoryId;
 
-//    @ManyToOne
-//    private Shoe shoe;
+    @ManyToOne
+    private Shoe shoe;
 
     private int quantity;
 

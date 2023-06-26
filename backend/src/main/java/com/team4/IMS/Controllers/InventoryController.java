@@ -1,14 +1,13 @@
 package com.team4.IMS.Controllers;
 
+import com.team4.IMS.DTOs.Inventory.addShoeRequest;
 import com.team4.IMS.Repositorys.BrandRepository;
 import com.team4.IMS.Repositorys.ShoeRepository;
+import com.team4.IMS.Services.ShoeService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/inventory/")
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class InventoryController {
 
     private final BrandRepository brandRepository;
-    private final ShoeRepository shoeRepository;
+    private final ShoeService shoeService;
 
     @GetMapping("brands")
     public ResponseEntity<?> getBrands(){
@@ -29,10 +28,14 @@ public class InventoryController {
      * /
      * @return
      */
-    @PostMapping("brands")
-    public ResponseEntity<?> addBrand(){
-        return ResponseEntity.ok(brandRepository.findAll());
+    @PostMapping("shoes")
+    public ResponseEntity<?> addShoe(@RequestBody addShoeRequest addShoeRequest){
+        System.out.println("addShoeRequest: " + addShoeRequest);
+        return shoeService.addShoe(addShoeRequest);
     }
+
+
+
 
 
 }
