@@ -30,7 +30,7 @@ public class ShoeService {
     }
 
     public ResponseEntity<?> getShoesByBrand(String brandName){
-        return ResponseEntity.ok(shoeRepository.findAllByBrand(brandRepository.findByName(brandName)));
+        return ResponseEntity.ok(shoeRepository.findAllByBrandId(brandRepository.findByName(brandName)));
     }
 
     public ResponseEntity<?> searchShoes(String search){

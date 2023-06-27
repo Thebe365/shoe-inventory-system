@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface ShoeRepository extends JpaRepository<Shoe, Long>{
     Shoe findAllByName(String name);
-    List<Shoe> findAllByBrand(Brand brand);
+    List<Shoe> findAllByBrandId(Brand brand);
 }

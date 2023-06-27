@@ -20,9 +20,6 @@ public class Brand {
     @NonNull
     private String name;
 
-
-
     @OneToMany(mappedBy = "brandId")
-    @JsonIgnore
     private List<Shoe> shoes;
 }

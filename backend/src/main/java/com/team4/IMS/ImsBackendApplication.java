@@ -39,7 +39,7 @@ public class ImsBackendApplication {
 		brandRepository.save(brand2);
 
 		Shoe shoe1 = Shoe.builder()
-				.brand(brand)
+				.brandId(brand)
 				.name("Air Force 1")
 				.color("White")
 				.size("10")
@@ -48,7 +48,7 @@ public class ImsBackendApplication {
 		shoeRepository.save(shoe1);
 
 		Shoe shoe2 = Shoe.builder()
-				.brand(brand)
+				.brandId(brand)
 				.name("Air Max 90")
 				.color("White")
 				.size("10")
@@ -57,7 +57,7 @@ public class ImsBackendApplication {
 		shoeRepository.save(shoe2);
 
 		Shoe shoe3 = Shoe.builder()
-				.brand(brand2)
+				.brandId(brand2)
 				.name("Superstar")
 				.color("White")
 				.size("10")
