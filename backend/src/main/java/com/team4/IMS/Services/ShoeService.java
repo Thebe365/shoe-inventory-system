@@ -75,6 +75,8 @@ public class ShoeService {
     }
 
     public ResponseEntity<?> deleteShoe(Long id){
+        var inventoryUnit = inventoryRepository.findInventoryByShoeId(id);
+        inventoryRepository.delete(inventoryUnit);
         shoeRepository.deleteById(id);
         return ResponseEntity.ok("Shoe deleted");
     }
