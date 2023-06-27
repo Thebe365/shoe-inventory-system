@@ -30,14 +30,9 @@ public class Shoe {
     @JsonIdentityReference(alwaysAsId=true)
     private Brand brandId;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "shoe")
     private List<Inventory> inventory;
-
-//    @OneToMany(mappedBy = "shoe")
-//    private List<ShoeOrder> shoeOrders;
-
-//    @ManyToOne
-//    private ShoeOrder shoeOrder;
 
     @NonNull
     private String color;
