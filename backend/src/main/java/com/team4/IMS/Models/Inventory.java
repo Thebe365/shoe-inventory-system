@@ -23,6 +23,7 @@ public class Inventory {
 
     @JsonIgnore
     @ManyToOne
+    @JsonIgnore
     private Shoe shoe;
 
     private int quantity;

@@ -1,5 +1,6 @@
 package com.team4.IMS.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,6 +19,7 @@ public class Brand {
 
     @NonNull
     private String name;
+
 
     @OneToMany(mappedBy = "brandId")
     private List<Shoe> shoes;
