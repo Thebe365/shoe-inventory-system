@@ -30,6 +30,7 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers(
                         "/api/v1/auth/**",
+                        "/api/v1/brand/**",
                         "/h2-console/**",
                         "/v2/api-docs",
                         "/v3/api-docs",
