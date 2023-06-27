@@ -1,17 +1,15 @@
 package com.team4.IMS.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Inventory {
 
@@ -23,6 +21,7 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long inventoryId;
 
+    @JsonIgnore
     @ManyToOne
     private Shoe shoe;
 
