@@ -1,5 +1,9 @@
 package com.team4.IMS.Models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,9 +12,9 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "shoes")
+@Table(name = "shoe")
 public class Shoe {
 
     @Id
@@ -22,16 +26,13 @@ public class Shoe {
 
     @NonNull
     @ManyToOne
-    private Brand brand;
+    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIdentityReference(alwaysAsId=true)
+    private Brand brandId;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "shoe")
     private List<Inventory> inventory;
-
-//    @OneToMany(mappedBy = "shoe")
-//    private List<ShoeOrder> shoeOrders;
-
-//    @ManyToOne
-//    private ShoeOrder shoeOrder;
 
     @NonNull
     private String color;

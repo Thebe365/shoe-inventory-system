@@ -4,5 +4,5 @@ import com.team4.IMS.Models.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BrandRepository extends JpaRepository<Brand, Long> {
-    Brand findBrandByName(String name);
+    Brand findByName(String name);
 }

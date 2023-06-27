@@ -8,13 +8,13 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "brands")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long BrandId;
+    private Long id;
 
     @NonNull
     private String name;
