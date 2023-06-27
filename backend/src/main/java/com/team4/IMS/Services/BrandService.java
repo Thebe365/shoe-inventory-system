@@ -16,42 +16,34 @@ public class BrandService {
     private final BrandRepository brandRepository;
 
 
-    public ResponseEntity<Optional<Brand>> getById(Long BrandId) {
-        return ResponseEntity.ok().body(brandRepository.findById(BrandId));
+    public ResponseEntity<Optional<Brand>> getById(Long id) {
+        return ResponseEntity.ok().body(brandRepository.findById(id));
     }
 
-    public ResponseEntity<?> deleteBrandById(Long BrandId){
-        brandRepository.deleteById(BrandId);
+    public ResponseEntity<?> deleteBrandById(Long id){
+        brandRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Optional<Brand>> updateBrand(Brand brand){
-        Brand presentBrand;
-        Optional<Brand> optionalBrand = Optional.ofNullable(brandRepository.findBrandByName(brand.getName()));
-        if (optionalBrand.isPresent()){
-            presentBrand = optionalBrand.get();
-            presentBrand.setName(brand.getName());
-            presentBrand.setShoes(brand.getShoes());
-            brandRepository.save(presentBrand);
-        }else{
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return ResponseEntity.ok(optionalBrand);
-    }
+//    public ResponseEntity<?> updateBrand(Brand brand){
+//        Brand presentBrand;
+//        Optional<Brand> optionalBrand = brandRepository.findById(brand.getId());
+//        if (optionalBrand.isPresent()){
+//            presentBrand = optionalBrand.get();
+//            presentBrand.setName(brand.getName());
+//            System.out.println("updated");
+//            brandRepository.save(presentBrand);
+//        }else{
+//            return new ResponseEntity<>(HttpStatus.OK);
+//        }
+//        return ResponseEntity.ok(optionalBrand);
+//    }
 
     public ResponseEntity<?> getBrand(){
-        System.out.println("before brands query");
-        var brands = brandRepository.findAll();
-        System.out.println("After brands query");
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(brandRepository.findAll());
     }
 
-    public ResponseEntity<?> addBrand(Brand brand){
-//        var newBrand = brandRepository.findBrandByName(brand.getName());
-//        newBrand.setName(brand.getName());
-//        newBrand.setShoes(brand.getShoes());
-//        brandRepository.save(newBrand);
-//        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> addBrand(){
         return ResponseEntity.ok(brandRepository.findAll());
     }
 

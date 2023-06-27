@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/inventory/")
+@RequestMapping("/api/v1/brand/")
 @RequiredArgsConstructor
 @OpenAPIDefinition
 public class BrandController {
@@ -31,8 +31,8 @@ public class BrandController {
      * @return
      */
     @PostMapping("addBrand")
-    public ResponseEntity<?> addBrands(@RequestBody Brand brand){
-        return brandService.addBrand(brand);
+    public ResponseEntity<?> addBrands(){
+        return brandService.addBrand();
     }
 
     @GetMapping("brand")
@@ -44,10 +44,10 @@ public class BrandController {
 
 
     @GetMapping("brand/{id}")
-    public ResponseEntity<?> getBrandsByIds(@PathVariable Long BrandId){
+    public ResponseEntity<?> getBrandsByIds(@PathVariable Long id){
         Map<String, Object> map = new LinkedHashMap<>();
         try{
-            return brandService.getById(BrandId);
+            return brandService.getById(id);
         }catch(Exception ex){
             map.clear();
             map.put("message", "Data is not found");
@@ -55,14 +55,14 @@ public class BrandController {
         }
     }
 
-    @PutMapping("update")
-    public ResponseEntity<?> updateBrandById(@RequestBody Brand brand){
-        try{
-        return brandService.updateBrand(brand);
-        }catch(Exception ex) {
-        return new ResponseEntity<>("Data not Found",HttpStatus.NOT_FOUND);
-        }
-    }
+//    @PutMapping("update")
+//    public ResponseEntity<?> updateBrandById(@RequestBody Brand brand){
+//        try{
+//        return brandService.updateBrand(brand);
+//        }catch(Exception ex) {
+//        return new ResponseEntity<>("Data not Found",HttpStatus.NOT_FOUND);
+//        }
+//    }
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteBrand(@PathVariable Long id) {
