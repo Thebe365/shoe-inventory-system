@@ -39,6 +39,11 @@ public class SecurityConfiguration {
                         "/webjars/**",
                         "/swagger-ui.html")
                 .permitAll()
+                .requestMatchers(
+                        "/api/v1/shoes/**",
+                        "/api/v1/brands/**"
+                )
+                .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

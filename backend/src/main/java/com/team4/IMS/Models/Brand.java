@@ -1,5 +1,6 @@
 package com.team4.IMS.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,17 +9,20 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "brands")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long BrandId;
+    private Long id;
 
     @NonNull
-    private String BrandName;
+    private String name;
 
-    @OneToMany(mappedBy = "brand")
+
+
+    @OneToMany(mappedBy = "brandId")
+    @JsonIgnore
     private List<Shoe> shoes;
 }
