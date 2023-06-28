@@ -4,15 +4,16 @@ import com.team4.IMS.DTOs.Inventory.ShoeOrder;
 import com.team4.IMS.DTOs.Inventory.addShoeRequest;
 import com.team4.IMS.Models.Inventory;
 import com.team4.IMS.Models.Shoe;
-import com.team4.IMS.Repositorys.BrandRepository;
-import com.team4.IMS.Repositorys.InventoryRepository;
-import com.team4.IMS.Repositorys.ShoeRepository;
+import com.team4.IMS.repository.BrandRepository;
+import com.team4.IMS.repository.InventoryRepository;
+import com.team4.IMS.repository.ShoeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor

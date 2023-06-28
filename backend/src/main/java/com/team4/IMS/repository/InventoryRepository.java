@@ -1,4 +1,4 @@
-package com.team4.IMS.Repositorys;
+package com.team4.IMS.repository;
 
 import com.team4.IMS.Models.Inventory;
 import org.springframework.data.jpa.repository.JpaRepository;

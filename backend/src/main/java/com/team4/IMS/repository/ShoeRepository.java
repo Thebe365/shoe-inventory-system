@@ -1,4 +1,4 @@
-package com.team4.IMS.Repositorys;
+package com.team4.IMS.repository;
 
 import com.team4.IMS.Models.Brand;
 import com.team4.IMS.Models.Shoe;
