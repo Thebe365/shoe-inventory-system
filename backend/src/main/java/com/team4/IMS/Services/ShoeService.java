@@ -38,8 +38,6 @@ public class ShoeService {
         return ResponseEntity.ok(shoeRepository.findById(id));
     }
 
-
-
     public ResponseEntity<?> addShoes(addShoeRequest shoes){
 
         for (ShoeOrder shoe : shoes.getShoes()) {
