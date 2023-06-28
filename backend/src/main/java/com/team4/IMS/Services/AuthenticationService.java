@@ -2,12 +2,11 @@ package com.team4.IMS.Services;
 
 import com.team4.IMS.DTOs.Auth.AuthenticationRequest;
 import com.team4.IMS.DTOs.Auth.AuthenticationResponse;
-import com.team4.IMS.Repositorys.UserRepository;
+import com.team4.IMS.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
