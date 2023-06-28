@@ -68,7 +68,6 @@ public class ShoeController {
     })
     @GetMapping("name/{name}")
     public ResponseEntity<?> getShoesByName(@PathVariable String name){
-        String decodedName = URLDecoder.decode(name, StandardCharsets.UTF_8);
         System.out.println("decodedName: " + decodedName);
         return service.searchShoes(decodedName);
     }
