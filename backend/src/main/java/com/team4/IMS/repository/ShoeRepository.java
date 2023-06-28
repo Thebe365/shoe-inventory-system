@@ -11,13 +11,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ShoeRepository extends JpaRepository<Shoe, Long>{
-    Shoe findByName(String name);
-    List<Shoe> findAllByName(String name);
+    Shoe findAllByName(String name);
+
     List<Shoe> findAllByBrandId(Brand brand);
-
-    @Query(value = "SELECT * FROM Shoe u WHERE u.color = :color AND u.size = :size AND u.name = :name", nativeQuery = true)
-    Shoe findShoeByColorSizeAndName( @Param("color") String color,
-                                     @Param("size") String size,
-                                     @Param("name") String name);
-
+    List<Shoe> findAllByBrand(Brand brand);
 }
