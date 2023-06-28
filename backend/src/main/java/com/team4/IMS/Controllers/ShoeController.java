@@ -1,6 +1,5 @@
 package com.team4.IMS.Controllers;
 
-
 import com.team4.IMS.DTOs.Auth.AuthenticationResponse;
 import com.team4.IMS.DTOs.Inventory.addShoeRequest;
 import com.team4.IMS.Models.Shoe;
@@ -15,6 +14,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -41,7 +44,6 @@ public class ShoeController {
     public ResponseEntity<?> getShoes(){
         return service.getAllShoes();
     }
-
 
     @Operation(summary = "Fetching all shoes from a specific brand")
     @ApiResponses(value = {
@@ -80,6 +82,16 @@ public class ShoeController {
     public ResponseEntity<?> addShoe(@RequestBody addShoeRequest addShoeRequest){
         System.out.println("addShoeRequest: " + addShoeRequest);
         return service.addShoes(addShoeRequest);
+    }
+
+    @Operation(summary = "Deleting a shoe and updating inventory ***This completely removes the shoe from the database***")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Shoe Successfully deleted and inventory updated"),
+            @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
+    })
+    @DeleteMapping("deleteShoe/{id}")
+    public ResponseEntity<?> deleteShoe(@PathVariable Long id){
+        return service.deleteShoe(id);
     }
 
 
