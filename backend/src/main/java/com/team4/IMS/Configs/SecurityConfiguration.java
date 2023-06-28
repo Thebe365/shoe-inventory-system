@@ -27,7 +27,6 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/api/v1/auth/**",
-                        "/api/v1/brand/**",
                         "/h2-console/**",
                         "/v2/api-docs",
                         "/v3/api-docs",
@@ -38,15 +37,13 @@ public class SecurityConfiguration {
                         "/configurations/security",
                         "/swagger-ui/**",
                         "/webjars/**",
-                        "/api/v1/shoes/**",
-                        "/api/v1/brands/**",
                         "/swagger-ui.html")
                 .permitAll()
-//                .requestMatchers(
-//                        "/api/v1/shoes/**",
-//                        "/api/v1/brands/**"
-//                )
-//                .authenticated()
+                .requestMatchers(
+                        "/api/v1/shoes/**",
+                        "/api/v1/brands/**"
+                )
+                .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

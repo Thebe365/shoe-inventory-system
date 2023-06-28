@@ -1,10 +1,8 @@
 package com.team4.IMS.Controllers;
 
-import com.team4.IMS.DTOs.Auth.AuthenticationResponse;
 import com.team4.IMS.DTOs.Inventory.addShoeRequest;
-import com.team4.IMS.Models.Shoe;
-import com.team4.IMS.Repositorys.ShoeRepository;
 import com.team4.IMS.Services.ShoeService;
+import com.team4.IMS.repository.ShoeRepository;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -35,25 +33,25 @@ public class ShoeController {
     @Operation(summary = "Fetching all shoes")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = List.class)) }),
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = List.class))}),
             @ApiResponse(responseCode = "404", description = "Users not found add retrieve"),
     })
 
     @GetMapping("getAll")
-    public ResponseEntity<?> getShoes(){
+    public ResponseEntity<?> getShoes() {
         return service.getAllShoes();
     }
 
     @Operation(summary = "Fetching all shoes from a specific brand")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = List.class)) }),
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = List.class))}),
             @ApiResponse(responseCode = "404", description = "Users not retrieve"),
     })
     @GetMapping("brand/{brand}")
-    public ResponseEntity<?> getShoesByBrand(@PathVariable String brand){
+    public ResponseEntity<?> getShoesByBrand(@PathVariable String brand) {
         String decodedName = URLDecoder.decode(brand, StandardCharsets.UTF_8);
         System.out.println("decodedName: " + decodedName);
         return service.getShoesByBrand(decodedName);
@@ -62,12 +60,13 @@ public class ShoeController {
     @Operation(summary = "fetching a shoe by name request URL shoe name spaces must be replaced with %20")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = List.class)) }),
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = List.class))}),
             @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist"),
     })
     @GetMapping("name/{name}")
-    public ResponseEntity<?> getShoesByName(@PathVariable String name){
+    public ResponseEntity<?> getShoesByName(@PathVariable String name) {
+        String decodedName = URLDecoder.decode(name, StandardCharsets.UTF_8);
         System.out.println("decodedName: " + decodedName);
         return service.searchShoes(decodedName);
     }
@@ -78,7 +77,7 @@ public class ShoeController {
             @ApiResponse(responseCode = "400", description = "one of the provided brands does not exist")
     })
     @PostMapping("addShoe")
-    public ResponseEntity<?> addShoe(@RequestBody addShoeRequest addShoeRequest){
+    public ResponseEntity<?> addShoe(@RequestBody addShoeRequest addShoeRequest) {
         System.out.println("addShoeRequest: " + addShoeRequest);
         return service.addShoes(addShoeRequest);
     }
@@ -88,21 +87,9 @@ public class ShoeController {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully deleted and inventory updated"),
             @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
     })
-    @DeleteMapping("deleteShoe/{id}")
-    public ResponseEntity<?> deleteShoe(@PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteShoe(@PathVariable Long id) {
         return service.deleteShoe(id);
     }
-
-
-    @Operation(summary = "Deleting a shoe and updating inventory ***This completely removes the shoe from the database***")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Shoe Successfully deleted and inventory updated"),
-            @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
-    })
-    @DeleteMapping("deleteShoe/{id}")
-    public ResponseEntity<?> deleteShoe(@PathVariable Long id){
-        return service.deleteShoe(id);
-    }
-
-
 }
+
