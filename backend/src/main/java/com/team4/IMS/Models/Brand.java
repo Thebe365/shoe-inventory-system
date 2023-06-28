@@ -22,7 +22,7 @@ public class Brand {
 
 
 
-    @OneToMany(mappedBy = "brand")
+    @OneToMany(mappedBy = "brandId")
     @JsonIgnore
     private List<Shoe> shoes;
 }

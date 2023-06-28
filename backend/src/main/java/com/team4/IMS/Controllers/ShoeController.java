@@ -59,7 +59,7 @@ public class ShoeController {
         return service.getShoesByBrand(decodedName);
     }
 
-    @Operation(summary = "Fetching all shoes from a specific brand request URL shoe name spaces must be replaced with %20")
+    @Operation(summary = "fetching a shoe by name request URL shoe name spaces must be replaced with %20")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
                     content = { @Content(mediaType = "application/json",
