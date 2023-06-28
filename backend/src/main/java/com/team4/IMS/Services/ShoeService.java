@@ -2,6 +2,7 @@ package com.team4.IMS.Services;
 
 import com.team4.IMS.DTOs.Inventory.ShoeOrder;
 import com.team4.IMS.DTOs.Inventory.addShoeRequest;
+import com.team4.IMS.Models.Brand;
 import com.team4.IMS.Models.Inventory;
 import com.team4.IMS.Models.Shoe;
 import com.team4.IMS.repository.BrandRepository;
@@ -31,10 +32,6 @@ public class ShoeService {
         return ResponseEntity.ok(shoeRepository.findAllByBrandId(brandRepository.findByName(brandName)));
     }
 
-    public ResponseEntity<?> searchShoes(String search){
-        return ResponseEntity.ok(shoeRepository.findAllByName(search));
-    }
-
     public ResponseEntity<?> getShoeById(Long id){
         System.out.println("getShoeById endpoint touched successfully");
         return ResponseEntity.ok(shoeRepository.findById(id));
@@ -45,20 +42,21 @@ public class ShoeService {
     public ResponseEntity<?> addShoes(addShoeRequest shoes){
 
         for (ShoeOrder shoe : shoes.getShoes()) {
-            Brand brandCheck = brandRepository.findByName(shoe.getShoeBrand());
-            Shoe shoeCheck = shoeRepository.findAllByName(shoe.getShoeName());
+
+            Brand brandCheck = brandRepository.findByName(shoe.getShoeBrand().toString());
+            Shoe shoeCheck = shoeRepository.findShoeByColorSizeAndName(shoe.getShoeColor(), shoe.getShoeSize(), shoe.getShoeName());
 
             if(brandCheck == null){
                 return ResponseEntity.badRequest().body("Brand does not exist");
+            } else if (shoeCheck == null){
+                return ResponseEntity.badRequest().body("Shoe does not exist");
             }
-            if(shoeCheck != null){
-                inventoryRepository.findInventoryByShoeId(shoeCheck.getId())
-                        .setQuantity(inventoryRepository
-                                .findInventoryByShoeId(shoeCheck.getId())
-                                .getQuantity() + shoe.getQuantity());
-
+            var inventoryUnit = inventoryRepository.findInventoryByShoeId(shoeCheck.getId());
+            inventoryUnit.setQuantity(inventoryUnit.getQuantity() + shoe.getQuantity());
+            inventoryRepository.save(inventoryUnit);
 
             }
+
             //TODO: Discuss creation of new shoes as part of ordering process
 //            else{
 //                Shoe newShoe = Shoe.builder()
@@ -76,7 +74,7 @@ public class ShoeService {
 //                shoeRepository.save(newShoe);
 //                inventoryRepository.save(newInventory);
 //            }
-        }
+
         return ResponseEntity.ok("Quantity updated");
 
     }
@@ -88,6 +86,10 @@ public class ShoeService {
 
         shoeRepository.deleteById(id);
         return ResponseEntity.ok("Shoe deleted");
+    }
+
+    public ResponseEntity<List<Shoe>> searchShoes(String name){
+        return ResponseEntity.ok(shoeRepository.findAllByName(name));
     }
 
 }

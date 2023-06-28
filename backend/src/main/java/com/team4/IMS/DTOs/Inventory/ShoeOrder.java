@@ -1,6 +1,5 @@
 package com.team4.IMS.DTOs.Inventory;
 
-import com.team4.IMS.Models.Shoe;
 import lombok.Data;
 
 @Data
