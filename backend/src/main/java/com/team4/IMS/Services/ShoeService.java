@@ -12,9 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-
 @Service
 @RequiredArgsConstructor
 public class ShoeService {
@@ -36,11 +33,18 @@ public class ShoeService {
         return ResponseEntity.ok(shoeRepository.findAllByName(search));
     }
 
+    public ResponseEntity<?> getShoeById(Long id){
+        System.out.println("getShoeById endpoint touched successfully");
+        return ResponseEntity.ok(shoeRepository.findById(id));
+    }
+
+
+
     public ResponseEntity<?> addShoes(addShoeRequest shoes){
 
         for (ShoeOrder shoe : shoes.getShoes()) {
-            var brandCheck = brandRepository.findByName(shoe.getShoeBrand());
-            var shoeCheck = shoeRepository.findAllByName(shoe.getShoeName());
+            Brand brandCheck = brandRepository.findByName(shoe.getShoeBrand());
+            Shoe shoeCheck = shoeRepository.findAllByName(shoe.getShoeName());
 
             if(brandCheck == null){
                 return ResponseEntity.badRequest().body("Brand does not exist");
@@ -50,7 +54,8 @@ public class ShoeService {
                         .setQuantity(inventoryRepository
                                 .findInventoryByShoeId(shoeCheck.getId())
                                 .getQuantity() + shoe.getQuantity());
-                return ResponseEntity.ok("Quantity updated");
+
+
             }
             //TODO: Discuss creation of new shoes as part of ordering process
 //            else{
@@ -70,14 +75,15 @@ public class ShoeService {
 //                inventoryRepository.save(newInventory);
 //            }
         }
-
-        return ResponseEntity.badRequest().body("Shoe does not exist");
+        return ResponseEntity.ok("Quantity updated");
 
     }
 
     public ResponseEntity<?> deleteShoe(Long id){
+
         var inventoryUnit = inventoryRepository.findInventoryByShoeId(id);
         inventoryRepository.delete(inventoryUnit);
+
         shoeRepository.deleteById(id);
         return ResponseEntity.ok("Shoe deleted");
     }
