@@ -14,7 +14,7 @@
     position: relative;
     max-width: 432px;
     height: 239px;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     background-color: white;
     margin: 20px;
@@ -24,7 +24,7 @@
 .bottom-chart{
     width: 900px;
     height: 300px;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     background-color: white;
     margin: 30px;

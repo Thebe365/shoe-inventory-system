@@ -1,13 +1,51 @@
 .sign-in{
-    position: absolute;
-    width: 350px;
-    /* height: 450px; */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 
+    width: 300px;
+    /* height: 450px; */
+    
+    /* background-color: white; */
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
+
+}
+
+.image-container, .container{
+    width: 350px;
+    height: 70vh;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.image-container img{
+    width: 250px;    
+}
+
+.body-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: fit-content; */
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgb(0,0,0,0.5), rgb(0,0,0,0.5)), url("../../assets/images/sneakers.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1{

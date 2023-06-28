@@ -64,3 +64,138 @@ span{
     width: 100%;
     cursor: pointer;
 }
+
+/* MODAL */
+.modal-backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    display: flex;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    z-index: 3;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    margin: 40px;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 70%;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 16px 32px 0 rgba(166, 219, 255, 0.281);
+    
+  }
+  
+  .modal-header {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
+  .modal-img {
+    display: flex;
+    height: fit-content;
+  }
+
+  .modal-img>img {
+
+    width: 250px;
+    height: 160px;
+    /* border-radius: 5px; */
+    object-fit: cover;
+    background-position: center;
+  }
+  
+  .modal-content {
+    margin-left: 20px;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .modal-buttons {
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  .manage-button {
+    /* position: absolute; */
+    width: 120px;
+    height: 38px;
+    border: none;
+    /* border-radius: 10px; */
+    color: #FFF;
+    background: #3d98ff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+  .manage-button:hover {
+    background: #2087fd;
+    box-shadow: 0 16px 32px 0 rgba(166, 219, 255, 0.281);
+  }
+
+  .search-cont{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .search{
+    border: 1px solid grey;
+    border-radius: 20px;
+    
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .search input{
+    border: none;
+    outline: none;
+    margin-left: 10px;
+  }
+  .brand-items{
+    overflow-y: scroll;
+    height: 80%;
+  }
+
+  .color{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 5px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  }
+
+  .colors{
+    display: flex;
+    align-items: center;
+    height: fit-content;
+  }
+
+  p{
+    margin: 5px;
+  }
+  .available-colors{
+    display: flex;
+    align-items: center;
+  }

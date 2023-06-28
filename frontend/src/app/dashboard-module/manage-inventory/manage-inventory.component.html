@@ -89,5 +89,61 @@
         </div>
         <div class="card-item"></div>
 
+        <!-- Modal -->
+       <div class="modal-backdrop" (click)="CloseModal()" id="modal"></div>
+
+        <!-- <span class="modal-close">&times;</span> -->
+        
+        <div class="modal">
+
+            <div class="modal-header">
+                <h3>Brand name</h3>
+
+                <div class="search-cont">
+                    <div class="search">
+                        <span class="icon log"><fa-icon [icon]="faSearch"></fa-icon></span>
+                        <input type="text" placeholder="Search here">
+                    </div>
+                </div>
+                
+            </div>
+
+
+            <div class="brand-items">
+
+                <div *ngFor="let shoe of shoes">
+
+                    <div class="modal-header">
+                        <div class="modal-img">
+                            <img [src]="shoeUrl + shoe.name + '.jpg'">
+                        </div>
+        
+                        <div class="modal-content">
+                            <h3><strong>{{shoe.name}}</strong></h3>
+
+                            <div class="available-colors">
+                                <p>Available colors:</p>
+
+                                <div class="colors" >
+
+                                    <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}"></div>
+                                </div>
+                            </div>
+                            
+                            <p>Available sizes:</p>
+                            <p>Quantity:</p>
+                        </div>
+        
+                        <div class="modal-buttons">
+                            <button class="manage-button" routerLink="/manage-shoes" routerLinkActive="active">Manage</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+       
     </div>
 </div>
