@@ -171,6 +171,7 @@ span{
 
   .modal-header {
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 20px;
     padding: 0 20px;
   }
