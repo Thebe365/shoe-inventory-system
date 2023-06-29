@@ -1,18 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { HttpClient } from '@angular/common/http';
+import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 
 @Component({
   selector: 'app-manage-inventory',
   templateUrl: './manage-inventory.component.html',
   styleUrls: ['./manage-inventory.component.css']
 })
-export class ManageInventoryComponent {
+export class ManageInventoryComponent implements OnInit {
 
-  
+  // Constructor
+  constructor(private apiService: ShoeServiceService){}
+
   faSearch = faSearch
 
   shoeUrl = '../../../assets/images/sneakers/'
+  shoeObject: object
+
+  ngOnInit(): void {
+      
+    this.apiService.getBrandById(1).subscribe(res =>{
+    
+      console.log(res)
+    })
+    
+  } 
   CloseModal(): void {
 
     // Get the modal and the backdrop
