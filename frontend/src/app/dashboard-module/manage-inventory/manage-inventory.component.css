@@ -20,6 +20,27 @@
     margin: 10px;
     border-radius: 10px;
     transition-duration: .5s all ease-in;
+    opacity: 0;
+    animation: staggeredAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes staggeredAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-item:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.card-item:nth-child(even) {
+  animation-delay: 0.2s;
 }
 
 h2{
@@ -74,18 +95,19 @@ span{
     display: flex;
     left: 0;
     right: 0;
-    top: 0;
+    top: -8px;
     bottom: 0;
     z-index: 3;
-    
+    display: none;
     justify-content: center;
     align-items: center;
   }
   
   .modal {
     z-index: 3;
-    position: absolute;
-    left: 50%;
+    /* position: absolute; */
+    position: fixed;
+    left: 57%;
     top: 45%;
     margin: 40px;
     transform: translate(-50%, -50%);
@@ -96,9 +118,22 @@ span{
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 16px 32px 0 rgba(166, 219, 255, 0.281);
-    
+    display: none;
+    opacity: 0;
+    animation: modalFadeIn .7s ease-in-out forwards;
   }
   
+  @keyframes modalFadeIn {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -80);
+    }
+  }
+
   .modal-header {
     display: flex;
     margin-bottom: 20px;
@@ -137,13 +172,12 @@ span{
     margin-right: 20px;
   }
   .manage-button {
-    /* position: absolute; */
+    
     width: 120px;
     height: 38px;
     border: none;
-    /* border-radius: 10px; */
     color: #FFF;
-    background: #3d98ff;
+    background: #003147;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     cursor: pointer;
   }
