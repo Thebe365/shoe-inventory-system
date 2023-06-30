@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit {
       this.http.post('http://localhost:8080/api/v1/auth/authenticate', this.registrationData)
       .subscribe(
         (response) => {
-
+          localStorage.setItem("token",response["token"]);
           sessionStorage.setItem("email", this.registrationData.email)
 
           this.route.navigate(["./dashboard"])

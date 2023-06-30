@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,6 @@ export class ShoeServiceService {
 
   // getting brand by id
   public getBrandById(id: number) {
-    return this.http.get(this.url + `/brand/${id}`);
+    return this.http.request("GET", this.url + `brand/${id}`);
   }
 }
