@@ -20,26 +20,49 @@ public class ImsBackendApplication {
 
 	public ImsBackendApplication(UserRepository userRepository, BrandRepository brandRepository, ShoeRepository shoeRepository, PasswordEncoder passwordEncoder, InventoryRepository inventoryRepository) {
 
+		// Create admin
 		User user =User.builder()
 				.email("admin@admin.com")
 				.password(passwordEncoder.encode("admin"))
 				.build();
 		userRepository.save(user);
 
+		// Create brands
 		Brand brand = Brand.builder()
-				.name("Nike")
+				.name("nike")
 				.build();
 		brandRepository.save(brand);
 
 		Brand brand2 = Brand.builder()
-				.name("Adidas")
+				.name("adidas")
 				.build();
 		brandRepository.save(brand2);
 
+		Brand brand3 = Brand.builder()
+				.name("vans")
+				.build();
+		brandRepository.save(brand3);
+
+		Brand brand4 = Brand.builder()
+				.name("puma")
+				.build();
+		brandRepository.save(brand4);
+
+		Brand brand5 = Brand.builder()
+				.name("new balance")
+				.build();
+		brandRepository.save(brand5);
+
+		Brand brand6 = Brand.builder()
+				.name("reebok")
+				.build();
+		brandRepository.save(brand6);
+
 		Shoe shoe1 = Shoe.builder()
 				.brandId(brand)
-				.name("Air Force 1")
-				.color("White")
+				.name("air force 1")
+				.brandName("nike")
+				.color("white")
 				.size("10")
 				.price(100.00)
 				.build();
@@ -47,8 +70,9 @@ public class ImsBackendApplication {
 
 		Shoe shoe2 = Shoe.builder()
 				.brandId(brand)
-				.name("Air Max 90")
-				.color("White")
+				.name("air max 90")
+				.brandName("nike")
+				.color("white")
 				.size("10")
 				.price(100.00)
 				.build();
@@ -56,7 +80,8 @@ public class ImsBackendApplication {
 
 		Shoe shoe3 = Shoe.builder()
 				.brandId(brand2)
-				.name("Superstar")
+				.name("superstar")
+				.brandName("adidas")
 				.color("White")
 				.size("10")
 				.price(100.00)

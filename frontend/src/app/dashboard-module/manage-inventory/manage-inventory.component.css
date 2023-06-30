@@ -269,3 +269,14 @@ span{
     display: flex;
     align-items: center;
   }
+
+  .no-items-message{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../assets/images/sneakers/display-nothing.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }

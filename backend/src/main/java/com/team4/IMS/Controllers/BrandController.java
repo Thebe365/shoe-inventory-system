@@ -44,7 +44,6 @@ public class BrandController {
 
 
     //Get all brands
-
     @Operation(summary = "Fetching all brands", description = "Fetching all brands")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Brands Successfully Retrieved",

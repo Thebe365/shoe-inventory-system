@@ -3,12 +3,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 
+
 @Component({
   selector: 'app-manage-inventory',
   templateUrl: './manage-inventory.component.html',
   styleUrls: ['./manage-inventory.component.css']
 })
 export class ManageInventoryComponent implements OnInit {
+  
 
   // Constructor
   constructor(private apiService: ShoeServiceService){}
@@ -16,21 +18,29 @@ export class ManageInventoryComponent implements OnInit {
   faSearch = faSearch
 
   shoeUrl = '../../../assets/images/sneakers/'
-  shoeObject: object
+  brandUrl = '../../../assets/images/'
+  shoes = [];
+  brands = [];
+  brandName = '';
 
   ngOnInit(): void {
       
-    this.apiService.getBrandById(1).subscribe(res =>{
+    // Getting all brands
+    this.apiService.getAllBrands().subscribe((res) =>{
+
+      this.brands = Object.values(res)
+      console.log(this.brands)
+        
+      });
     
-      console.log(res)
-    })
-    
-  } 
+  }
+
   CloseModal(): void {
 
     // Get the modal and the backdrop
     const modal = document.getElementById('modal')!
     const modal2 = document.getElementById('modal2')!
+   
 
     // close the modal and back drop
     modal.style.display = 'none'
@@ -41,7 +51,15 @@ export class ManageInventoryComponent implements OnInit {
     
   }
 
-  OpenModal(): void {
+  OpenModal(brandName: string): void {
+
+    // get shoe by brand name
+    this.apiService.getShoesByBrandName(brandName).subscribe((res) =>{
+      
+      this.brandName = brandName
+      this.shoes = Object.values(res)
+      console.log(this.shoes)
+    })
 
     // Get the modal and the backdrop
     const modal = document.getElementById('modal')!
@@ -55,100 +73,4 @@ export class ManageInventoryComponent implements OnInit {
     document.body.style.overflow = 'hidden';
   }
 
-  // brand data
-  brands: any[] = [
-    {
-      name: "nike",
-      image: "../../../assets/images/nike.jpg",
-      quantity: 100,
-      id: 1
-    },
-    {
-      name: "adidas",
-      Image: "../../../assets/images/adidas.jpg",
-      quantity: 15,
-      id: 2
-    },
-    {
-      name: "converse",
-      image: "../../../assets/images/converse.jpg",
-      quantity: 50,
-      id: 3
-    },
-    {
-      name: "reebok",
-      image: "../../../assets/images/reebok.jpg",
-      quantity: 45,
-      id: 4
-    },
-    {
-      name: "vans",
-      Image: "../../../assets/images/vans.jpg",
-      quantity: 30,
-      id: 5
-    },
-    {
-      name: "new balance",
-      Image: "../../../assets/images/new-balance.jpg",
-      quantity: 25,
-      id: 6
-    }
-  ]
-
-  // Shoe data
-  shoes: any[] = [
-    {
-      "name": "air max 90",
-      "brand": "nike",
-      "colors": ["black", "grey", "white", "red"],
-      "sizes": [6,7,8,9,10]
-    },
-    {
-      "name": "air force 1",
-      "brand": "nike",
-      "colors": ["black", "grey", "blue", "red"],
-      "sizes": [6,7,8,10]
-    },
-    {
-      "name": "gel nimbus 23",
-      "brand": "asics",
-      "colors": ["black", "grey", "white", "red", "orange"],
-      "sizes": [6,7,8,9]
-    },
-    {
-      "name": "run star hike",
-      "brand": "converse",
-      "colors": ["black", "grey", "white", "red", "orange"],
-      "sizes": [6,8,9,10]
-    },
-    {
-      "name": "nano 9",
-      "brand": "reebok",
-      "colors": ["black", "grey", "white", "red", "orange"],
-      "sizes": [6,7,8,9,10,11]
-    },
-    {
-      "name": "old skool",
-      "brand": "vans",
-      "colors": ["black", "grey", "white", "red"],
-      "sizes": [6,7,8,10,11]
-    },
-    {
-      "name": "era",
-      "brand": "vans",
-      "colors": ["black", "grey", "white", "red"],
-      "sizes": [5,6,7,8,9,10,11]
-    },
-    {
-      "name": "all star chuck taylor",
-      "brand": "converse",
-      "colors": ["black"],
-      "sizes": [6,7,8,9,11]
-    },
-    {
-      "name": "air max 270",
-      "brand": "nike",
-      "colors": ["black", "grey", "white", "red"]
-    }
-  ]
 }

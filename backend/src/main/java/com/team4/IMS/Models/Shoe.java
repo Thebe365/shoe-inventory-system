@@ -40,6 +40,8 @@ public class Shoe {
     private String size;
     @NonNull
     private Double price;
+    @NonNull
+    private String brandName;
 
 
 

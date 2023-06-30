@@ -5,17 +5,17 @@
         <div  class="card-item" *ngFor="let brand of brands">
 
             <div class="brand-image">
-                <img [src]="brand.image" alt="">
+                <img [src]="brandUrl + brand.name + '.jpg'" alt="">
             </div>
 
             <div class="brand-details">
 
                 <div class="inner-details">
-                    <h4>{{ brand.name }}</h4>
-                    <span>Qty: {{ brand.quantity }}</span>
+                    <h4>{{ brand.name | titlecase }}</h4>
+                    <span>Qty: </span>
                 </div>
                 
-                <button class="btn" (click)="OpenModal()">Manage</button>
+                <button class="btn" (click)="OpenModal(brand.name)">Manage</button>
             </div>
         </div>
 
@@ -28,7 +28,7 @@
         <div class="modal" id="modal2">
 
             <div class="modal-header">
-                <h3>Brand name</h3>
+                <h3>{{ brandName | titlecase }}</h3>
 
                 <div class="search-cont">
                     <div class="search">
@@ -42,35 +42,43 @@
 
             <div class="brand-items">
 
-                <div *ngFor="let shoe of shoes">
+                <ng-container *ngIf="shoes.length > 0; else noShoes">
+                    <div *ngFor="let shoe of shoes">
 
-                    <div class="modal-header">
-                        <div class="modal-img">
-                            <img [src]="shoeUrl + shoe.name + '.jpg'">
-                        </div>
-        
-                        <div class="modal-content">
-                            <h3><strong>{{shoe.name}}</strong></h3>
-
-                            <div class="available-colors">
-                                <p>Available colors:</p>
-
-                                <div class="colors" >
-
-                                    <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}"></div>
-                                </div>
+                        <div class="modal-header">
+                            <div class="modal-img">
+                                <img [src]="shoeUrl + shoe.name + '.jpg'">
                             </div>
-                            
-                            <p>Available sizes:</p>
-                            <p>Quantity:</p>
+            
+                            <div class="modal-content">
+                                <h3><strong>{{shoe.name}}</strong></h3>
+    
+                                <div class="available-colors">
+                                    <p>Available colors:</p>
+    
+                                    <div class="colors" >
+    
+                                        <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}"></div>
+                                    </div>
+                                </div>
+                                
+                                <p>Available sizes:</p>
+                                <p>Quantity:</p>
+                            </div>
+            
+                            <div class="modal-buttons">
+                                <button class="manage-button" routerLink="/manage-shoes" routerLinkActive="active">Manage</button>
+                            </div>
                         </div>
-        
-                        <div class="modal-buttons">
-                            <button class="manage-button" routerLink="/manage-shoes" routerLinkActive="active">Manage</button>
-                        </div>
+                        
                     </div>
-                    
-                </div>
+                </ng-container>
+                <ng-template #noShoes>
+                    <div class="no-items-message">
+                        
+                    </div>
+                </ng-template>
+                
             </div>
             
             

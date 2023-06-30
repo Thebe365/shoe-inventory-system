@@ -15,4 +15,19 @@ export class ShoeServiceService {
   public getBrandById(id: number) {
     return this.http.request("GET", this.url + `brand/${id}`);
   }
+
+  // Geting all brands
+  public getAllBrands() {
+    return this.http.request("GET", this.url + "brand/");
+  }
+
+  // Getting shoes by brand name
+  public getShoesByBrandName(brand: string) {
+    return this.http.request("GET", this.url + `shoes/brand/${brand}`);
+  }
+
+  // getting all shoes
+  public getAllShoes() {
+    return this.http.request("GET", this.url + "shoes/getAll");
+  }
 }
