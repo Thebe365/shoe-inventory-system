@@ -2,17 +2,17 @@
 <div class="manage-container">
     <div class="card-container">
 
-        <div  class="card-item">
+        <div  class="card-item" *ngFor="let brand of brands">
 
             <div class="brand-image">
-                <img src="../../../assets/images/nike.jpg" alt="">
+                <img [src]="brand.image" alt="">
             </div>
 
             <div class="brand-details">
 
                 <div class="inner-details">
-                    <h4>Nike</h4>
-                    <span>qty:</span>
+                    <h4>{{ brand.name }}</h4>
+                    <span>Qty: {{ brand.quantity }}</span>
                 </div>
                 
                 <button class="btn" (click)="OpenModal()">Manage</button>

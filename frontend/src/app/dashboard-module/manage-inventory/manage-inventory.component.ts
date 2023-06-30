@@ -55,6 +55,47 @@ export class ManageInventoryComponent implements OnInit {
     document.body.style.overflow = 'hidden';
   }
 
+  // brand data
+  brands: any[] = [
+    {
+      name: "nike",
+      image: "../../../assets/images/nike.jpg",
+      quantity: 100,
+      id: 1
+    },
+    {
+      name: "adidas",
+      Image: "../../../assets/images/adidas.jpg",
+      quantity: 15,
+      id: 2
+    },
+    {
+      name: "converse",
+      image: "../../../assets/images/converse.jpg",
+      quantity: 50,
+      id: 3
+    },
+    {
+      name: "reebok",
+      image: "../../../assets/images/reebok.jpg",
+      quantity: 45,
+      id: 4
+    },
+    {
+      name: "vans",
+      Image: "../../../assets/images/vans.jpg",
+      quantity: 30,
+      id: 5
+    },
+    {
+      name: "new balance",
+      Image: "../../../assets/images/new-balance.jpg",
+      quantity: 25,
+      id: 6
+    }
+  ]
+
+  // Shoe data
   shoes: any[] = [
     {
       "name": "air max 90",
