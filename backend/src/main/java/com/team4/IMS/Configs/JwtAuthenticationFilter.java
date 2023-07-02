@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String userEmail;
         final JwtService jwtService;
 
-        if(request.getRequestURI().equals("/api/v1/auth/authenticate")){
+        if(request.getRequestURI().equals("/api/v1/auth/authenticate")) {
             System.out.println("request.getRequestURI().equals(\"/api/v1/auth/authenticate\")");
             filterChain.doFilter(request, response);
             return;
@@ -70,7 +70,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 System.out.println("authToken = " + authToken);
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)
                 );
-                System.out.println("authToken = " + authToken);
+
                 SecurityContextHolder.getContext().setAuthentication(authToken);
                 System.out.println("SecurityContextHolder.getContext().getAuthentication() = " + SecurityContextHolder.getContext().getAuthentication());
             }
