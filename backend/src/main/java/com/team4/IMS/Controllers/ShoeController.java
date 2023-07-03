@@ -87,7 +87,7 @@ public class ShoeController {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully deleted and inventory updated"),
             @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
     })
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteShoe(@PathVariable Long id) {
         return service.deleteShoe(id);
     }

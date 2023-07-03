@@ -6,7 +6,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { OverviewComponent } from './overview/overview.component';
 import { OrderShoesComponent } from './order-shoes/order-shoes.component';
 import { ManageInventoryComponent } from './manage-inventory/manage-inventory.component';
-import { SettingsComponent } from './settings/settings.component';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,7 +16,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OverviewComponent,
     OrderShoesComponent,
     ManageInventoryComponent,
-    SettingsComponent,
     
   ],
   imports: [

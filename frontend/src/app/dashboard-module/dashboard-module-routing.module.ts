@@ -5,15 +5,13 @@ import { OverviewComponent } from './overview/overview.component';
 import { OrderShoesComponent } from './order-shoes/order-shoes.component';
 import { ManageInventoryComponent } from './manage-inventory/manage-inventory.component';
 import { AuthGuard } from '../security/auth.guard';
-import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {path: '', component: DashboardHomeComponent,
   children: [
     {path: '', component: OverviewComponent},
     {path: 'order-shoes', component: OrderShoesComponent},
-    {path: 'manage-inventory', component: ManageInventoryComponent},
-    {path: 'settings', component: SettingsComponent}
+    {path: 'manage-inventory', component: ManageInventoryComponent}
   ]}
 
 ];

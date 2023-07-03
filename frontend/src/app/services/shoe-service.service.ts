@@ -30,4 +30,19 @@ export class ShoeServiceService {
   public getAllShoes() {
     return this.http.request("GET", this.url + "shoes/getAll");
   }
+
+  // Delete shoes by id
+  public deleteShoesById(id: number) {
+    return this.http.request("DELETE", this.url + `shoes/delete/${id}`);
+  }
+
+  //add shoes
+  public addShoes(shoe: any) {
+    return this.http.request("POST", this.url + "shoes/addShoe", { body: shoe });
+  }
+
+  // delete brand by id
+  public deleteBrandById(id: number) {
+    return this.http.request("DELETE", this.url + `brand/${id}`);
+  }
 }

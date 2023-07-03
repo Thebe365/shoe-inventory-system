@@ -18,12 +18,16 @@ export class OrderShoesComponent implements OnInit{
   shoes = []
   allShoes = []
   orderForm: FormGroup
+  shoePrice = 0
+
 
   shoeobj = {
+
     brandName: '',
     shoeName: '',
     color: '',
-    size: ''
+    size: '',
+    quantity: ''
   }
 
   ngOnInit(): void {
@@ -40,7 +44,8 @@ export class OrderShoesComponent implements OnInit{
       brandName: ['', Validators.required],
       shoeName: ['', Validators.required],
       color: ['', Validators.required],
-      size: ['', Validators.required]
+      size: ['', Validators.required],
+      quantity: ['', Validators.required]
     })
 
   }
@@ -57,17 +62,71 @@ export class OrderShoesComponent implements OnInit{
   }
 
 
-  orderShoe(){
+  addShoe(){
     
     if(this.orderForm.valid){
+      
+      // get selected item's price
+      this.allShoes.forEach(element => {
+        
+        if(element.shoeName == this.orderForm.value.shoeName){
+          
+          this.shoePrice = element.price
+        }
+      })
+
+      // create shoe object
+      this.shoeobj.shoeName = this.orderForm.value.shoeName
+      this.shoeobj.brandName = this.orderForm.value.brandName
+      this.shoeobj.color = this.orderForm.value.color
+      this.shoeobj.size = this.orderForm.value.size
+      this.shoeobj.quantity = this.orderForm.value.quantity
+      
+      // add shoe to allshoes
+      this.allShoes.push(this.shoeobj)
+      
+      //clear shoe object
+      this.shoeobj = {
+        
+        brandName: '',
+        shoeName: '',
+        color: '',
+        size: '',
+        quantity: ''
+      }
+      // clear form
+      this.orderForm.reset()
+
 
     }else{
 
       Swal.fire({
         icon: 'error',
         title: 'Woops',
-        text: 'Form not complete',
+        text: 'Order Unsuccessful',
       })
     }
+  }
+
+
+  completeOrder(){
+
+    
+    //loop through allshoes and add to order
+    this.allShoes.forEach(element => {
+      
+      this.apiServices.addShoes(element).subscribe(res =>{
+
+        console.log(res)
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Order completed',
+        
+      })
+    
+    })
+  });
+
   }
 }

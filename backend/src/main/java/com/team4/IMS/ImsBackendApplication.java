@@ -57,6 +57,10 @@ public class ImsBackendApplication {
 				.name("reebok")
 				.build();
 		brandRepository.save(brand6);
+		Brand brand7 = Brand.builder()
+				.name("converse")
+				.build();
+		brandRepository.save(brand7);
 
 		Shoe shoe1 = Shoe.builder()
 				.brandId(brand)
@@ -87,6 +91,54 @@ public class ImsBackendApplication {
 				.price(100.00)
 				.build();
 		shoeRepository.save(shoe3);
+
+		Shoe shoe4 = Shoe.builder()
+				.brandId(brand6)
+				.name("classic leather")
+				.brandName("reebok")
+				.color("white")
+				.size("7")
+				.price(2500.00)
+				.build();
+		shoeRepository.save(shoe4);
+		Shoe shoe5 = Shoe.builder()
+				.brandId(brand3)
+				.name("era")
+				.brandName("vans")
+				.color("black")
+				.size("9")
+				.price(1500.00)
+				.build();
+		shoeRepository.save(shoe5);
+		Shoe shoe6 = Shoe.builder()
+				.brandId(brand3)
+				.name("sk8 hi")
+				.brandName("vans")
+				.color("black")
+				.size("10")
+				.price(2000.00)
+				.build();
+		shoeRepository.save(shoe6);
+		Shoe shoe7 = Shoe.builder()
+				.brandId(brand7)
+				.name("all star chuck taylor")
+				.brandName("chuck taylor")
+				.color("black")
+				.size("10")
+				.price(500.00)
+				.build();
+		shoeRepository.save(shoe7);
+		Shoe shoe8 = Shoe.builder()
+				.brandId(brand7)
+				.name("jack purcell")
+				.brandName("chuck taylor")
+				.color("black")
+				.size("10")
+				.price(600.00)
+				.build();
+		shoeRepository.save(shoe7);
+
+
 
 		Inventory inventory = Inventory.builder()
 				.shoe(shoe1)
