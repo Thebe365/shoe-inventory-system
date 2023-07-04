@@ -1,1 +1,126 @@
-<p>manage-inventory works!</p>
+<h2>Manage shoe by brand</h2>
+<div class="manage-container">
+    <div class="card-container">
+
+        <div  class="card-item" *ngFor="let brand of brands">
+
+            <div class="brand-image">
+                <img [src]="brandUrl + brand.name + '.jpg'" alt="">
+            </div>
+
+            <div class="brand-details">
+
+                <div class="inner-details">
+                    <h4>{{ brand.name | titlecase }}</h4>
+                    <span>Qty: </span>
+                </div>
+                
+                <button class="btn" (click)="OpenModal(brand.name)" [routerLink]="['/dashboard/manage-inventory', { modal: 'manage-brands' }]">Manage</button>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+       <div class="modal-backdrop" (click)="CloseModal()" id="modal"></div>
+
+        <!-- <span class="modal-close">&times;</span> -->
+        
+        <div class="modal" id="modal2">
+
+            <div class="modal-header">
+                <h3>{{ brandName | titlecase }}</h3>
+
+                <div class="search-cont">
+                    <div class="search">
+                        <span class="icon log"><fa-icon [icon]="faSearch"></fa-icon></span>
+                        <input [(ngModel)]="searchTerm" type="text" placeholder="Search here" (input)="search()" (keydown)="onKeyUp($event)">
+                    </div>
+                </div>
+                
+            </div>
+
+
+            <div class="brand-items">
+
+                <ng-container *ngIf="shoes.length > 0; else noShoes">
+                    <div *ngFor="let shoe of shoes">
+
+                        <div class="modal-header">
+                            <div class="modal-img">
+                                <img [src]="shoeUrl + shoe.name + '.jpg'">
+                            </div>
+            
+                            <div class="modal-content">
+                                <h3><strong>{{shoe.name}}</strong></h3>
+    
+                                <div class="available-colors">
+                                    <p>Available colors:</p>
+    
+                                    <div class="colors" >
+    
+                                        <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}"></div>
+                                    </div>
+                                </div>
+                                
+                                <p>Available sizes:</p>
+                                <p>Quantity:</p>
+                            </div>
+            
+                            <div class="modal-buttons">
+                                <button class="manage-button"(click)='ManageModalOpen(shoe.id)' [routerLink]="['/dashboard/manage-inventory', { modal: 'manage-shoes' }]">Manage</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </ng-container>
+                <ng-template #noShoes>
+                    <div class="no-items-message">
+                        
+                    </div>
+                </ng-template>
+                
+            </div>
+            
+            <!-- <div class="delete-brand">
+                <button (click)="deleteShoe(brandId)">Delete a brand</button>
+            </div> -->
+        </div>
+       
+    </div>
+
+    <!-- Modal to manage shoes -->
+<div class="manage-backdrop" id="manage-backdrop" (click)="ManageModalClose()"></div>
+<div class="manage-modal" id="manage-modal">
+
+    <ng-container *ngIf="shoeObj.length != 0; else nothing">
+        <div class="manage-modal-header" *ngFor="let shoe of shoeObj">
+        
+            <!-- <span class="close-btn-text" (click)="ManageModalClose()">&times;</span> -->
+            
+            <span class="left-panel">
+                <div class="left-panel-content">
+                    <div class="img-container">
+                        <img [src]="shoeUrl + shoe.name + '.jpg'" alt="">
+                        <h3><strong>{{ shoe.name | titlecase }}</strong></h3>
+                    </div>
+                    <div class="left-content">
+                        <p>Price: R {{ shoe.price }}</p><br>
+                        <p>Available Colors:</p><br>
+                        <p>Available Sizes:</p><br>
+                        <button class="btn-manage-modal" (click)="deleteShoe(shoe.id)">Delete</button>
+    
+                    </div>
+                </div>
+            </span>
+        </div>
+    </ng-container>
+    <ng-template #nothing>
+        <div class="nothing">
+            <h1>Nothing to display here</h1>
+        </div>
+    </ng-template>
+    
+</div>
+
+</div>
+

@@ -4,6 +4,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { OverviewComponent } from './overview/overview.component';
 import { OrderShoesComponent } from './order-shoes/order-shoes.component';
 import { ManageInventoryComponent } from './manage-inventory/manage-inventory.component';
+import { AuthGuard } from '../security/auth.guard';
 
 const routes: Routes = [
   {path: '', component: DashboardHomeComponent,

@@ -19,6 +19,9 @@
 	background: #003147;
 	transition: 0.5s;
 	overflow: hidden;
+	margin: 0;
+	top: 0;
+	left: 0;
 }
 .navigation.active{
 	width: 60px;
@@ -115,7 +118,7 @@
 }
 .search{
 	position: relative;
-	width: 500px;
+	width: 250px;
 	margin: 0 10px;
 	left: -40px;
 }
@@ -159,4 +162,8 @@
 
 a.active{
     background-color: #03a9f4;
+}
+
+.user-icon{
+	margin-right: 20px;
 }

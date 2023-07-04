@@ -1,1 +1,117 @@
-<p>order-shoes works!</p>
+<div class="order-container">
+    <div class="container">
+        <div class="title">
+            <label class="main-title">Order shoes</label>
+        </div>
+        <div class="inner-container">
+            <form [formGroup]="orderForm" (ngSubmit)="addShoe()">
+                
+                <div class="top-select">
+                    <span class="top-select-item">
+                        <!-- BRAND SELECTOR -->
+                        <select  name="brands" (change)="getShoes($any($event.target).value)" id="brands" class="brand-name-drop text-box-reusables" formControlName="brandName" aria-placeholder="Choose a brand">
+                            <option value="">Choose a Brand</option>
+                            <option *ngFor="let brand of brands" [value]="brand.name">{{ brand.name }}</option>
+
+                        </select>
+                    </span>
+                    
+                    <span class="top-select-item">
+                        <select name="names" class="shoe-name-drop text-box-reusables" formControlName="shoeName">
+                            <option value="">Choose shoe</option>
+                            <option *ngFor="let shoe of shoes" [value]="shoe.name">{{shoe.name}}</option>
+                        </select>
+                    </span>
+                </div>
+    
+                <div class="bottom-select">
+                    <span class="bottom-item">
+                        <select name="colors" class="color-drop text-box-reusables" formControlName="color">
+                            <option value="">Select a color</option>
+                            <option value="black">Black</option>
+                            <option value="red">Red</option>
+                            <option value="white">White</option>
+
+                        </select>
+                    </span>
+                  
+                    <span class="bottom-item">
+                        <select name="brands" id="brands" class="brand-name-drop text-box-reusables" formControlName="size">
+                            <option value="">Choose a size</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">9</option>
+                        </select>
+                    </span>
+    
+                    <span class="bottom-item">
+                        <input type="number" class="quantity-field text-box-reusables" placeholder="Enter quantity" formControlName="quantity"/>
+                    </span>
+    
+                    
+                    <span class="bottom-item">
+                        <button type="submit" class="order-button">Add</button>
+                    </span>
+                </div>
+    
+                <!-- SHOE LIST CONTAINER -->
+                <div class="shoe-list-container">
+                    <label for="box" class="subtitle-label">List of Shoes</label>
+                    
+                    <ng-container *ngIf="allShoes.length > 0; else noShoes">
+                        <div class="box">
+                            <table class="shoe-table" cellspacing="0" cellpadding="0">
+                                    <th>Brand</th>
+                                    <th>Name</th>
+                                    <th>Color</th>
+                                    <th>Size</th>
+                                    <th>Quantity</th>
+    
+                                    <tbody>
+                                        <tr *ngFor="let shoe of allShoes">
+                                            <td>
+                                                {{ shoe.brandName }}
+                                            </td>
+                                            <td>
+                                                {{ shoe.shoeName }}
+                                            </td>
+                                            <td>
+                                                {{ shoe.color }}
+                                            </td>
+                                            <td>
+                                                {{ shoe.size }}
+                                            </td>
+                                            <td>
+                                                {{ shoe.quantity }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                    </ng-container>
+                    <ng-template #noShoes>
+                        <div class="box">
+                            <div class="empty-list">
+                                <h4>Shoe list is empty</h4>
+                            </div>
+                        </div>
+                    </ng-template>
+                    
+    
+                    <div class="bottom-contain">
+                        <label class="title-2x">Total: R</label>
+                        <div class="order-btn">
+                            <button [disabled]="allShoes.length == 0" class="order-complete-btn" (click)="completeOrder()">Complete Order</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
