@@ -146,7 +146,7 @@ span{
     margin: 40px;
     transform: translate(-50%, -50%);
     width: 60vw;
-    height: 70%;
+    height: 80%;
     border: none;
     background-color: white;
     border-radius: 5px;
@@ -244,7 +244,7 @@ span{
   }
   .brand-items{
     overflow-y: scroll;
-    height: 80%;
+    height: 75%;
   }
 
   .color{
@@ -365,4 +365,18 @@ span{
 
   .btn2{
     margin-top: 35px;
+  }
+
+  .delete-brand{
+    padding: 2rem 10px;
+    display: flex;
+    align-items: center;
+  }
+  .delete-brand button{
+    padding: 10px ;
+    width: 200px;
+    background-color: #003147;
+    color: white;
+    border: none;
+    outline: none;
   }

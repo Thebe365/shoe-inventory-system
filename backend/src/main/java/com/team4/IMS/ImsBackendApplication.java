@@ -136,7 +136,45 @@ public class ImsBackendApplication {
 				.size("10")
 				.price(600.00)
 				.build();
-		shoeRepository.save(shoe7);
+		shoeRepository.save(shoe8);
+		Shoe shoe9 = Shoe.builder()
+				.brandId(brand)
+				.name("air jordan 1")
+				.brandName("nike")
+				.color("blue")
+				.size("9")
+				.price(9000.00)
+				.build();
+		shoeRepository.save(shoe9);
+
+		Shoe shoe10 = Shoe.builder()
+				.brandId(brand3)
+				.name("old skool")
+				.brandName("vans")
+				.color("black")
+				.size("7")
+				.price(700.00)
+				.build();
+		shoeRepository.save(shoe10);
+
+		Shoe shoe11 = Shoe.builder()
+				.brandId(brand2)
+				.name("nite ball")
+				.brandName("adidas")
+				.color("white")
+				.size("7")
+				.price(700.00)
+				.build();
+		shoeRepository.save(shoe11);
+		Shoe shoe12 = Shoe.builder()
+				.brandId(brand2)
+				.name("nite ball")
+				.brandName("adidas")
+				.color("white")
+				.size("9")
+				.price(700.00)
+				.build();
+		shoeRepository.save(shoe12);
 
 
 
