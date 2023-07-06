@@ -1,6 +1,5 @@
 package com.team4.IMS.Services;
 
-
 import com.team4.IMS.DTOs.Inventory.AddBrandRequest;
 import com.team4.IMS.DTOs.Inventory.BrandById;
 import com.team4.IMS.Models.Brand;
@@ -59,7 +58,6 @@ public class BrandService {
     public ResponseEntity<Brand> addBrand(AddBrandRequest addBrandRequest){
         Brand brand = Brand.builder().name(addBrandRequest.getName()).build();
         return ResponseEntity.ok(brandRepository.save(brand));
-
     }
 
 

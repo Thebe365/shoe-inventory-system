@@ -12,9 +12,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -28,7 +25,6 @@ public class ShoeController {
 
     private final ShoeService service;
     private final ShoeRepository shoeRepository;
-
     /* API Documentation*/
     @Operation(summary = "Fetching all shoes")
     @ApiResponses(value = {
@@ -37,7 +33,6 @@ public class ShoeController {
                             schema = @Schema(implementation = List.class))}),
             @ApiResponse(responseCode = "404", description = "Users not found add retrieve"),
     })
-
     @GetMapping("getAll")
     public ResponseEntity<?> getShoes() {
         return service.getAllShoes();
@@ -57,7 +52,7 @@ public class ShoeController {
         return service.getShoesByBrand(decodedName);
     }
 
-    @Operation(summary = "fetching a shoe by name request URL shoe name spaces must be replaced with %20")
+    @Operation(summary = "Fetching all shoes from a specific brand request URL shoe name spaces must be replaced with %20")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
                     content = {@Content(mediaType = "application/json",
@@ -87,9 +82,7 @@ public class ShoeController {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully deleted and inventory updated"),
             @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
     })
-
-    @DeleteMapping("delete/{id}")
-
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteShoe(@PathVariable Long id) {
         return service.deleteShoe(id);
     }

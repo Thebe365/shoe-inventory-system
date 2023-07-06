@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import java.util.List;
+
+
 @Service
 @RequiredArgsConstructor
 public class ShoeService {
@@ -32,27 +35,27 @@ public class ShoeService {
         return ResponseEntity.ok(shoeRepository.findAllByBrandId(brandRepository.findByName(brandName)));
     }
 
-    public ResponseEntity<?> getShoeById(Long id){
-        System.out.println("getShoeById endpoint touched successfully");
-        return ResponseEntity.ok(shoeRepository.findById(id));
+    public ResponseEntity<?> searchShoes(String search){
+        return ResponseEntity.ok(shoeRepository.findAllByName(search));
     }
 
     public ResponseEntity<?> addShoes(addShoeRequest shoes){
 
         for (ShoeOrder shoe : shoes.getShoes()) {
-
-            Brand brandCheck = brandRepository.findByName(shoe.getShoeBrand().toString());
-            Shoe shoeCheck = shoeRepository.findShoeByColorSizeAndName(shoe.getShoeColor(), shoe.getShoeSize(), shoe.getShoeName());
+            var brandCheck = brandRepository.findByName(shoe.getShoeBrand());
+            var shoeCheck = shoeRepository.findAllByName(shoe.getShoeName());
 
             if(brandCheck == null){
                 return ResponseEntity.badRequest().body("Brand does not exist");
             } else if (shoeCheck == null){
                 return ResponseEntity.badRequest().body("Shoe does not exist");
             }
-            var inventoryUnit = inventoryRepository.findInventoryByShoeId(shoeCheck.getId());
-            inventoryUnit.setQuantity(inventoryUnit.getQuantity() + shoe.getQuantity());
-            inventoryRepository.save(inventoryUnit);
-
+            if(shoeCheck != null){
+                inventoryRepository.findInventoryByShoeId(shoeCheck.getId())
+                        .setQuantity(inventoryRepository
+                                .findInventoryByShoeId(shoeCheck.getId())
+                                .getQuantity() + shoe.getQuantity());
+                return ResponseEntity.ok("Quantity updated");
             }
 
             //TODO: Discuss creation of new shoes as part of ordering process
@@ -72,16 +75,15 @@ public class ShoeService {
 //                shoeRepository.save(newShoe);
 //                inventoryRepository.save(newInventory);
 //            }
+        }
 
-        return ResponseEntity.ok("Quantity updated");
+        return ResponseEntity.badRequest().body("Shoe does not exist");
 
     }
 
     public ResponseEntity<?> deleteShoe(Long id){
-
         var inventoryUnit = inventoryRepository.findInventoryByShoeId(id);
         inventoryRepository.delete(inventoryUnit);
-
         shoeRepository.deleteById(id);
         return ResponseEntity.ok("Shoe deleted");
     }

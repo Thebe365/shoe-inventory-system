@@ -10,15 +10,15 @@
                     <span class="top-select-item">
                         <!-- BRAND SELECTOR -->
                         <select  name="brands" (change)="getShoes($any($event.target).value)" id="brands" class="brand-name-drop text-box-reusables" formControlName="brandName" aria-placeholder="Choose a brand">
-                            <option value="">Choose a Brand</option>
+                            <option value="" selected>Choose a Brand</option>
                             <option *ngFor="let brand of brands" [value]="brand.name">{{ brand.name }}</option>
 
                         </select>
                     </span>
                     
                     <span class="top-select-item">
-                        <select name="names" class="shoe-name-drop text-box-reusables" formControlName="shoeName">
-                            <option value="">Choose shoe</option>
+                        <select name="names" class="shoe-name-drop text-box-reusables" formControlName="name">
+                            <option value="" selected>Choose a shoe</option>
                             <option *ngFor="let shoe of shoes" [value]="shoe.name">{{shoe.name}}</option>
                         </select>
                     </span>
@@ -27,23 +27,16 @@
                 <div class="bottom-select">
                     <span class="bottom-item">
                         <select name="colors" class="color-drop text-box-reusables" formControlName="color">
-                            <option value="">Select a color</option>
-                            <option value="black">Black</option>
-                            <option value="red">Red</option>
-                            <option value="white">White</option>
+                            <option value="" selected>Select a color</option>
+                            <option *ngFor="let color of colors" [value]="color.value">{{color.viewValue}}</option>
 
                         </select>
                     </span>
                   
                     <span class="bottom-item">
                         <select name="brands" id="brands" class="brand-name-drop text-box-reusables" formControlName="size">
-                            <option value="">Choose a size</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">9</option>
+                            <option value="" selected="true">Choose a size</option>
+                            <option *ngFor="let size of sizes" [value]="size.value">{{size.viewValue}}</option>
                         </select>
                     </span>
     
@@ -61,7 +54,7 @@
                 <div class="shoe-list-container">
                     <label for="box" class="subtitle-label">List of Shoes</label>
                     
-                    <ng-container *ngIf="allShoes.length > 0; else noShoes">
+                    <ng-container *ngIf="shoesToAdd.length > 0; else noShoes">
                         <div class="box">
                             <table class="shoe-table" cellspacing="0" cellpadding="0">
                                     <th>Brand</th>
@@ -71,12 +64,12 @@
                                     <th>Quantity</th>
     
                                     <tbody>
-                                        <tr *ngFor="let shoe of allShoes">
+                                        <tr *ngFor="let shoe of shoesToAdd">
                                             <td>
                                                 {{ shoe.brandName }}
                                             </td>
                                             <td>
-                                                {{ shoe.shoeName }}
+                                                {{ shoe.name }}
                                             </td>
                                             <td>
                                                 {{ shoe.color }}
@@ -104,7 +97,7 @@
                     <div class="bottom-contain">
                         <label class="title-2x">Total: R</label>
                         <div class="order-btn">
-                            <button [disabled]="allShoes.length == 0" class="order-complete-btn" (click)="completeOrder()">Complete Order</button>
+                            <button [disabled]="shoesToAdd.length == 0" class="order-complete-btn" (click)="completeOrder()">Complete Order</button>
                         </div>
                     </div>
                     

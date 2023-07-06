@@ -21,6 +21,7 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long inventoryId;
 
+    @JsonIgnore
     @ManyToOne
     @JsonIgnore
     private Shoe shoe;

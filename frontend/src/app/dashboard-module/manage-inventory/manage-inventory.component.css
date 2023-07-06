@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     padding: 20px;
+    margin: 100px 60px 0 60px;
+    
 }
 
 .card-container{
