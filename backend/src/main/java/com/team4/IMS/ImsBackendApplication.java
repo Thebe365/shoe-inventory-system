@@ -20,12 +20,12 @@ public class ImsBackendApplication {
 
 	public ImsBackendApplication(UserRepository userRepository, BrandRepository brandRepository, ShoeRepository shoeRepository, PasswordEncoder passwordEncoder, InventoryRepository inventoryRepository) {
 
-		// Create admin
 		User user =User.builder()
 				.email("admin@admin.com")
 				.password(passwordEncoder.encode("admin"))
 				.build();
 		userRepository.save(user);
+
 
 		// Create brands
 		Brand brand = Brand.builder()
@@ -91,6 +91,7 @@ public class ImsBackendApplication {
 				.price(100.00)
 				.build();
 		shoeRepository.save(shoe3);
+
 
 		Shoe shoe4 = Shoe.builder()
 				.brandId(brand6)
@@ -175,8 +176,6 @@ public class ImsBackendApplication {
 				.price(700.00)
 				.build();
 		shoeRepository.save(shoe12);
-
-
 
 		Inventory inventory = Inventory.builder()
 				.shoe(shoe1)
