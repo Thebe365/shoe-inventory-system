@@ -48,7 +48,7 @@ public class SecurityConfiguration {
                         "/api/v1/brand/**"
 
                 )
-                .authenticated()
+                .permitAll()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

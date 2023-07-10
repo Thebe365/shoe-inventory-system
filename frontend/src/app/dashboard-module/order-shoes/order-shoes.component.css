@@ -18,7 +18,8 @@
 }
 
 .container {
-    /* position: absolute; */
+    position: absolute;
+    top: 15%;
     margin: 20px;
     padding: 20px;
     width: 50vw;

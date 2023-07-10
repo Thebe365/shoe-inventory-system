@@ -27,6 +27,7 @@ export class ManageInventoryComponent implements OnInit {
   brandNameModal = ''
   shoeId = 0;
   brandId = 0;
+  
 
   ngOnInit(): void {
       
@@ -37,6 +38,12 @@ export class ManageInventoryComponent implements OnInit {
       console.log(this.brands)
         
       });
+
+      this.apiService.getAllShoes().subscribe((res) =>{
+        this.shoes = Object.values(res)
+        console.log(this.shoes)
+      
+      })
 
       this.route.fragment.subscribe(fragment => {
         if (fragment === 'manage-brands') {
@@ -52,6 +59,12 @@ export class ManageInventoryComponent implements OnInit {
   
       })
     
+  }
+
+  // Checks for duplicates in the shoes array
+  isDuplicate(item: any, items: any[]): boolean {
+    const duplicateItems = items.filter(i => i === item);
+    return duplicateItems.length > 1;
   }
 
   CloseModal(): void {
@@ -109,7 +122,7 @@ export class ManageInventoryComponent implements OnInit {
     if (this.searchTerm === "") {
 
       // Empty search term, reset or reload the data
-      this.ngOnInit();
+      this.OpenModal(this.brandNameModal);
     } else if (this.searchTerm) {
 
       // Non-empty search term, filter the shoes array
@@ -128,10 +141,14 @@ export class ManageInventoryComponent implements OnInit {
   onKeyUp(event: KeyboardEvent): void {
     if (event.key === 'Backspace') {
       // Backspace key pressed and search term is less than 3 characters
-      this.ngOnInit();
+      this.OpenModal(this.brandNameModal);
     }
   }
-
+  /**
+   * This method is used to add a brand to the brands array
+   * 
+   * @param id - The id of the shoe that is being managed
+   */
   ManageModalOpen(id: number): void {
 
     console.log("Shoe id " + id)

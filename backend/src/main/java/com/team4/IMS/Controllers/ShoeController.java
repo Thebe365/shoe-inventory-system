@@ -1,6 +1,8 @@
 package com.team4.IMS.Controllers;
 
+import com.team4.IMS.DTOs.Inventory.ShoeOrder;
 import com.team4.IMS.DTOs.Inventory.addShoeRequest;
+import com.team4.IMS.Models.Shoe;
 import com.team4.IMS.Services.ShoeService;
 import com.team4.IMS.repository.ShoeRepository;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -14,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import java.net.URLDecoder;
