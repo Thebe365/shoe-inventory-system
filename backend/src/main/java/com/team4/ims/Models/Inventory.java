@@ -19,8 +19,8 @@ public class Inventory {
 
 
     @ManyToOne
-    @JoinColumn(name = "shoe_id", referencedColumnName = "shoe_id")
-    private Shoe shoeId;
+    @JoinColumn(name = "shoe", referencedColumnName = "shoe_id")
+    private Shoe shoe;
 
     @Column(name = "quantity")
     private int quantity;
