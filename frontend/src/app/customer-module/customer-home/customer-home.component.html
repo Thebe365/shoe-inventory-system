@@ -1,17 +1,24 @@
 <!-- PAGE NAVIGATION -->
-<div class="navigation" (scroll)="onWindowScroll()">
+<div class="navigation" id="navigation">
     <div class="user-icon">
-        <fa-icon [icon]="faUser"></fa-icon>
+        <fa-icon [icon]="faUser" id="user-icon"></fa-icon>
     </div>
-    <div class="cart-icon">
-        <fa-icon [icon]="faCart"></fa-icon>
+    <div class="cart-icon" (click)="openCart()">
+        <fa-icon [icon]="faCart" id="cart-icon"></fa-icon>
+        <ng-container *ngIf="cartList.length > 0" #nothing>
+            <span class="cart-count">{{ cartList.length }}</span>
+        </ng-container>
+        <ng-template>
+            <span></span>
+        </ng-template>
     </div>
 </div>
 
 <!-- BANNER -->
 <div class="banner">
+    <img src="../../../assets/images/logos/Aya'shisa Ama Tekkie-logos_white.png" alt="">
     <div class="banner-text">
-        <!-- <h2>The best sneakers<br> in the game</h2> -->
+        <h1>The best sneakers<br> in the game</h1>
     </div>
 </div>
 
@@ -22,7 +29,7 @@
 <div class="popular-shoes">
 
     <div class="container">
-        <div class="item-card">
+        <div class="item-card" (click)="displayModal()">
             
             <img src="../../../assets/images/sneakers/air jordan 1.jpg" alt="">
             
@@ -30,7 +37,7 @@
                 <strong><p>Product name</p></strong>
                 <p>Price: R</p>
                 <div class="btn-cont">
-                    <button>Add to cart</button>
+                    <button (click)="displayModal()">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -107,90 +114,103 @@
 
         <!-- SHOES DISPLAY -->
         <div class="shoes">
-            <div class="item-card">
-            
-                <img src="../../../assets/images/sneakers/nite ball.jpg" alt="">
-                
-                <div class="add-to-cart">
-                    <strong><p>Product name</p></strong>
-                    <p>Price: R</p>
-                    <div class="btn-cont">
-                        <button>Add to cart</button>
-                    </div>
-                </div>
-    
-            </div>
 
-            <div class="item-card">
-            
-                <img src="../../../assets/images/sneakers/asics-gt-1000-9.jpg" alt="">
+            <ng-container *ngIf="shoes.length > 0" #noShoes>
                 
-                <div class="add-to-cart">
-                    <strong><p>Product name</p></strong>
-                    <p>Price: R</p>
-                    <div class="btn-cont">
-                        <button>Add to cart</button>
-                    </div>
-                </div>
-    
-            </div>
-
-            <div class="item-card">
-            
-                <img src="../../../assets/images/sneakers/air max 270.jpg" alt="">
+                <div *ngFor="let shoe of shoes" class="item-card">
                 
-                <div class="add-to-cart">
-                    <strong><p>Product name</p></strong>
-                    <p>Price: R</p>
-                    <div class="btn-cont">
-                        <button>Add to cart</button>
+                    <img [src]="'../../../assets/images/sneakers/' + shoe.name + '.jpg'" alt="">
+                    
+                    <div class="add-to-cart">
+                        <strong><p>{{ shoe.name | titlecase }}</p></strong>
+                        <p>Price: R {{ shoe.price }}</p>
+                        <div class="btn-cont">
+                            <button (click)="addToCart(shoe.id)">Add to cart</button>
+                        </div>
                     </div>
+        
                 </div>
-    
-            </div>
-
-            <div class="item-card">
+            </ng-container>
+            <ng-template>
+                <h1>No shoes</h1>
+            </ng-template>    
             
-                <img src="../../../assets/images/sneakers/classic leather.jpg" alt="">
-                
-                <div class="add-to-cart">
-                    <strong><p>Product name</p></strong>
-                    <p>Price: R</p>
-                    <div class="btn-cont">
-                        <button>Add to cart</button>
-                    </div>
-                </div>
-    
-            </div>
         </div>
     </div>
 
 </div>
 
-<div class="back-drop"></div>
-<div class="shoe-modal">
-    <div class="shoe-image">
-        <img src="../../../assets/images/sneakers/air force 1.jpg" alt="">
+<!-- BACK DROP -->
+<div class="back-drop" id="backDrop" (click)="closeModal()"></div>
+
+<!-- SHOE MODAL -->
+<div class="shoe-modal" id="modal">
+
+    <div class="modal-inner">
+        <div class="shoe-image">
+            <img src="../../../assets/images/sneakers/air max 90.jpg" alt="">
+        </div>
+        <div class="shoe-information">
+            <h1>Shoe name</h1>
+            
+            <div class="desc-item">
+                <Strong><p>Quantity:</p></Strong>
+                <div class="desc"><p>100</p></div>
+            </div>
+            <div class="desc-item">
+                <strong><p>Price:</p></strong>
+
+                <div class="desc"><p>R 1600</p></div>
+            </div>
+            <div class="desc-item">
+                <strong><p>Colors:</p></strong>
+                <div class="desc"><p></p></div>
+            </div>
+            <div class="desc-item">
+                <strong><p>Sizes:</p></strong>
+                <div class="desc"><p></p></div>
+            </div>
+
+            <div class="btn-cont">
+                <button>Add to cart</button>
+            </div>
+        </div>
     </div>
-    <div class="shoe-information">
-        <h1>Shoe name</h1>
-        
-    </div>
+    
 </div>
-<script>
+<!-- CART -->
+<div class="cart" id="cart">
 
-    // TypeScript code to change the background color of the navigation bar
-    window.addEventListener("scroll", () => {
+    <!-- CART TOP -->
+    <div class="cart-top">
+        <fa-icon [icon]="faTimes" (click)="closeCart()"></fa-icon>
+        <h1>Cart</h1>
+    </div>
 
-      const navbar = document.getElementById("navigation");
-      const currentPosition = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (currentPosition > 0) {
-        navbar.style.backgroundColor = "white";
-        navbar.style.color = "black"
-      } else {
-        navbar.style.backgroundColor = "transparent";
-        navbar.style.color = "white"
-      }
-    });
-</script>
+    <!-- CART ITEM LIST -->
+    <div class="cart-item-list">
+
+        <!-- CART ITEM -->
+        <div *ngFor="let shoeData of cartList" class="cart-item">
+            <div class="item-img">
+                <img [src]="'../../../assets/images/sneakers/' + shoeData.name + '.jpg'" alt="">
+            </div>
+            <div class="item-details">
+                <strong><p>{{ shoeData.name }}</p></strong>
+                <p>{{ shoeData.color }}</p>
+                <p>quantity</p>
+            </div>
+            <div class="alter-item">
+                <button (click)="removeFromCart(shoeData.id)">Remove item</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cart-tot-box">
+        <div class="total">
+            <h1>Total here</h1>
+        </div>
+    </div>
+
+</div>

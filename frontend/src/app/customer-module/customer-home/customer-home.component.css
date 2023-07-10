@@ -9,7 +9,6 @@
     padding: 1rem 3rem;
     background-color: transparent;
     transition: 0.3s ease;
-    background-color: green;
     z-index: 2;
 }
 
@@ -27,25 +26,40 @@ h2{
     margin-left: auto;
 }
 
+.cart-count{
+    padding: 5px;
+    width: 70px;
+    height: 50px;
+    margin: 5px;
+    
+}
+
+fa-icon:hover{
+    cursor: pointer;
+    color: #03a9f4;
+}
 .navigation fa-icon{
     color: white;
 }
 
 /* PAGE BANNER */
 .banner{
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('../../../assets/images/daniel-storek-JM-qKEd1GMI-unsplash.jpg');
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('../../../assets/images/daniel-storek-JM-qKEd1GMI-unsplash.jpg');
     height: 70vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     padding: 0 3rem;
     color: white;
 }
 
-.banner h2{
-    text-align: center;
+.banner img{
+    width: 300px;
+    transition: ease-in .5s;
 }
 
 /* MOST POPULAR SHOES */
@@ -71,7 +85,13 @@ h2{
     box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
     border-radius: 10px;
     margin: 10px;
+    transition: all ease-in .3s;
     
+}
+
+.item-card:hover{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .item-card img{
@@ -107,6 +127,10 @@ p{
     margin: 10px;
 }
 
+.btn-cont button:hover{
+    cursor: pointer;
+    background-color: #03a9f4;
+}
 
 /* CATALOGUE SECTION */
 .catalogue{
@@ -121,14 +145,14 @@ p{
     /* left: 50%; */
     /* right: 50%;
     transform: translateX(50%);  */
-    z-index: 1;
+    z-index: 3;
     background-color: white;
     display: flex;
     justify-content: center;
     padding: 2rem 20px;
     border-radius: 10px;
     /* width: 900px; */
-    margin: 0 4rem;
+    margin: 10px 4rem;
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
@@ -195,29 +219,144 @@ p{
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
     z-index: 4;
     backdrop-filter: blur(8px);
+    display: none;
+    animation: back-drop-anim ease-in .6s forwards;
 }
-
+@keyframes back-drop-anim {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 .shoe-modal{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60vw;
-    height: fit-content;
+    /* height: 80%; */
     background-color: white;
     border-radius: 10px;
     z-index: 5;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 10px;
     padding: 10px;
+    display: none;
+    animation: display ease-in .6s forwards;
 }
 
-.shoe-image img{
-    width: 100%;
-    /* height: 500px; */
+@keyframes display{
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 100%);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -80);
+      }
+
 }
 
+.modal-inner{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    
+}
+
+.desc-item{
+    display: flex;
+}
 .shoe-information h1{
     text-align: center;
+}
+
+.desc{
+    margin-left: auto;
+}
+
+.shoe-information{
+    position: relative;
+    padding: 20px;
+}
+
+.shoe-information .btn-cont{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 20px;
+}
+.shoe-image img{
+    width: 100%;
+    /* height: 300px; */
+    object-fit: cover;
+}
+
+
+/* CART */
+
+.cart{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 450px;
+    transform: translateX(100%);
+    background-color: whitesmoke;
+    transition: all ease-in .5s;
+    z-index: 5;
+}
+
+.cart-top{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.cart-top fa-icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.cart-item-list{
+    height: 70%;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.cart-item{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.cart-item p{
+    margin: 3px;
+}
+
+.item-img{
+    width: 150px;
+    height: 90px;
+}
+
+.item-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.cart-tot-box{
+    height: 200px;
+    display: flex;
+    padding: 20px;
+    /* align-items: center; */
+}
+
+.alter-item{
+    margin-left: auto;
 }
