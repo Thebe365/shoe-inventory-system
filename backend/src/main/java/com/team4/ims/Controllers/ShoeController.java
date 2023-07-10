@@ -31,8 +31,6 @@ public class ShoeController {
     private final ShoeService service;
 
     /* API Documentation*/
-
-    //Fetch all shoes
     @Operation(summary = "Fetching all shoes")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
@@ -40,13 +38,13 @@ public class ShoeController {
                             schema = @Schema(implementation = List.class))}),
             @ApiResponse(responseCode = "404", description = "Users not found add retrieve"),
     })
+
     @GetMapping("getAll")
     public ResponseEntity<List<Shoe>> getShoes() {
         return service.getAllShoes();
     }
 
 
-    //Fetch all shoes by brand
     @Operation(summary = "Fetching all shoes from a specific brand")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
@@ -55,13 +53,13 @@ public class ShoeController {
             @ApiResponse(responseCode = "404", description = "Users not retrieve"),
     })
     @GetMapping("brand/{brand}")
+
     public ResponseEntity<GetShoeByBrandResponse> getShoesByBrand(@PathVariable String brand) {
         String decodedName = URLDecoder.decode(brand, StandardCharsets.UTF_8);
         System.out.println("decodedName: " + decodedName);
         return service.getShoesByBrand(decodedName);
     }
 
-    //Fetch a shoe by name
     @Operation(summary = "fetching a shoe by name request URL shoe name spaces must be replaced with %20")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
@@ -76,8 +74,7 @@ public class ShoeController {
         return service.searchShoes(decodedName);
     }
 
-    //Add already existing shoe to inventory
-    @Operation(summary = "Add already existing shoes to inventory")
+    @Operation(summary = "Adding a shoe and updating inventory")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully added and inventory updated"),
             @ApiResponse(responseCode = "400", description = "one of the provided brands does not exist")
@@ -88,18 +85,18 @@ public class ShoeController {
         return service.addShoes(addShoeRequest);
     }
 
-    //Delete a shoe and update inventory
     @Operation(summary = "Deleting a shoe and updating inventory ***This makes shoes unavailable***")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully delisted and inventory updated"),
             @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
     })
+
     @DeleteMapping("delete/{id}")
+
     public ResponseEntity<?> deleteShoe(@PathVariable Long id) {
         return service.deleteShoe(id);
     }
 
-    //Create a new shoe and add it to inventory
     @Operation(summary = "Create a new Shoe", description = "Creates a new show belonging to a specific brand and adds it to the database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully created and inventory updated"),
@@ -111,7 +108,6 @@ public class ShoeController {
         return service.createShoe(addShoeRequest);
     }
 
-    //Search for shoes by name and color
     @Operation(summary = "Search for shoes by name and color", description = "Search for shoes by name and color")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully created and inventory updated"),

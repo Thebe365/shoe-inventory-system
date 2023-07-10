@@ -32,7 +32,7 @@ public class Shoe implements java.io.Serializable{
     @Column(name = "is_available")
     private Boolean isAvailable;
 
-    @OneToMany(mappedBy = "shoe")
+    @OneToMany(mappedBy = "shoeId")
     @JsonIgnore
     private List<Inventory> inventory;
 

@@ -5,7 +5,7 @@ import com.team4.ims.DTOs.Auth.AuthenticationResponse;
 import com.team4.ims.DTOs.Auth.RegistrationRequest;
 import com.team4.ims.Models.Roles;
 import com.team4.ims.Models.User;
-import com.team4.ims.Repository.UserRepository;
+import com.team4.ims.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
