@@ -1,51 +1,38 @@
-package com.team4.IMS.Services;
+package com.team4.ims.Services;
 
-<<<<<<< HEAD
-import com.team4.IMS.DTOs.Inventory.ShoeOrder;
-import com.team4.IMS.DTOs.Inventory.addShoeRequest;
-import com.team4.IMS.Models.Brand;
-import com.team4.IMS.Models.Inventory;
-import com.team4.IMS.Models.Shoe;
-import com.team4.IMS.repository.BrandRepository;
-import com.team4.IMS.repository.InventoryRepository;
-import com.team4.IMS.repository.ShoeRepository;
-=======
 import com.team4.ims.DTOs.Inventory.brandDTO.BrandShoes;
 import com.team4.ims.DTOs.Inventory.shoeDTO.*;
 import com.team4.ims.Models.Brand;
 import com.team4.ims.Models.Inventory;
 import com.team4.ims.Models.Shoe;
-import com.team4.ims.Repository.BrandRepository;
-import com.team4.ims.Repository.InventoryRepository;
-import com.team4.ims.Repository.ShoeRepository;
->>>>>>> e5b8465 (fixing add shoe functionality)
+import com.team4.ims.repository.BrandRepository;
+import com.team4.ims.repository.InventoryRepository;
+import com.team4.ims.repository.ShoeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import java.util.List;
-
 
 @Service
 @RequiredArgsConstructor
 public class ShoeService {
 
+    @Autowired
     private final ShoeRepository shoeRepository;
+    @Autowired
     private final BrandRepository brandRepository;
+    @Autowired
     private final InventoryRepository inventoryRepository;
 
-    public ResponseEntity<?> getAllShoes(){
-        System.out.println("getAllShoes endpoint touched successfully");
+    //gets all shoes
+    public ResponseEntity<List<Shoe>> getAllShoes(){
         return ResponseEntity.ok(shoeRepository.findAll());
     }
 
-<<<<<<< HEAD
-    public ResponseEntity<?> getShoesByBrand(String brandName){
-        return ResponseEntity.ok(shoeRepository.findAllByBrandId(brandRepository.findByName(brandName)));
-=======
     //Fetches all shoes belonging to a specific brand
     public ResponseEntity<GetShoeByBrandResponse> getShoesByBrand(String brandName){
         System.out.println("Brand name: " + brandName);
@@ -61,7 +48,7 @@ public class ShoeService {
                     .findAll()
                     .stream()
                     .filter(inventory -> inventory
-                            .getShoe()
+                            .getShoeId()
                             .getName()
                             .equals(shoeNames.getName())
                     )
@@ -71,7 +58,7 @@ public class ShoeService {
                     .findAll()
                     .stream()
                     .filter(inventory -> inventory
-                            .getShoe()
+                            .getShoeId()
                             .getName()
                             .equals(shoeNames.getName())
                     )
@@ -92,101 +79,49 @@ public class ShoeService {
                 .build();
 
         return ResponseEntity.ok(response);
->>>>>>> e5b8465 (fixing add shoe functionality)
     }
 
-    public ResponseEntity<?> searchShoes(String search){
-        return ResponseEntity.ok(shoeRepository.findAllByName(search));
+    public int countShoes(String brandName){
+       List<Shoe> shoes = shoeRepository.findAll().stream().filter(shoe -> shoe.getBrandId().getName().equals(brandName)).toList();
+         return shoes.size();
     }
 
-
-
-    public ResponseEntity<?> addShoes(addShoeRequest shoes){
+    //Adds existing shoes to the database and updates inventory
+    public ResponseEntity<String> addShoes(AddShoeRequest shoes){
 
         for (ShoeOrder shoe : shoes.getShoes()) {
-            var brandCheck = brandRepository.findByName(shoe.getShoeBrand());
-            var shoeCheck = shoeRepository.findAllByName(shoe.getShoeName());
 
-<<<<<<< HEAD
-            if(brandCheck == null){
+            Optional<Brand> brandCheck = brandRepository.findByName(shoe.getShoeBrand());
+            Shoe shoeCheck = shoeRepository.findByName(shoe.getShoeName());
+
+            if (brandCheck.isPresent()) {
+                if (shoeCheck == null){
+                    return ResponseEntity.badRequest().body("Shoe does not exist");
+                }
+            } else {
                 return ResponseEntity.badRequest().body("Brand does not exist");
-            } else if (shoeCheck == null){
-                return ResponseEntity.badRequest().body("Shoe does not exist");
             }
-            if(shoeCheck != null){
-                inventoryRepository.findInventoryByShoeId(shoeCheck.getId())
-                        .setQuantity(inventoryRepository
-                                .findInventoryByShoeId(shoeCheck.getId())
-                                .getQuantity() + shoe.getQuantity());
-                return ResponseEntity.ok("Quantity updated");
-            }
-=======
-            Optional<Brand> brand = brandRepository.findByName(shoe.getShoeBrand());
-            Optional<Shoe> newShoe = shoeRepository.findByName(shoe.getShoeName());
+            //TODO:(FIX) find the shoe in inventory by color and size
+            Inventory inventoryUnit = inventoryRepository.findInventoryByShoeId(shoeCheck.getId());
+            inventoryUnit.setQuantity(inventoryUnit.getQuantity() + shoe.getQuantity());
+            inventoryRepository.save(inventoryUnit);
 
-            List<Inventory> inventoryUnit = this.inventoryRepository
-                    .findAll();
-
-            for (Inventory inventory : inventoryUnit
-            ){
-                System.out.println("Inventory: " + inventory);
-            }
-
-
-            System.out.println("Brand: " + brand);
-            System.out.println("Inventory: " + inventoryUnit);
-
-            if(!brand.isPresent()){
-                return ResponseEntity.badRequest().body("Brand not found");
-            }
-            if(!newShoe.isPresent()){
-                return ResponseEntity.badRequest().body("Shoe not found");
-            }
-
-//            Inventory inventory = Inventory.builder()
-//                    .shoe(inventoryUnit.get().getShoe())
-//                    .color(shoe.getShoeColor())
-//                    .size(shoe.getShoeSize())
-//                    .quantity(shoe.getQuantity())
-//                    .price(inventoryUnit.get().getPrice())
-//                    .build();
-//            inventoryRepository.save(inventory);
->>>>>>> e5b8465 (fixing add shoe functionality)
-
-            //TODO: Discuss creation of new shoes as part of ordering process
-//            else{
-//                Shoe newShoe = Shoe.builder()
-//                        .brand(brandCheck)
-//                        .name(shoe.getShoeName())
-//                        .color(shoe.getShoeColor())
-//                        .size(shoe.getShoeSize())
-//                        .price(shoe.getShoePrice())
-//                        .build();
-//                Inventory newInventory = Inventory.builder()
-//                        .shoe(newShoe)
-//                        .quantity(shoe.getQuantity())
-//                        .build();
-//
-//                shoeRepository.save(newShoe);
-//                inventoryRepository.save(newInventory);
-//            }
         }
 
-        return ResponseEntity.badRequest().body("Shoe does not exist");
+        return ResponseEntity.ok("Quantity updated");
 
     }
 
+    //Deletes a shoe from the database by ID
     public ResponseEntity<?> deleteShoe(Long id){
-        var inventoryUnit = inventoryRepository.findInventoryByShoeId(id);
-        inventoryRepository.delete(inventoryUnit);
-        shoeRepository.deleteById(id);
+        //Sets the shoe to unavailable
+        Shoe shoe = shoeRepository.findById(id).orElseThrow(() -> new RuntimeException("Shoe not found"));
+        shoe.setIsAvailable(false);
+        shoeRepository.save(shoe);
+
         return ResponseEntity.ok("Shoe deleted");
     }
 
-<<<<<<< HEAD
-    
-}
-=======
     //Searches for shoes by name
     public ResponseEntity<List<Shoe>> searchShoes(String name){
         return ResponseEntity.ok(shoeRepository.findAllByName(name));
@@ -198,9 +133,9 @@ public class ShoeService {
                 .stream()
                 .filter(inventory -> inventory
                         .getColor()
-                        .equals(shoe.getColor()) && inventory.getShoe().getName().equals(shoe.getName())
+                        .equals(shoe.getColor()) && inventory.getShoeId().getName().equals(shoe.getName())
                 ).
-                map(inventory -> inventory.getShoe().getId())
+                map(inventory -> inventory.getShoeId().getId())
                 .toList();
         List<Shoe> shoes = new ArrayList<>();
         for (Long shoeId : shoeIds) {
@@ -221,7 +156,7 @@ public class ShoeService {
                     .build();
 
             Inventory newInventory = Inventory.builder()
-                    .shoe(newShoe)
+                    .shoeId(newShoe)
                     .quantity(shoe.getQuantity())
                     .color(shoe.getColor())
                     .size(shoe.getSize())
@@ -246,4 +181,3 @@ public class ShoeService {
     }
 
 }
->>>>>>> e5b8465 (fixing add shoe functionality)

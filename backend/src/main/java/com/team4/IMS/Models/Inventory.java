@@ -1,35 +1,40 @@
-package com.team4.IMS.Models;
+package com.team4.ims.Models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "Inventory")
 public class Inventory {
 
-    /*
-! This class is not used in the current iteration of the project
-* TODO: Fix table relationships
-* */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long inventoryId;
+    @Column(name = "inventory_id")
+    private Long id;
 
-    @JsonIgnore
+
     @ManyToOne
-<<<<<<< HEAD
-    @JsonIgnore
-=======
-    @JoinColumn(name = "shoe", referencedColumnName = "shoe_id")
->>>>>>> e5b8465 (fixing add shoe functionality)
-    private Shoe shoe;
+    @JoinColumn(name = "shoe_id", referencedColumnName = "shoe_id")
+    private Shoe shoeId;
 
+    @Column(name = "quantity")
     private int quantity;
+
+    @NonNull
+    @Column(name = "color")
+    private String color;
+
+    @NonNull
+    @Column(name = "size")
+    private String size;
+
+    @NonNull
+    @Column(name = "price")
+    private Double price;
 
 }

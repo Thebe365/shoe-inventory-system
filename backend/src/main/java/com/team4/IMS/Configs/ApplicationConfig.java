@@ -1,6 +1,6 @@
 package com.team4.ims.Configs;
 
-import com.team4.ims.Repository.UserRepository;
+import com.team4.ims.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
