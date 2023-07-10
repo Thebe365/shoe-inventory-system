@@ -1,8 +1,10 @@
-package com.team4.ims.Repository;
+package com.team4.ims.repository;
 
 import com.team4.ims.Models.Shoe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Shoe, Long> {
@@ -10,6 +12,7 @@ public interface CustomerRepository extends JpaRepository<Shoe, Long> {
      *  1. Fetch available shoes for a customer ignore
      *  2. Fetch shoes of a specific color brand and size (Still under discussion)
      *  3. Purchase shoes and update the stock
-     *  4. Filter by brand, color, name
      * */
+
+    List<Shoe>findShoesByName(String name);
 }
