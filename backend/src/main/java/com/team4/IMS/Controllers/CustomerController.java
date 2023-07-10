@@ -1,13 +1,15 @@
 package com.team4.ims.Controllers;
 
-import com.team4.ims.DTOs.Inventory.shoeDTO.ShoeOrder;
 import com.team4.ims.Models.Shoe;
 import com.team4.ims.Services.CustomerService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
