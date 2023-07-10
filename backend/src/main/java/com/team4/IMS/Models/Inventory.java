@@ -23,7 +23,11 @@ public class Inventory {
 
     @JsonIgnore
     @ManyToOne
+<<<<<<< HEAD
     @JsonIgnore
+=======
+    @JoinColumn(name = "shoe", referencedColumnName = "shoe_id")
+>>>>>>> e5b8465 (fixing add shoe functionality)
     private Shoe shoe;
 
     private int quantity;
