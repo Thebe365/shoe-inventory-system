@@ -8,7 +8,11 @@
             <requestState>
               <option name="body">
                 <bodyState>
+<<<<<<< HEAD
+                  <option name="raw" value="{&#10;  &quot;email&quot;: &quot;admin@admin.com&quot;,&#10;  &quot;password&quot;: &quot;admin&quot;&#10;}" />
+=======
                   <option name="raw" value="{&#10;  &quot;name&quot;: &quot;Puma&quot;&#10;}" />
+>>>>>>> 4e50a3514d2da7595b49913091ca660c88214bb1
                   <option name="type" value="JSON" />
                 </bodyState>
               </option>
