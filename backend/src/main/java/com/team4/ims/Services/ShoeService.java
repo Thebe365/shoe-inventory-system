@@ -5,9 +5,9 @@ import com.team4.ims.DTOs.Inventory.shoeDTO.*;
 import com.team4.ims.Models.Brand;
 import com.team4.ims.Models.Inventory;
 import com.team4.ims.Models.Shoe;
-import com.team4.ims.Repository.BrandRepository;
-import com.team4.ims.Repository.InventoryRepository;
-import com.team4.ims.Repository.ShoeRepository;
+import com.team4.ims.repository.BrandRepository;
+import com.team4.ims.repository.InventoryRepository;
+import com.team4.ims.repository.ShoeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +48,7 @@ public class ShoeService {
                     .findAll()
                     .stream()
                     .filter(inventory -> inventory
-                            .getShoe()
+                            .getShoeId()
                             .getName()
                             .equals(shoeNames.getName())
                     )
@@ -58,7 +58,7 @@ public class ShoeService {
                     .findAll()
                     .stream()
                     .filter(inventory -> inventory
-                            .getShoe()
+                            .getShoeId()
                             .getName()
                             .equals(shoeNames.getName())
                     )
@@ -91,36 +91,20 @@ public class ShoeService {
 
         for (ShoeOrder shoe : shoes.getShoes()) {
 
-            Optional<Brand> brand = brandRepository.findByName(shoe.getShoeBrand());
-            Optional<Shoe> newShoe = shoeRepository.findByName(shoe.getShoeName());
+            Optional<Brand> brandCheck = brandRepository.findByName(shoe.getShoeBrand());
+            Shoe shoeCheck = shoeRepository.findByName(shoe.getShoeName());
 
-            List<Inventory> inventoryUnit = this.inventoryRepository
-                    .findAll();
-
-            for (Inventory inventory : inventoryUnit
-            ){
-                System.out.println("Inventory: " + inventory);
+            if (brandCheck.isPresent()) {
+                if (shoeCheck == null){
+                    return ResponseEntity.badRequest().body("Shoe does not exist");
+                }
+            } else {
+                return ResponseEntity.badRequest().body("Brand does not exist");
             }
-
-
-            System.out.println("Brand: " + brand);
-            System.out.println("Inventory: " + inventoryUnit);
-
-            if(!brand.isPresent()){
-                return ResponseEntity.badRequest().body("Brand not found");
-            }
-            if(!newShoe.isPresent()){
-                return ResponseEntity.badRequest().body("Shoe not found");
-            }
-
-//            Inventory inventory = Inventory.builder()
-//                    .shoe(inventoryUnit.get().getShoe())
-//                    .color(shoe.getShoeColor())
-//                    .size(shoe.getShoeSize())
-//                    .quantity(shoe.getQuantity())
-//                    .price(inventoryUnit.get().getPrice())
-//                    .build();
-//            inventoryRepository.save(inventory);
+            //TODO:(FIX) find the shoe in inventory by color and size
+            Inventory inventoryUnit = inventoryRepository.findInventoryByShoeId(shoeCheck.getId());
+            inventoryUnit.setQuantity(inventoryUnit.getQuantity() + shoe.getQuantity());
+            inventoryRepository.save(inventoryUnit);
 
         }
 
@@ -149,9 +133,9 @@ public class ShoeService {
                 .stream()
                 .filter(inventory -> inventory
                         .getColor()
-                        .equals(shoe.getColor()) && inventory.getShoe().getName().equals(shoe.getName())
+                        .equals(shoe.getColor()) && inventory.getShoeId().getName().equals(shoe.getName())
                 ).
-                map(inventory -> inventory.getShoe().getId())
+                map(inventory -> inventory.getShoeId().getId())
                 .toList();
         List<Shoe> shoes = new ArrayList<>();
         for (Long shoeId : shoeIds) {
@@ -172,7 +156,7 @@ public class ShoeService {
                     .build();
 
             Inventory newInventory = Inventory.builder()
-                    .shoe(newShoe)
+                    .shoeId(newShoe)
                     .quantity(shoe.getQuantity())
                     .color(shoe.getColor())
                     .size(shoe.getSize())
