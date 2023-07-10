@@ -1,6 +1,10 @@
 package com.team4.ims.Configs;
 
+<<<<<<< HEAD:backend/src/main/java/com/team4/IMS/Configs/ApplicationConfig.java
 import com.team4.ims.Repository.UserRepository;
+=======
+import com.team4.ims.repository.UserRepository;
+>>>>>>> 813e024 (one commit on yourBranch):backend/src/main/java/com/team4/ims/Configs/ApplicationConfig.java
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

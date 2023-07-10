@@ -4,7 +4,11 @@ package com.team4.ims.Services;
 import com.team4.ims.DTOs.Inventory.brandDTO.AddBrandRequest;
 import com.team4.ims.DTOs.Inventory.brandDTO.BrandById;
 import com.team4.ims.Models.Brand;
+<<<<<<< HEAD:backend/src/main/java/com/team4/IMS/Services/BrandService.java
 import com.team4.ims.Repository.BrandRepository;
+=======
+import com.team4.ims.repository.BrandRepository;
+>>>>>>> 813e024 (one commit on yourBranch):backend/src/main/java/com/team4/ims/Services/BrandService.java
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
