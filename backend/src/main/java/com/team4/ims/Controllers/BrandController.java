@@ -30,12 +30,12 @@ public class BrandController {
 
 
     //Add a brand
-    @Operation(summary = "Fetching all brands", description = "Fetching all brands")
+    @Operation(summary = "Creating a new brand", description = "Creates a new brand")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Brands Successfully Retrieved",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = List.class)) }),
-            @ApiResponse(responseCode = "404", description = "Brands not found add retrieve"),
+            @ApiResponse(responseCode = "404", description = "Brand already exists"),
     })
     @PostMapping
     public ResponseEntity addBrands(@RequestBody AddBrandRequest addBrandRequest){

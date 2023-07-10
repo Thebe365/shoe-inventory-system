@@ -45,6 +45,7 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers(
                         "/api/v1/shoes/**",
+                        "/api/v1/customer/",
 
                         "/api/v1/brand/**"
 
