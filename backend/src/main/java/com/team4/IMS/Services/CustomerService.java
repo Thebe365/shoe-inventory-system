@@ -2,11 +2,7 @@ package com.team4.ims.Services;
 
 
 import com.team4.ims.Models.Shoe;
-<<<<<<< HEAD:backend/src/main/java/com/team4/IMS/Services/CustomerService.java
 import com.team4.ims.Repository.CustomerRepository;
-=======
-import com.team4.ims.repository.CustomerRepository;
->>>>>>> 813e024 (one commit on yourBranch):backend/src/main/java/com/team4/ims/Services/CustomerService.java
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -45,16 +45,12 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers(
                         "/api/v1/shoes/**",
-<<<<<<< HEAD
-                        "/api/v1/brands/**"
-=======
                         "/api/v1/customer/",
 
                         "/api/v1/brand/**"
 
->>>>>>> e5b8465 (fixing add shoe functionality)
                 )
-                .permitAll()
+                .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

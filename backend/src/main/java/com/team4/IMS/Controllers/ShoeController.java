@@ -46,10 +46,7 @@ public class ShoeController {
     }
 
 
-<<<<<<< HEAD:backend/src/main/java/com/team4/IMS/Controllers/ShoeController.java
     //Fetch all shoes by brand
-=======
->>>>>>> 813e024 (one commit on yourBranch):backend/src/main/java/com/team4/ims/Controllers/ShoeController.java
     @Operation(summary = "Fetching all shoes from a specific brand")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoes Successfully Retrieved",
@@ -58,10 +55,6 @@ public class ShoeController {
             @ApiResponse(responseCode = "404", description = "Users not retrieve"),
     })
     @GetMapping("brand/{brand}")
-<<<<<<< HEAD:backend/src/main/java/com/team4/IMS/Controllers/ShoeController.java
-=======
-
->>>>>>> 813e024 (one commit on yourBranch):backend/src/main/java/com/team4/ims/Controllers/ShoeController.java
     public ResponseEntity<GetShoeByBrandResponse> getShoesByBrand(@PathVariable String brand) {
         String decodedName = URLDecoder.decode(brand, StandardCharsets.UTF_8);
         System.out.println("decodedName: " + decodedName);
@@ -95,10 +88,7 @@ public class ShoeController {
         return service.addShoes(addShoeRequest);
     }
 
-<<<<<<< HEAD:backend/src/main/java/com/team4/IMS/Controllers/ShoeController.java
     //Delete a shoe and update inventory
-=======
->>>>>>> 813e024 (one commit on yourBranch):backend/src/main/java/com/team4/ims/Controllers/ShoeController.java
     @Operation(summary = "Deleting a shoe and updating inventory ***This makes shoes unavailable***")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully delisted and inventory updated"),
@@ -109,10 +99,7 @@ public class ShoeController {
         return service.deleteShoe(id);
     }
 
-<<<<<<< HEAD:backend/src/main/java/com/team4/IMS/Controllers/ShoeController.java
     //Create a new shoe and add it to inventory
-=======
->>>>>>> 813e024 (one commit on yourBranch):backend/src/main/java/com/team4/ims/Controllers/ShoeController.java
     @Operation(summary = "Create a new Shoe", description = "Creates a new show belonging to a specific brand and adds it to the database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully created and inventory updated"),
@@ -124,10 +111,7 @@ public class ShoeController {
         return service.createShoe(addShoeRequest);
     }
 
-<<<<<<< HEAD:backend/src/main/java/com/team4/IMS/Controllers/ShoeController.java
     //Search for shoes by name and color
-=======
->>>>>>> 813e024 (one commit on yourBranch):backend/src/main/java/com/team4/ims/Controllers/ShoeController.java
     @Operation(summary = "Search for shoes by name and color", description = "Search for shoes by name and color")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully created and inventory updated"),
