@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cda1c775-f3ae-49be-8ef2-91998119b960" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/addShoeRequest$addShoeRequestBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/ApplicationConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/ApplicationConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/CorsConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/CorsConfig$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/CorsConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/JwtAuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/OpenAPIConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/OpenAPIConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Configs/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Controllers/AuthenticationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Controllers/AuthenticationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Controllers/BrandController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Controllers/BrandController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Controllers/ShoeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Controllers/ShoeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Auth/AuthenticationRequest$AuthenticationRequestBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Auth/AuthenticationRequest$AuthenticationRequestBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Auth/AuthenticationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Auth/AuthenticationRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Auth/AuthenticationResponse$AuthenticationResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Auth/AuthenticationResponse$AuthenticationResponseBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Auth/AuthenticationResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Auth/AuthenticationResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/ShoeOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/ShoeOrder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/brandDTO/AddBrandRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/brandDTO/AddBrandRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/brandDTO/BrandById.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/brandDTO/BrandById.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/shoeDTO/AddShoeRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/DTOs/Inventory/shoeDTO/AddShoeRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/ImsBackendApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/ImsBackendApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Brand$BrandBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Brand$BrandBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Brand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Brand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Inventory$InventoryBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Inventory$InventoryBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Inventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Shoe$ShoeBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Shoe$ShoeBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Shoe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/Shoe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/User$UserBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Repository/BrandRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Services/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Services/AuthenticationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Services/BrandService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Services/BrandService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Services/JwtService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Services/JwtService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/Services/ShoeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/Services/ShoeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/repository/BrandRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/repository/BrandRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/repository/InventoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/repository/InventoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/repository/ShoeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/repository/ShoeRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/IMS/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/IMS/repository/UserRepository.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "node.js.selected.package.tslint": "(autodetect)",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+</project>

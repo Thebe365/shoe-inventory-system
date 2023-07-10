@@ -74,14 +74,22 @@ select{
 
 .top-select{
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+=======
+    grid-template-columns: 1fr 1fr;
+>>>>>>> 131d0b8 (Customer services)
     background-color: white;
 
 }
 
 .bottom-select{
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+=======
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+>>>>>>> 131d0b8 (Customer services)
     background-color: white;
 
 }
@@ -91,7 +99,11 @@ select{
 }
 
 .buttom-item button{
+<<<<<<< HEAD
     width: 100%;
+=======
+    width: 145px;
+>>>>>>> 131d0b8 (Customer services)
 }
 
 .top-select-item{
