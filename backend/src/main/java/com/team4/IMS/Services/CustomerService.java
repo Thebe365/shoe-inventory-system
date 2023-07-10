@@ -2,7 +2,7 @@ package com.team4.ims.Services;
 
 
 import com.team4.ims.Models.Shoe;
-import com.team4.ims.repository.CustomerRepository;
+import com.team4.ims.Repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

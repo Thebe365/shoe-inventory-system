@@ -1,10 +1,10 @@
 package com.team4.ims;
 
 import com.team4.ims.Models.*;
-import com.team4.ims.repository.BrandRepository;
-import com.team4.ims.repository.InventoryRepository;
-import com.team4.ims.repository.ShoeRepository;
-import com.team4.ims.repository.UserRepository;
+import com.team4.ims.Repository.BrandRepository;
+import com.team4.ims.Repository.InventoryRepository;
+import com.team4.ims.Repository.ShoeRepository;
+import com.team4.ims.Repository.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
@@ -132,7 +132,7 @@ public class ImsBackendApplication {
 //		//create inventory
 //
 		Inventory inventory1 = Inventory.builder()
-				.shoeId(shoe1)
+				.shoe(shoe1)
 				.color("White")
 				.size("8")
 				.quantity(10)
@@ -141,7 +141,7 @@ public class ImsBackendApplication {
 		inventoryRepository.save(inventory1);
 //
 		Inventory inventory2 = Inventory.builder()
-				.shoeId(shoe2)
+				.shoe(shoe2)
 				.color("White")
 				.size("8")
 				.quantity(10)
@@ -150,7 +150,7 @@ public class ImsBackendApplication {
 		inventoryRepository.save(inventory2);
 
 		Inventory inventory3 = Inventory.builder()
-				.shoeId(shoe1)
+				.shoe(shoe1)
 				.color("blue")
 				.size("9")
 				.quantity(10)
@@ -159,7 +159,7 @@ public class ImsBackendApplication {
 		inventoryRepository.save(inventory3);
 
 		Inventory inventory4 = Inventory.builder()
-				.shoeId(shoe2)
+				.shoe(shoe2)
 				.color("red")
 				.size("9")
 				.quantity(10)
@@ -168,7 +168,7 @@ public class ImsBackendApplication {
 		inventoryRepository.save(inventory4);
 
 		Inventory inventory5 = Inventory.builder()
-				.shoeId(shoe1)
+				.shoe(shoe1)
 				.color("yellow")
 				.size("10")
 				.quantity(10)
@@ -177,7 +177,7 @@ public class ImsBackendApplication {
 		inventoryRepository.save(inventory5);
 
 		Inventory inventory6 = Inventory.builder()
-				.shoeId(shoe2)
+				.shoe(shoe2)
 				.color("green")
 				.size("10")
 				.quantity(10)
@@ -186,7 +186,7 @@ public class ImsBackendApplication {
 		inventoryRepository.save(inventory6);
 
 		Inventory inventory7 = Inventory.builder()
-				.shoeId(shoe3)
+				.shoe(shoe3)
 				.color("black")
 				.size("11")
 				.quantity(10)
@@ -195,7 +195,7 @@ public class ImsBackendApplication {
 		inventoryRepository.save(inventory7);
 
 		Inventory inventory8 = Inventory.builder()
-				.shoeId(shoe4)
+				.shoe(shoe4)
 				.color("black")
 				.size("11")
 				.quantity(10)
@@ -204,7 +204,7 @@ public class ImsBackendApplication {
 		inventoryRepository.save(inventory8);
 
 		Inventory inventory9 = Inventory.builder()
-				.shoeId(shoe3)
+				.shoe(shoe3)
 				.color("white")
 				.size("12")
 				.quantity(10)
