@@ -103,28 +103,28 @@ public class ImsBackendApplication {
 
 		Shoe shoe1 = Shoe.builder()
 				.name("air force 1")
-				.brandId(nike)
+				.brand(nike)
 				.isAvailable(true)
 				.build();
 		shoeRepository.save(shoe1);
 
 		Shoe shoe2 = Shoe.builder()
 				.name("superstar")
-				.brandId(adidas)
+				.brand(adidas)
 				.isAvailable(true)
 				.build();
 		shoeRepository.save(shoe2);
 
 		Shoe shoe3 = Shoe.builder()
 				.name("jordan 23")
-				.brandId(nike)
+				.brand(nike)
 				.isAvailable(true)
 				.build();
 		shoeRepository.save(shoe3);
 
 		Shoe shoe4 = Shoe.builder()
 				.name("yeezy")
-				.brandId(adidas)
+				.brand(adidas)
 				.isAvailable(true)
 				.build();
 		shoeRepository.save(shoe4);
@@ -248,5 +248,16 @@ public class ImsBackendApplication {
  * 5. Create an endpoint for the graph data displayed on overview page
  * 6.
  */
+
+//Sales Endpoint
+	/**
+	 * 1. Return Sales for a specific month [array of sales information for that month(specified by user)]
+	 * 		1.2. Filter by month range
+	 * 		1.3. Filter by Shoe
+	 * 2. returns most popular brands [based on total highest sales per brand]
+	 * 3. returns most popular shoes [based on total highest sales per shoe]
+	 * 4. return the total sales for a specific months
+	 * 		4.1. Filter by month range
+	 */
 
 }

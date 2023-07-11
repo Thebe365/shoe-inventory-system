@@ -66,7 +66,7 @@ public class ShoeService {
                     .toList();
             BrandShoes brandShoes = BrandShoes.builder()
                     .name(shoeNames.getName())
-                    .brand(shoeNames.getBrandId())
+                    .brand(shoeNames.getBrand())
                     .sizes(sizes)
                     .colors(colors)
                     .build();
@@ -82,7 +82,7 @@ public class ShoeService {
     }
 
     public int countShoes(String brandName){
-       List<Shoe> shoes = shoeRepository.findAll().stream().filter(shoe -> shoe.getBrandId().getName().equals(brandName)).toList();
+       List<Shoe> shoes = shoeRepository.findAll().stream().filter(shoe -> shoe.getBrand().getName().equals(brandName)).toList();
          return shoes.size();
     }
 
@@ -95,25 +95,37 @@ public class ShoeService {
                 return ResponseEntity.badRequest().body("Shoe not found");
             }
 
-            List<Inventory> inventoryList = inventoryRepository.findAllByShoe(newShoe.get());
-            for (Inventory inventory : inventoryList) {
-                    if (inventory.getColor().equals(shoe.getShoeColor()) && inventory.getSize().equals(shoe.getShoeSize())) {
-                        System.out.println("saving inventory");
-                        inventory.setQuantity(inventory.getQuantity() + shoe.getQuantity());
-                        inventoryRepository.save(inventory);
-                    }else {
-                        System.out.println("creating new inventory");
-                        Inventory newInventory = Inventory.builder()
-                                .shoe(newShoe.get())
-                                .color(shoe.getShoeColor())
-                                .size(shoe.getShoeSize())
-                                .quantity(shoe.getQuantity())
-                                .price(inventory.getPrice())
-                                .build();
-                        inventoryRepository.save(newInventory);
-                    }
-                System.out.println("Inventory: " + inventory);
-            }
+            inventoryRepository.findAllByShoe(newShoe.get())
+                    .forEach(inventory -> {
+                        System.out.println("inventory: " + inventory);
+                        System.out.println("inventory unit color:"+inventory.getColor() + " size:" + inventory.getSize());
+                        System.out.println("added shoe color:"+shoe.getShoeColor() + " size:" + shoe.getShoeSize());
+                        if (inventory.getColor().equals(shoe.getShoeColor()) && inventory.getSize().equals(shoe.getShoeSize())) {
+                            System.out.println("Inventory unit for shoe: " + inventory+ " " + shoe.getQuantity()+"was added");
+                            inventory.setQuantity(inventory.getQuantity() + shoe.getQuantity());
+                            inventoryRepository.save(inventory);
+                        }
+
+//                        else {
+//
+//                            Shoe shoe1 = Shoe.builder()
+//                                    .name(shoe.getShoeName())
+//                                    .brand(newShoe.get().getBrand())
+//                                    .isAvailable(true)
+//                                    .build();
+//                            shoeRepository.save(shoe1);
+//                            Inventory inventory1 = Inventory.builder()
+//                                    .shoe(shoe1)
+//                                    .color(shoe.getShoeColor())
+//                                    .size(shoe.getShoeSize())
+//                                    .quantity(shoe.getQuantity())
+//                                    .build();
+//                            inventoryRepository.save(inventory1);
+//                        }
+
+                    });
+
+
 
         }
 
@@ -122,14 +134,6 @@ public class ShoeService {
 
 
 
-//            Inventory inventory = Inventory.builder()
-//                    .shoe(inventoryUnit.get().getShoe())
-//                    .color(shoe.getShoeColor())
-//                    .size(shoe.getShoeSize())
-//                    .quantity(shoe.getQuantity())
-//                    .price(inventoryUnit.get().getPrice())
-//                    .build();
-//            inventoryRepository.save(inventory);
 
 
 
@@ -172,11 +176,15 @@ public class ShoeService {
 
     //    Creates a new shoe and adds it to the database
     public ResponseEntity<?> createShoe(AddNewShoe shoe){
-        Optional<Brand> brand = brandRepository.findByName(shoe.getBrand());
-        if(brand.isPresent()){
+        Optional<Brand> brandCheck = brandRepository.findByName(shoe.getBrand());
+        Optional<Shoe> shoeCheck = shoeRepository.findByName(shoe.getName());
+        if(!brandCheck.isPresent()){
+            return ResponseEntity.badRequest().body("The brand does not exist (Create a new one or double check spelling)");
+        }
+        if(!shoeCheck.isPresent()){
             Shoe newShoe = Shoe.builder()
                     .name(shoe.getName())
-                    .brandId(brand.get())
+                    .brand(brandCheck.get())
                     .isAvailable(true)
                     .build();
 
@@ -191,9 +199,8 @@ public class ShoeService {
             shoeRepository.save(newShoe);
             inventoryRepository.save(newInventory);
 
-        }
-        else{
-            return ResponseEntity.badRequest().body("The brand does not exist (Create a new one or double check spelling)");
+        }else{
+            return ResponseEntity.badRequest().body("The shoe already exists");
         }
 
 
