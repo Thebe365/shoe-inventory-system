@@ -90,28 +90,37 @@ public class ShoeService {
     public ResponseEntity<String> addShoes(AddShoeRequest shoes){
 
         for (ShoeOrder shoe : shoes.getShoes()) {
-
-            Optional<Brand> brand = brandRepository.findByName(shoe.getShoeBrand());
             Optional<Shoe> newShoe = shoeRepository.findByName(shoe.getShoeName());
+            if (newShoe.isEmpty()) {
+                return ResponseEntity.badRequest().body("Shoe not found");
+            }
 
-            List<Inventory> inventoryUnit = this.inventoryRepository
-                    .findAll();
-
-            for (Inventory inventory : inventoryUnit
-            ){
+            List<Inventory> inventoryList = inventoryRepository.findAllByShoe(newShoe.get());
+            for (Inventory inventory : inventoryList) {
+                    if (inventory.getColor().equals(shoe.getShoeColor()) && inventory.getSize().equals(shoe.getShoeSize())) {
+                        System.out.println("saving inventory");
+                        inventory.setQuantity(inventory.getQuantity() + shoe.getQuantity());
+                        inventoryRepository.save(inventory);
+                    }else {
+                        System.out.println("creating new inventory");
+                        Inventory newInventory = Inventory.builder()
+                                .shoe(newShoe.get())
+                                .color(shoe.getShoeColor())
+                                .size(shoe.getShoeSize())
+                                .quantity(shoe.getQuantity())
+                                .price(inventory.getPrice())
+                                .build();
+                        inventoryRepository.save(newInventory);
+                    }
                 System.out.println("Inventory: " + inventory);
             }
 
+        }
 
-            System.out.println("Brand: " + brand);
-            System.out.println("Inventory: " + inventoryUnit);
 
-            if(!brand.isPresent()){
-                return ResponseEntity.badRequest().body("Brand not found");
-            }
-            if(!newShoe.isPresent()){
-                return ResponseEntity.badRequest().body("Shoe not found");
-            }
+
+
+
 
 //            Inventory inventory = Inventory.builder()
 //                    .shoe(inventoryUnit.get().getShoe())
@@ -122,7 +131,7 @@ public class ShoeService {
 //                    .build();
 //            inventoryRepository.save(inventory);
 
-        }
+
 
         return ResponseEntity.ok("Quantity updated");
 
