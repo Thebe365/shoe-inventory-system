@@ -43,9 +43,9 @@
             <div class="brand-items">
 
                 <ng-container *ngIf="shoes.length > 0; else noShoes">
-                    <div *ngFor="let shoe of shoes">
-                        <ng-container *ngIf="!isDuplicate(shoe, shoes)"></ng-container>
-                        <div class="modal-header">
+                        <!-- The 'getUniqueShoes' -->
+                        <div class="modal-header" *ngFor="let shoe of getUniqueShoes(shoes)">
+                            
                             <div class="modal-img">
                                 <img [src]="shoeUrl + shoe.name + '.jpg'">
                             </div>
@@ -69,10 +69,11 @@
                             <div class="modal-buttons">
                                 <button class="manage-button"(click)='ManageModalOpen(shoe.id)' [routerLink]="['/dashboard/manage-inventory', { modal: 'manage-shoes' }]">Manage</button>
                             </div>
+                            
                         </div>
                         
-                    </div>
-                </ng-container>
+                    </ng-container>
+                
                 <ng-template #noShoes>
                     <div class="no-items-message">
                         

@@ -62,9 +62,21 @@ export class ManageInventoryComponent implements OnInit {
   }
 
   // Checks for duplicates in the shoes array
-  isDuplicate(item: any, items: any[]): boolean {
-    const duplicateItems = items.filter(i => i === item);
-    return duplicateItems.length > 1;
+
+  // Checking for duplicate names in the shoes array
+  getUniqueShoes(shoes: any[]): any[] {
+    const uniqueShoes: any[] = [];
+    const uniqueShoeCombos: Set<string> = new Set<string>();
+
+    for (const shoe of shoes) {
+      const shoeCombo = `${shoe.name}`;
+      if (!uniqueShoeCombos.has(shoeCombo)) {
+        uniqueShoes.push(shoe);
+        uniqueShoeCombos.add(shoeCombo);
+      }
+    }
+
+    return uniqueShoes;
   }
 
   CloseModal(): void {
