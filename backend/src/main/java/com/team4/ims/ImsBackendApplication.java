@@ -1,6 +1,5 @@
 package com.team4.ims;
 
-import com.team4.ims.Models.*;
 import com.team4.ims.Repository.BrandRepository;
 import com.team4.ims.Repository.InventoryRepository;
 import com.team4.ims.Repository.ShoeRepository;
@@ -48,43 +47,43 @@ public class ImsBackendApplication {
 	public ImsBackendApplication(UserRepository userRepository, BrandRepository brandRepository, ShoeRepository shoeRepository, PasswordEncoder passwordEncoder, InventoryRepository inventoryRepository) {
 
 //		 Create users (ADMIN and CUSTOMER)
-		User admin =User.builder()
-				.email("admin@admin.com")
-				.password(passwordEncoder.encode("admin"))
-				.role(Roles.ADMIN)
-				.build();
-		userRepository.save(admin);
-
-		System.out.println("admin: " + admin.getPassword());
-
-		User customer =User.builder()
-				.email("user@user.com")
-				.password(passwordEncoder.encode("user"))
-				.role(Roles.CUSTOMER)
-				.build();
-		userRepository.save(customer);
-
-		System.out.println("customer: " + customer.getPassword());
-
-
-		// Create brands (nike, adidas)
-		Brand Nike = Brand.builder()
-				.name("nike")
-				.isAvailable(true)
-				.build();
-		brandRepository.save(Nike);
-
-		Brand Adidas = Brand.builder()
-				.name("adidas")
-				.isAvailable(true)
-				.build();
-		brandRepository.save(Adidas);
-
-		Brand nike = brandRepository.findByName("nike").orElseThrow();
-		Brand adidas = brandRepository.findByName("adidas").orElseThrow();
-
-		System.out.println("nike: " + nike.getId());
-		System.out.println("adidas: " + adidas.getId());
+//		User admin =User.builder()
+//				.email("admin@admin.com")
+//				.password(passwordEncoder.encode("admin"))
+//				.role(Roles.ADMIN)
+//				.build();
+//		userRepository.save(admin);
+//
+//		System.out.println("admin: " + admin.getPassword());
+//
+//		User customer =User.builder()
+//				.email("user@user.com")
+//				.password(passwordEncoder.encode("user"))
+//				.role(Roles.CUSTOMER)
+//				.build();
+//		userRepository.save(customer);
+//
+//		System.out.println("customer: " + customer.getPassword());
+//
+//
+//		// Create brands (nike, adidas)
+//		Brand Nike = Brand.builder()
+//				.name("nike")
+//				.isAvailable(true)
+//				.build();
+//		brandRepository.save(Nike);
+//
+//		Brand Adidas = Brand.builder()
+//				.name("adidas")
+//				.isAvailable(true)
+//				.build();
+//		brandRepository.save(Adidas);
+//
+//		Brand nike = brandRepository.findByName("nike").orElseThrow();
+//		Brand adidas = brandRepository.findByName("adidas").orElseThrow();
+//
+//		System.out.println("nike: " + nike.getId());
+//		System.out.println("adidas: " + adidas.getId());
 
 		// Create shoes (nike, adidas)
 //		createShoe("air force 1", Nike, "White", "8", 10, 100.00, shoeRepository, userRepository, brandRepository, inventoryRepository);
@@ -101,116 +100,116 @@ public class ImsBackendApplication {
 
 		//create shoes and inventory
 
-		Shoe shoe1 = Shoe.builder()
-				.name("air force 1")
-				.brand(nike)
-				.isAvailable(true)
-				.build();
-		shoeRepository.save(shoe1);
-
-		Shoe shoe2 = Shoe.builder()
-				.name("superstar")
-				.brand(adidas)
-				.isAvailable(true)
-				.build();
-		shoeRepository.save(shoe2);
-
-		Shoe shoe3 = Shoe.builder()
-				.name("jordan 23")
-				.brand(nike)
-				.isAvailable(true)
-				.build();
-		shoeRepository.save(shoe3);
-
-		Shoe shoe4 = Shoe.builder()
-				.name("yeezy")
-				.brand(adidas)
-				.isAvailable(true)
-				.build();
-		shoeRepository.save(shoe4);
+//		Shoe shoe1 = Shoe.builder()
+//				.name("air force 1")
+//				.brand(nike)
+//				.isAvailable(true)
+//				.build();
+//		shoeRepository.save(shoe1);
 //
-//		//create inventory
+//		Shoe shoe2 = Shoe.builder()
+//				.name("superstar")
+//				.brand(adidas)
+//				.isAvailable(true)
+//				.build();
+//		shoeRepository.save(shoe2);
 //
-		Inventory inventory1 = Inventory.builder()
-				.shoe(shoe1)
-				.color("White")
-				.size("8")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory1);
+//		Shoe shoe3 = Shoe.builder()
+//				.name("jordan 23")
+//				.brand(nike)
+//				.isAvailable(true)
+//				.build();
+//		shoeRepository.save(shoe3);
 //
-		Inventory inventory2 = Inventory.builder()
-				.shoe(shoe2)
-				.color("White")
-				.size("8")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory2);
-
-		Inventory inventory3 = Inventory.builder()
-				.shoe(shoe1)
-				.color("blue")
-				.size("9")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory3);
-
-		Inventory inventory4 = Inventory.builder()
-				.shoe(shoe2)
-				.color("red")
-				.size("9")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory4);
-
-		Inventory inventory5 = Inventory.builder()
-				.shoe(shoe1)
-				.color("yellow")
-				.size("10")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory5);
-
-		Inventory inventory6 = Inventory.builder()
-				.shoe(shoe2)
-				.color("green")
-				.size("10")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory6);
-
-		Inventory inventory7 = Inventory.builder()
-				.shoe(shoe3)
-				.color("black")
-				.size("11")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory7);
-
-		Inventory inventory8 = Inventory.builder()
-				.shoe(shoe4)
-				.color("black")
-				.size("11")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory8);
-
-		Inventory inventory9 = Inventory.builder()
-				.shoe(shoe3)
-				.color("white")
-				.size("12")
-				.quantity(10)
-				.price(100.00)
-				.build();
-		inventoryRepository.save(inventory9);
+//		Shoe shoe4 = Shoe.builder()
+//				.name("yeezy")
+//				.brand(adidas)
+//				.isAvailable(true)
+//				.build();
+//		shoeRepository.save(shoe4);
+////
+////		//create inventory
+////
+//		Inventory inventory1 = Inventory.builder()
+//				.shoe(shoe1)
+//				.color("White")
+//				.size("8")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory1);
+////
+//		Inventory inventory2 = Inventory.builder()
+//				.shoe(shoe2)
+//				.color("White")
+//				.size("8")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory2);
+//
+//		Inventory inventory3 = Inventory.builder()
+//				.shoe(shoe1)
+//				.color("blue")
+//				.size("9")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory3);
+//
+//		Inventory inventory4 = Inventory.builder()
+//				.shoe(shoe2)
+//				.color("red")
+//				.size("9")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory4);
+//
+//		Inventory inventory5 = Inventory.builder()
+//				.shoe(shoe1)
+//				.color("yellow")
+//				.size("10")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory5);
+//
+//		Inventory inventory6 = Inventory.builder()
+//				.shoe(shoe2)
+//				.color("green")
+//				.size("10")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory6);
+//
+//		Inventory inventory7 = Inventory.builder()
+//				.shoe(shoe3)
+//				.color("black")
+//				.size("11")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory7);
+//
+//		Inventory inventory8 = Inventory.builder()
+//				.shoe(shoe4)
+//				.color("black")
+//				.size("11")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory8);
+//
+//		Inventory inventory9 = Inventory.builder()
+//				.shoe(shoe3)
+//				.color("white")
+//				.size("12")
+//				.quantity(10)
+//				.price(100.00)
+//				.build();
+//		inventoryRepository.save(inventory9);
 
 
 //
