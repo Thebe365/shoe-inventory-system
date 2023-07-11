@@ -4,7 +4,6 @@ package com.team4.ims.Controllers;
 import com.team4.ims.DTOs.Inventory.brandDTO.AddBrandRequest;
 import com.team4.ims.DTOs.Inventory.brandDTO.BrandById;
 import com.team4.ims.Models.Brand;
-import com.team4.ims.Services.BrandService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,7 +25,7 @@ import java.util.List;
 @OpenAPIDefinition
 public class BrandController {
 
-    private final BrandService service;
+    private final com.team4.ims.Services.BrandService service;
 
 
     //Add a brand

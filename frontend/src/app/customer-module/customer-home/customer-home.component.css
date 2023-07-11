@@ -326,7 +326,7 @@ p{
 }
 
 .cart-item-list{
-    height: 70%;
+    height: 65%;
     padding: 20px;
     overflow-y: scroll;
 }
@@ -352,7 +352,7 @@ p{
     object-position: center;
 }
 .cart-tot-box{
-    height: 200px;
+    /* height: 200px; */
     display: flex;
     padding: 20px;
     /* align-items: center; */
