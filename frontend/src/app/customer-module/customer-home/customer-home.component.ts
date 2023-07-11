@@ -23,6 +23,7 @@ export class CustomerHomeComponent implements OnInit{
 
   // cart list
   cartList = []
+  cartTotal = 0
   shoes = []
   shoe = {
     name: "",
@@ -173,5 +174,13 @@ export class CustomerHomeComponent implements OnInit{
     // cart list 
     console.log(this.cartList)
 
+  }
+
+  emptyCart(){
+
+    this.cartList = []
+
+    // remove cart list from local storage
+    localStorage.removeItem("cart")
   }
 }
