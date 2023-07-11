@@ -24,7 +24,13 @@ export class CustomerHomeComponent implements OnInit{
   // cart list
   cartList = []
   shoes = []
- 
+  shoe = {
+    name: "",
+    price: 0,
+    image: "",
+    id: 0
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
 
@@ -51,8 +57,21 @@ export class CustomerHomeComponent implements OnInit{
   }
 
   // DISPLAY MODAL
-  displayModal(){
+  displayModal(id: number){
 
+    // Find shoe by id
+    const shoe = this.shoes.find(shoe => shoe.id === id)
+
+    this.shoe = {
+      name: shoe.name,
+      price: shoe.price,
+      image: shoe.name,
+      id: shoe.id
+    }
+
+    console.log(shoe)
+
+    // Get shoe data
     const modal = document.getElementById("modal")
     const backdrop = document.getElementById("backDrop")
 

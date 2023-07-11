@@ -1,0 +1,110 @@
+.sign-in{
+
+    width: 300px;
+
+}
+
+.blur-backdrop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    z-index: 2;
+    filter: blur(5px);
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))
+}
+
+.signin-backdrop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../assets/images/max-letek.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+    z-index: 1;
+}
+
+.image-container, .container{
+    width: 350px;
+    height: 80vh;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+}
+.image-container img{
+    width: 250px;    
+}
+
+.body-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: fit-content; */
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    z-index: 3;
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgb(0,0,0,0.5), rgb(0,0,0,0.5)), url("../../assets/images/sneakers.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+.form-cont{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+    margin-bottom: 250x;
+}
+
+input{
+    background-color: #D9D9D9;
+    width: 200px;
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    margin: 5px 0;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #003147;
+    margin: 10px 0;
+    margin-bottom: 20px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+:host{
+    background-color: #f5f5f5;
+}

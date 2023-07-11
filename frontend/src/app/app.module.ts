@@ -8,11 +8,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 import { ShoeServiceService } from './services/shoe-service.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

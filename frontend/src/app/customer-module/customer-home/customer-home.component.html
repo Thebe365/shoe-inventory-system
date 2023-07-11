@@ -29,7 +29,7 @@
 <div class="popular-shoes">
 
     <div class="container">
-        <div class="item-card" (click)="displayModal()">
+        <div class="item-card">
             
             <img src="../../../assets/images/sneakers/air jordan 1.jpg" alt="">
             
@@ -37,7 +37,7 @@
                 <strong><p>Product name</p></strong>
                 <p>Price: R</p>
                 <div class="btn-cont">
-                    <button (click)="displayModal()">Add to cart</button>
+                    <button>Add to cart</button>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
                 
                 <div *ngFor="let shoe of shoes" class="item-card">
                 
-                    <img [src]="'../../../assets/images/sneakers/' + shoe.name + '.jpg'" alt="">
+                    <img [src]="'../../../assets/images/sneakers/' + shoe.name + '.jpg'" (click)="displayModal(shoe.id)" alt="">
                     
                     <div class="add-to-cart">
                         <strong><p>{{ shoe.name | titlecase }}</p></strong>
@@ -148,10 +148,10 @@
 
     <div class="modal-inner">
         <div class="shoe-image">
-            <img src="../../../assets/images/sneakers/air max 90.jpg" alt="">
+            <img [src]="'../../../assets/images/sneakers/'+ shoe.name +'.jpg'" alt="">
         </div>
         <div class="shoe-information">
-            <h1>Shoe name</h1>
+            <h1>{{ shoe.name | titlecase }}</h1>
             
             <div class="desc-item">
                 <Strong><p>Quantity:</p></Strong>
@@ -160,7 +160,7 @@
             <div class="desc-item">
                 <strong><p>Price:</p></strong>
 
-                <div class="desc"><p>R 1600</p></div>
+                <div class="desc"><p>R {{ shoe.price }}</p></div>
             </div>
             <div class="desc-item">
                 <strong><p>Colors:</p></strong>
@@ -178,6 +178,7 @@
     </div>
     
 </div>
+
 <!-- CART -->
 <div class="cart" id="cart">
 
@@ -189,21 +190,28 @@
 
     <!-- CART ITEM LIST -->
     <div class="cart-item-list">
+        <ng-container *ngIf="cartList.length > 0" #emptyList>
 
-        <!-- CART ITEM -->
-        <div *ngFor="let shoeData of cartList" class="cart-item">
-            <div class="item-img">
-                <img [src]="'../../../assets/images/sneakers/' + shoeData.name + '.jpg'" alt="">
+            <!-- CART ITEM -->
+            <div *ngFor="let shoeData of cartList" class="cart-item">
+                <div class="item-img">
+                    <img [src]="'../../../assets/images/sneakers/' + shoeData.name + '.jpg'" alt="">
+                </div>
+                <div class="item-details">
+                    <strong><p>{{ shoeData.name }}</p></strong>
+                    <p>{{ shoeData.color }}</p>
+                    <p>quantity</p>
+                </div>
+                <div class="alter-item">
+                    <button (click)="removeFromCart(shoeData.id)">Remove item</button>
+                </div>
             </div>
-            <div class="item-details">
-                <strong><p>{{ shoeData.name }}</p></strong>
-                <p>{{ shoeData.color }}</p>
-                <p>quantity</p>
+        </ng-container>
+        <ng-template #emptyList>
+            <div class="empty-list">
+                <h1>cart is empty</h1>
             </div>
-            <div class="alter-item">
-                <button (click)="removeFromCart(shoeData.id)">Remove item</button>
-            </div>
-        </div>
+        </ng-template>
 
     </div>
 
