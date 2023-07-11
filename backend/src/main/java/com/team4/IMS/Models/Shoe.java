@@ -20,7 +20,7 @@ public class Shoe implements java.io.Serializable{
     @NonNull
     @ManyToOne
     @JoinColumn(name = "brand_id")
-    private Brand brandId;
+    private Brand brand;
 
     @NonNull
     @Column(name = "shoe_name")
