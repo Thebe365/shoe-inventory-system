@@ -182,11 +182,13 @@ public class ShoeService {
             return ResponseEntity.badRequest().body("The brand does not exist (Create a new one or double check spelling)");
         }
         if(!shoeCheck.isPresent()){
+            System.out.println("creating shoe");
             Shoe newShoe = Shoe.builder()
                     .name(shoe.getName())
                     .brand(brandCheck.get())
                     .isAvailable(true)
                     .build();
+            shoeRepository.save(newShoe);
 
             Inventory newInventory = Inventory.builder()
                     .shoe(newShoe)
@@ -195,8 +197,6 @@ public class ShoeService {
                     .size(shoe.getSize())
                     .price(shoe.getPrice())
                     .build();
-
-            shoeRepository.save(newShoe);
             inventoryRepository.save(newInventory);
 
         }else{
