@@ -13,13 +13,13 @@ import lombok.*;
 public class Inventory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")
     private Long id;
 
 
     @ManyToOne
-    @JoinColumn(name = "shoe", referencedColumnName = "shoe_id")
+    @JoinColumn(name = "shoe_id", referencedColumnName = "shoe_id")
     private Shoe shoe;
 
     @Column(name = "quantity")
