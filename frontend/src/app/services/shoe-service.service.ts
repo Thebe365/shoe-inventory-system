@@ -13,17 +13,19 @@ export class ShoeServiceService {
 
   // getting brand by id
   public getBrandById(id: number) {
-    return this.http.request("GET", this.url + `brand/${id}`);
+    // return this.http.request("GET", this.url + `brand/${id}`);
+    return this.http.get(this.url + `brand/${id}`);
   }
 
   // Geting all brands
   public getAllBrands() {
-    return this.http.request("GET", this.url + "brand/getAll");
+    // return this.http.request("GET", this.url + "brand/getAll");
+    return this.http.get(this.url + "brand/getAll");
   }
 
   // Getting shoes by brand name
   public getShoesByBrandName(brand: string) {
-    return this.http.request("GET", this.url + `shoes/brand/${brand}`);
+    return this.http.request("GET", this.url + `shoes/b`~rand/${brand}`);
   }
 
   // getting all shoes

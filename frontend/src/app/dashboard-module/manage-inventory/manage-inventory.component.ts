@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-<<<<<<< HEAD
-=======
-import { HttpClient } from '@angular/common/http';
->>>>>>> 131d0b8 (Customer services)
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';

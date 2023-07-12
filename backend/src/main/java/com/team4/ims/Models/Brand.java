@@ -23,7 +23,7 @@ public class Brand {
     private Boolean isAvailable;
 
     //Reconsider this
-//    @OneToMany(mappedBy = "brandId")
+//    @OneToMany(mappedBy = "brand")
 //    @JsonIgnore
 //    private List<Shoe> shoes;
 }

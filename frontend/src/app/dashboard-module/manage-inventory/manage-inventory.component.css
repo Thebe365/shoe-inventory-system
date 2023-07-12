@@ -3,7 +3,7 @@
     justify-content: center;
     padding: 20px;
     margin: 100px 60px 0 60px;
-    
+
 }
 
 .card-container{
@@ -22,7 +22,6 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
     margin: 10px;
     border-radius: 10px;
-<<<<<<< HEAD
     opacity: 0;
     animation: staggeredAnimation 0.7s ease-in-out forwards;
 }
@@ -39,17 +38,6 @@
   0% {
     opacity: 0;
     transform: translateY(30px);
-=======
-    transition-duration: .5s all ease-in;
-    opacity: 0;
-    animation: staggeredAnimation 0.5s ease-in-out forwards;
-}
-
-@keyframes staggeredAnimation {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
->>>>>>> 131d0b8 (Customer services)
   }
   100% {
     opacity: 1;
@@ -57,17 +45,6 @@
   }
 }
 
-<<<<<<< HEAD
-=======
-.card-item:nth-child(odd) {
-  animation-delay: 0.1s;
-}
-
-.card-item:nth-child(even) {
-  animation-delay: 0.2s;
-}
-
->>>>>>> 131d0b8 (Customer services)
 h2{
     text-align: center;
     margin-top: 20px;
@@ -152,7 +129,7 @@ span{
     opacity: 0;
     animation: opacityAnim 0.3s ease-in-out forwards;
   }
-  
+
   @keyframes opacityAnim {
     0% {
       opacity: 0;
@@ -181,7 +158,7 @@ span{
     opacity: 0;
     animation: modalFadeIn .7s ease-in-out forwards;
   }
-  
+
   @keyframes modalFadeIn {
     0% {
       opacity: 0;
@@ -213,11 +190,11 @@ span{
     object-fit: cover;
     background-position: center;
   }
-  
+
   .modal-content {
     margin-left: 20px;
   }
-  
+
   .modal-footer {
     display: flex;
     justify-content: flex-end;
@@ -232,7 +209,7 @@ span{
     margin-right: 20px;
   }
   .manage-button {
-    
+
     width: 120px;
     height: 38px;
     border: none;
@@ -255,7 +232,7 @@ span{
   .search{
     border: 1px solid grey;
     border-radius: 20px;
-    
+
     height: 30px;
     display: flex;
     align-items: center;
@@ -328,7 +305,7 @@ span{
     padding: 20px;
     z-index: 5;
     border-radius: 10px;
-    opacity: 0; 
+    opacity: 0;
     animation: opacityAnim 0.3s ease-in-out forwards;
     display: none;
   }
@@ -356,7 +333,7 @@ span{
     height: 200px;
     object-fit: cover;
   }
-  
+
   .field input, select{
     padding: 8px 10px;
     width: 200px;
