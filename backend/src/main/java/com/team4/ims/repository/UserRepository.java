@@ -1,12 +1,10 @@
-package com.team4.IMS.repository;
+package com.team4.ims.Repository;
 
-import com.team4.IMS.Models.User;
+import com.team4.ims.Models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findUserByEmail(String email);
+    User findUserByEmail(String email);
 
 }

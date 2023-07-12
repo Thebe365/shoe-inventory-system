@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @Entity
-@Table(name = "Brands")
+@Table(name = "Brands", schema = "dbo")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,12 +18,12 @@ public class Brand {
     @NonNull
     @Column(name = "brand_name")
     private String name;
-
-    @Column(name = "is_available")
-    private Boolean isAvailable;
+//
+//    @Column(name = "is_available")
+//    private Boolean isAvailable;
 
     //Reconsider this
-//    @OneToMany(mappedBy = "brandId")
+//    @OneToMany(mappedBy = "brand")
 //    @JsonIgnore
 //    private List<Shoe> shoes;
 }

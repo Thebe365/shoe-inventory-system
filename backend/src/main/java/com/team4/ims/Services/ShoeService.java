@@ -5,8 +5,8 @@ import com.team4.ims.DTOs.Inventory.shoeDTO.*;
 import com.team4.ims.Models.Brand;
 import com.team4.ims.Models.Inventory;
 import com.team4.ims.Models.Shoe;
-import com.team4.ims.Repository.BrandRepository;
 import com.team4.ims.Repository.InventoryRepository;
+import com.team4.ims.Repository.BrandRepository;
 import com.team4.ims.Repository.ShoeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +38,7 @@ public class ShoeService {
 
 
         for (Shoe shoe : allShoes) {
+            System.out.println("shoe"+ shoe);
             int shoeCount = (int) inventoryRepository.findAllByShoe(shoe).stream().count();
             List<String> sizes = inventoryRepository
                     .findAll()
@@ -115,7 +116,7 @@ public class ShoeService {
             int shoeQuantity = (int) inventoryRepository.findAllByShoe(shoeNames).stream().count();
             BrandShoes brandShoes = BrandShoes.builder()
                     .name(shoeNames.getName())
-                    .brand(shoeNames.getBrand().getName())
+                    .brand(shoeNames.getBrand())
                     .sizes(sizes)
                     .colors(colors)
                     .quantity(shoeQuantity)

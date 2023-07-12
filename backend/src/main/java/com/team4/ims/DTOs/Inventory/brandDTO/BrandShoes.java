@@ -12,6 +12,7 @@ public class BrandShoes {
     private String name;
     private double price;
     private Brand brand;
+    private int quantity;
     private List<String> colors;
     private List<String> sizes;
 }
