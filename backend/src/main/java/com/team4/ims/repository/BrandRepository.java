@@ -1,4 +1,5 @@
-package com.team4.ims.Repository;
+
+package com.team4.ims.repository;
 
 import com.team4.ims.Models.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;

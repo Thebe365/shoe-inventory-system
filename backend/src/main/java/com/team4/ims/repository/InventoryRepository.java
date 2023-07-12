@@ -1,4 +1,5 @@
-package com.team4.ims.Repository;
+
+package com.team4.ims.repository;
 
 import com.team4.ims.Models.Inventory;
 import com.team4.ims.Models.Shoe;
@@ -9,9 +10,11 @@ import java.util.List;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
-    Inventory findInventoryByShoeId(Long shoeId);
+    Inventory findInventoryByShoe(Long id);
+
     List<Inventory> findAllByShoe(Shoe shoe);
 
 
-    List<Inventory> findAllByShoeId(Long id);
+
+
 }
