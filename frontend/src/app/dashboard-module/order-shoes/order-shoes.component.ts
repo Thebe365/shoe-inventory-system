@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { ShoeInstance } from 'src/app/model/shoe';
+
 
 @Component({
   selector: 'app-order-shoes',
