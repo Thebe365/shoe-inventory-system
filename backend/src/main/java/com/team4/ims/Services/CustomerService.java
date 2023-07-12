@@ -6,7 +6,6 @@ import com.team4.ims.DTOs.Inventory.shoeDTO.ShoeOrder;
 import com.team4.ims.Models.Inventory;
 import com.team4.ims.Models.Sales;
 import com.team4.ims.Models.Shoe;
-import com.team4.ims.repository.BrandRepository;
 import com.team4.ims.repository.CustomerRepository;
 import com.team4.ims.repository.InventoryRepository;
 import com.team4.ims.repository.ShoeRepository;
@@ -28,14 +27,12 @@ public class CustomerService {
      */
     @Autowired
     private final CustomerRepository customerRepository;
-    private final BrandRepository brandRepository;
     private final InventoryRepository inventoryRepository;
-
     private final ShoeRepository shoeRepository;
 
 
 
-    //To check if it works
+    //Makes an order
     public ResponseEntity<String> placeOrder(AddShoeRequest addShoe) {
         for (ShoeOrder shoe : addShoe.getShoes()) {
             Shoe shoeCheck = shoeRepository.findByName(shoe.getShoeName());
@@ -66,33 +63,6 @@ public class CustomerService {
                 }
                     }
             );
-
-
-
-            // Set other order details as needed
-//            if (order.isPresent()){
-//
-//                existingOrder = order.get();
-//                existingOrder.setShoeId(existingOrder.getShoeId());
-//                existingOrder.setId(existingOrder.getId());
-//                existingOrder.setQuantity(existingOrder.getQuantity() + shoe.getQuantity());
-//
-//                // Save the order in the customerRepository
-//                customerRepository.save(existingOrder);
-//            }
-
-
-            // Update inventory logic here
-            // Find inventory by shoe ID using inventoryRepository
-//            Inventory inventoryStock = inventoryRepository.findInventoryByShoeId(shoeCheck.get().getId());
-
-            // Update inventory stock quantity or mark the shoe as sold
-//            inventoryStock.setQuantity(inventoryStock.getQuantity() - shoe.getQuantity());
-
-            // Save the updated inventory in inventoryRepository
-//            inventoryRepository.save(inventoryStock);
-
-
 
         }
 

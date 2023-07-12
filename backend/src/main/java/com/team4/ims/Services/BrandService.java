@@ -18,7 +18,6 @@ import java.util.Optional;
 public class BrandService {
 
     private final BrandRepository brandRepository;
-    private final ShoeService shoeService;
 
 
     //Get Brand by id method
@@ -56,20 +55,6 @@ public class BrandService {
 
         return ResponseEntity.ok(brandRepository.findAll());
 
-
-//        List<BrandDetails> brandDetailsList = new ArrayList<>();
-//        for (Brand brand: brandList) {
-//            BrandDetails brandDetails = BrandDetails.builder()
-//                    .brand(brand)
-//                    .totalShoes(this.shoeService.countShoesByBrand(brand.getId()))
-//                    .build();
-//
-//            brandDetailsList.add(brandDetails);
-//        }
-//
-//        return ResponseEntity.ok(GetAllBrandsResponse.builder()
-//                .brands(brandDetailsList)
-//                .build());
     }
 
 

@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     Inventory findInventoryByShoe(Long id);
-//    Inventory findInventoryByShoeIdAndColorAndSize(Long id, String color, String size);
 
     List<Inventory> findAllByShoe(Shoe shoe);
 

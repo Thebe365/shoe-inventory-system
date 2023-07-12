@@ -13,5 +13,4 @@ public interface CustomerRepository extends JpaRepository<Sales, Long> {
      *  3. Purchase shoes and update the stock
      */
 
-//    Sales findShoesByName(String name);
 }
