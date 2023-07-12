@@ -1,4 +1,4 @@
-package com.team4.IMS.DTOs.Inventory;
+package com.team4.ims.DTOs.Inventory.shoeDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +11,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class addShoeRequest {
+public class AddShoeRequest {
     private List<ShoeOrder> shoes;
 }
