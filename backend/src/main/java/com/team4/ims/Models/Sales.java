@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Entity
 @Table(name = "Sales")
 public class Sales {

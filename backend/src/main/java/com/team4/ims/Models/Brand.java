@@ -6,7 +6,7 @@ import lombok.*;
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Entity
 @Table(name = "Brands")
 public class Brand {
