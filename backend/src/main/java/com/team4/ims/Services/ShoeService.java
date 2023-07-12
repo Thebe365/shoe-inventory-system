@@ -115,7 +115,7 @@ public class ShoeService {
             int shoeQuantity = (int) inventoryRepository.findAllByShoe(shoeNames).stream().count();
             BrandShoes brandShoes = BrandShoes.builder()
                     .name(shoeNames.getName())
-                    .brand(shoeNames.getBrand().getName())
+                    .brand(shoeNames.getBrand())
                     .sizes(sizes)
                     .colors(colors)
                     .quantity(shoeQuantity)
