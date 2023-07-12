@@ -178,6 +178,39 @@ p{
     padding: 0 10px;
 }
 
+.colors{
+    display: flex;
+
+}
+.color{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 5px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.color:hover{
+    transform: translateY(-5px);
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all .1s ease-in;
+}
+
+.size-box{
+    /* padding: 3px 10px; */
+    border: 1px solid grey;
+    width: 50px;
+    text-align: center;
+    /* margin: 3px; */
+}
+
+.size-box:hover{
+    background-color: #003147;
+    color: white;
+    cursor: pointer;
+}
+
 .search-box input{
     border: none;
     outline: none;
@@ -222,6 +255,7 @@ p{
     display: none;
     animation: back-drop-anim ease-in .6s forwards;
 }
+
 @keyframes back-drop-anim {
     0% {
       opacity: 0;
@@ -274,6 +308,8 @@ p{
 
 .desc{
     margin-left: auto;
+    display: flex;
+    align-items: center;
 }
 
 .shoe-information{
