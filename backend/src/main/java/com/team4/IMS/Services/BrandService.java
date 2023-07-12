@@ -56,6 +56,7 @@ public class BrandService {
 
         return ResponseEntity.ok(brandRepository.findAll());
 
+
 //        List<BrandDetails> brandDetailsList = new ArrayList<>();
 //        for (Brand brand: brandList) {
 //            BrandDetails brandDetails = BrandDetails.builder()

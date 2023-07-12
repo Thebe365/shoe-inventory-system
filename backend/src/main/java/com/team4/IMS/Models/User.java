@@ -13,7 +13,7 @@ import java.util.Collection;
 @Builder
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Table(name = "Admins")
 public class User implements UserDetails {
 
