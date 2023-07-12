@@ -50,6 +50,17 @@ public class ImsBackendApplication {
 				.build();
 		brandRepository.save(adidas);
 
+		Brand reebok = Brand.builder()
+				.name("reebok")
+				.isAvailable(true)
+				.build();
+		brandRepository.save(reebok);
+
+		Brand newBalance = Brand.builder()
+				.name("new balance")
+				.isAvailable(true)
+				.build();
+		brandRepository.save(newBalance);
 
 //		create shoes and inventory
 
