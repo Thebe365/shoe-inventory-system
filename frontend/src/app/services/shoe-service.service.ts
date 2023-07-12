@@ -18,7 +18,7 @@ export class ShoeServiceService {
 
   // Geting all brands
   public getAllBrands() {
-    return this.http.request("GET", this.url + "brand/");
+    return this.http.request("GET", this.url + "brand/getAll");
   }
 
   // Getting shoes by brand name

@@ -29,17 +29,65 @@ public class ShoeService {
     private final InventoryRepository inventoryRepository;
 
     //gets all shoes
-    public ResponseEntity<List<Shoe>> getAllShoes(){
-        return ResponseEntity.ok(shoeRepository.findAll());
+    public ResponseEntity<List<AllShoes>> getAllShoes(){
+        List<AllShoes> responseShoes = new ArrayList<>();
+
+        List<Shoe> allShoes = shoeRepository.findAll()
+                .stream()
+                .filter(shoe -> shoe.getIsAvailable().equals(true)).toList();
+
+
+        for (Shoe shoe : allShoes) {
+            int shoeCount = (int) inventoryRepository.findAllByShoe(shoe).stream().count();
+            List<String> sizes = inventoryRepository
+                    .findAll()
+                    .stream()
+                    .filter(inventory -> inventory
+                            .getShoe()
+                            .getName()
+                            .equals(shoe.getName())
+                    )
+                    .map(Inventory::getSize)
+                    .toList();
+            List<String> colors = inventoryRepository
+                    .findAll()
+                    .stream()
+                    .filter(inventory -> inventory
+                            .getShoe()
+                            .getName()
+                            .equals(shoe.getName())
+                    )
+                    .map(Inventory::getColor)
+                    .toList();
+
+            AllShoes shoes = AllShoes.builder()
+                    .brand(shoe.getBrand().getName())
+                    .name(shoe.getName())
+                    .id(shoe.getId())
+                    .colors(colors)
+                    .sizes(sizes)
+                    .quantity(shoeCount)
+                    .build();
+
+            responseShoes.add(shoes);
+
+        }
+
+
+        GetAllShoesResponse getShoesResponse = GetAllShoesResponse.builder()
+                .shoes(responseShoes)
+                .build();
+
+        return ResponseEntity.ok(responseShoes);
     }
 
     //Fetches all shoes belonging to a specific brand
-    public ResponseEntity<GetShoeByBrandResponse> getShoesByBrand(String brandName){
+    public ResponseEntity<List<BrandShoes>> getShoesByBrand(String brandName){
         System.out.println("Brand name: " + brandName);
         Optional<Brand> brand = brandRepository.findByName(brandName);
         // TODO: Find all shoe belonging to a specific brand in the inventory
         System.out.println("brand: " + brand);
-        var shoes =shoeRepository.findAll();
+        var shoes =shoeRepository.findAll().stream().filter(shoe -> shoe.getBrand().getName().equals(brandName)).toList();
 
         List<BrandShoes> brandShoesList = new ArrayList<>();
 
@@ -64,11 +112,13 @@ public class ShoeService {
                     )
                     .map(Inventory::getColor)
                     .toList();
+            int shoeQuantity = (int) inventoryRepository.findAllByShoe(shoeNames).stream().count();
             BrandShoes brandShoes = BrandShoes.builder()
                     .name(shoeNames.getName())
-                    .brand(shoeNames.getBrand())
+                    .brand(shoeNames.getBrand().getName())
                     .sizes(sizes)
                     .colors(colors)
+                    .quantity(shoeQuantity)
                     .build();
 
             brandShoesList.add(brandShoes);
@@ -78,7 +128,7 @@ public class ShoeService {
                 .shoes(brandShoesList)
                 .build();
 
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(brandShoesList);
     }
 
     public int countShoes(String brandName){

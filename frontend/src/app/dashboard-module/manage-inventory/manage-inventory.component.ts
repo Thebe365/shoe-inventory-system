@@ -34,9 +34,28 @@ export class ManageInventoryComponent implements OnInit {
     this.apiService.getAllBrands().subscribe((res) =>{
     
       this.brands = Object.values(res)
+      console.log("Getting all brands")
       console.log(this.brands)
         
       });
+
+    // // get all shoes
+    // this.apiService.getAllShoes().subscribe((res) =>{
+      
+    //   this.shoes = Object.values(res)
+    //   console.log("Getting all shoe")
+    //   console.log(this.shoes)
+    
+    // })
+
+    // // get shoes by brand name
+    // this.apiService.getShoesByBrandName("nike").subscribe((res) =>{ 
+      
+    //   this.shoes = Object.values(res)
+    //   console.log("Getting a shoe by brand name")
+    //   console.log(this.shoes)
+    
+    // })
 
       this.route.fragment.subscribe(fragment => {
         if (fragment === 'manage-brands') {
@@ -74,17 +93,16 @@ export class ManageInventoryComponent implements OnInit {
 
     // get shoe by brand name
     this.apiService.getShoesByBrandName(brandName).subscribe((res) =>{
-      
+
       this.brandName = brandName
-      this.brandNameModal = brandName
       
-      // get brand id
-      let brand = this.brands.find(brand => brand.name === brandName)
-      this.brandId = brand.id
-      console.log(this.brandId)
+      this.brandNameModal = brandName
 
       this.shoes = Object.values(res)
-      console.log(this.shoes)
+      
+      // res.foreach(shoe => {
+      //   this.shoes.push(shoe)
+      // }
     })
 
     // Get the modal and the backdrop
