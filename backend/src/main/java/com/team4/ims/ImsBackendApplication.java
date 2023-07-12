@@ -35,9 +35,9 @@ public class ImsBackendApplication {
 		userRepository.save(customer);
 
 		System.out.println("customer: " + customer.getPassword());
-//
-//
-//		// Create brands (nike, adidas)
+
+
+		// Create brands (nike, adidas)
 		Brand nike = Brand.builder()
 				.name("nike")
 				.isAvailable(true)
@@ -68,7 +68,7 @@ public class ImsBackendApplication {
 		shoeRepository.save(shoe2);
 
 		Shoe shoe3 = Shoe.builder()
-				.name("jordan 23")
+				.name("air max 90")
 				.brand(nike)
 				.isAvailable(true)
 				.build();

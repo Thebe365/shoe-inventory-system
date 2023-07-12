@@ -1,9 +1,7 @@
 package com.team4.ims.Controllers;
 
-import com.team4.ims.DTOs.Inventory.shoeDTO.AddNewShoe;
-import com.team4.ims.DTOs.Inventory.shoeDTO.AddShoeRequest;
-import com.team4.ims.DTOs.Inventory.shoeDTO.FindShoeRequest;
-import com.team4.ims.DTOs.Inventory.shoeDTO.GetShoeByBrandResponse;
+import com.team4.ims.DTOs.Inventory.brandDTO.BrandShoes;
+import com.team4.ims.DTOs.Inventory.shoeDTO.*;
 import com.team4.ims.Models.Shoe;
 import com.team4.ims.Services.ShoeService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -41,7 +39,7 @@ public class ShoeController {
             @ApiResponse(responseCode = "404", description = "Users not found add retrieve"),
     })
     @GetMapping("getAll")
-    public ResponseEntity<List<Shoe>> getShoes() {
+    public ResponseEntity<List<AllShoes>> getShoes() {
         return service.getAllShoes();
     }
 
@@ -55,7 +53,7 @@ public class ShoeController {
             @ApiResponse(responseCode = "404", description = "Users not retrieve"),
     })
     @GetMapping("brand/{brand}")
-    public ResponseEntity<GetShoeByBrandResponse> getShoesByBrand(@PathVariable String brand) {
+    public ResponseEntity<List<BrandShoes>> getShoesByBrand(@PathVariable String brand) {
         String decodedName = URLDecoder.decode(brand, StandardCharsets.UTF_8);
         System.out.println("decodedName: " + decodedName);
         return service.getShoesByBrand(decodedName);

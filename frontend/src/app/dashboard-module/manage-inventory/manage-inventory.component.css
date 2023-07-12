@@ -382,3 +382,9 @@ span{
     border: none;
     outline: none;
   }
+
+  .size-box{
+    padding: 3px;
+    border: 1px solid grey;
+    margin: 3px;
+  }
