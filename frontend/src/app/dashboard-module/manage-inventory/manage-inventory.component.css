@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     padding: 20px;
-    margin: 100px 60px 0 60px;
-
 }
 
 .card-container{
@@ -22,6 +20,7 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
     margin: 10px;
     border-radius: 10px;
+<<<<<<< HEAD
     opacity: 0;
     animation: staggeredAnimation 0.7s ease-in-out forwards;
 }
@@ -38,6 +37,17 @@
   0% {
     opacity: 0;
     transform: translateY(30px);
+=======
+    transition-duration: .5s all ease-in;
+    opacity: 0;
+    animation: staggeredAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes staggeredAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+>>>>>>> 131d0b8 (Customer services)
   }
   100% {
     opacity: 1;
@@ -45,6 +55,17 @@
   }
 }
 
+<<<<<<< HEAD
+=======
+.card-item:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.card-item:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+>>>>>>> 131d0b8 (Customer services)
 h2{
     text-align: center;
     margin-top: 20px;
@@ -386,6 +407,5 @@ span{
   .size-box{
     padding: 3px;
     border: 1px solid grey;
-    width: 50px;
-    /* margin: 3px; */
+    margin: 3px;
   }
