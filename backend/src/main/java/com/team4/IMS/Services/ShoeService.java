@@ -39,6 +39,8 @@ public class ShoeService {
         return ResponseEntity.ok(shoeRepository.findAllByName(search));
     }
 
+
+
     public ResponseEntity<?> addShoes(addShoeRequest shoes){
 
         for (ShoeOrder shoe : shoes.getShoes()) {

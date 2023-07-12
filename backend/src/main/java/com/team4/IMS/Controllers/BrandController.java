@@ -40,6 +40,14 @@ public class BrandController {
 
 
     //Get all brands
+
+    @Operation(summary = "Fetching all brands", description = "Fetching all brands")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Brands Successfully Retrieved",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = List.class)) }),
+            @ApiResponse(responseCode = "404", description = "Brands not found add retrieve"),
+    })
     @GetMapping
     public ResponseEntity<List<Brand>> getBrands(){
         System.out.println("endpoint reached");
