@@ -35,6 +35,10 @@ public class ShoeService {
         return ResponseEntity.ok(shoeRepository.findAllByBrandId(brandRepository.findByName(brandName)));
     }
 
+    public ResponseEntity<?> searchShoes(String search){
+        return ResponseEntity.ok(shoeRepository.findAllByName(search));
+    }
+
     public ResponseEntity<?> addShoes(addShoeRequest shoes){
 
         for (ShoeOrder shoe : shoes.getShoes()) {
@@ -84,8 +88,5 @@ public class ShoeService {
         return ResponseEntity.ok("Shoe deleted");
     }
 
-    public ResponseEntity<List<Shoe>> searchShoes(String name){
-        return ResponseEntity.ok(shoeRepository.findAllByName(name));
-    }
-
+    
 }
