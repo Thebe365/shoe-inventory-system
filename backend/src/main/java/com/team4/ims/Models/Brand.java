@@ -22,8 +22,8 @@ public class Brand {
     @Column(name = "is_available")
     private Boolean isAvailable;
 
-    //Reconsider this
-//    @OneToMany(mappedBy = "brand")
-//    @JsonIgnore
-//    private List<Shoe> shoes;
+    // Reconsider this
+    // @OneToMany(mappedBy = "brand")
+    // @JsonIgnore
+    // private List<Shoe> shoes;
 }

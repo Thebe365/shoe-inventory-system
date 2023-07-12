@@ -30,14 +30,9 @@ public class Sales {
     @Column(name = "date")
     private Date date;
 
-<<<<<<< HEAD
-
-=======
     @NonNull
->>>>>>> 813e024 (one commit on yourBranch)
-    @OneToOne(targetEntity = Inventory.class,cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Inventory.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id", referencedColumnName = "inventory_id")
     private Inventory inventoryId;
-
 
 }
