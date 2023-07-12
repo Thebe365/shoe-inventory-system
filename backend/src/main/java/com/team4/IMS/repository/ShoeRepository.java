@@ -13,7 +13,6 @@ public interface ShoeRepository extends JpaRepository<Shoe, Long>{
 
     List<Shoe> findAllByName(String name);
 
-//    Optional<Shoe> findByShoeName(String name);
 
 
 
