@@ -3,6 +3,7 @@ package com.team4.IMS.Controllers;
 import com.team4.IMS.DTOs.Inventory.ShoeOrder;
 import com.team4.IMS.DTOs.Inventory.addShoeRequest;
 import com.team4.IMS.Models.Shoe;
+import com.team4.IMS.Models.Shoe;
 import com.team4.IMS.Services.ShoeService;
 import com.team4.IMS.repository.ShoeRepository;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -14,7 +15,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -41,6 +41,7 @@ public class ShoeController {
     public ResponseEntity<?> getShoes() {
         return service.getAllShoes();
     }
+
 
     @Operation(summary = "Fetching all shoes from a specific brand")
     @ApiResponses(value = {
