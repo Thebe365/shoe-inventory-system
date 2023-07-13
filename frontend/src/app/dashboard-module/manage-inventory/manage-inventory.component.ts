@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+<<<<<<< HEAD
+=======
+import { HttpClient } from '@angular/common/http';
+>>>>>>> 131d0b8 (Customer services)
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -27,7 +31,6 @@ export class ManageInventoryComponent implements OnInit {
   brandNameModal = ''
   shoeId = 0;
   brandId = 0;
-  
 
   ngOnInit(): void {
       
@@ -35,15 +38,28 @@ export class ManageInventoryComponent implements OnInit {
     this.apiService.getAllBrands().subscribe((res) =>{
     
       this.brands = Object.values(res)
+      console.log("Getting all brands")
       console.log(this.brands)
         
       });
 
-      this.apiService.getAllShoes().subscribe((res) =>{
-        this.shoes = Object.values(res)
-        console.log(this.shoes)
+    // // get all shoes
+    // this.apiService.getAllShoes().subscribe((res) =>{
       
-      })
+    //   this.shoes = Object.values(res)
+    //   console.log("Getting all shoe")
+    //   console.log(this.shoes)
+    
+    // })
+
+    // // get shoes by brand name
+    // this.apiService.getShoesByBrandName("nike").subscribe((res) =>{ 
+      
+    //   this.shoes = Object.values(res)
+    //   console.log("Getting a shoe by brand name")
+    //   console.log(this.shoes)
+    
+    // })
 
       this.route.fragment.subscribe(fragment => {
         if (fragment === 'manage-brands') {
@@ -59,24 +75,6 @@ export class ManageInventoryComponent implements OnInit {
   
       })
     
-  }
-
-  // Checks for duplicates in the shoes array
-
-  // Checking for duplicate names in the shoes array
-  getUniqueShoes(shoes: any[]): any[] {
-    const uniqueShoes: any[] = [];
-    const uniqueShoeCombos: Set<string> = new Set<string>();
-
-    for (const shoe of shoes) {
-      const shoeCombo = `${shoe.name}`;
-      if (!uniqueShoeCombos.has(shoeCombo)) {
-        uniqueShoes.push(shoe);
-        uniqueShoeCombos.add(shoeCombo);
-      }
-    }
-
-    return uniqueShoes;
   }
 
   CloseModal(): void {
@@ -99,17 +97,16 @@ export class ManageInventoryComponent implements OnInit {
 
     // get shoe by brand name
     this.apiService.getShoesByBrandName(brandName).subscribe((res) =>{
-      
+
       this.brandName = brandName
-      this.brandNameModal = brandName
       
-      // get brand id
-      let brand = this.brands.find(brand => brand.name === brandName)
-      this.brandId = brand.id
-      console.log(this.brandId)
+      this.brandNameModal = brandName
 
       this.shoes = Object.values(res)
-      console.log(this.shoes)
+      
+      // res.foreach(shoe => {
+      //   this.shoes.push(shoe)
+      // }
     })
 
     // Get the modal and the backdrop
@@ -134,7 +131,7 @@ export class ManageInventoryComponent implements OnInit {
     if (this.searchTerm === "") {
 
       // Empty search term, reset or reload the data
-      this.OpenModal(this.brandNameModal);
+      this.ngOnInit();
     } else if (this.searchTerm) {
 
       // Non-empty search term, filter the shoes array
@@ -153,14 +150,10 @@ export class ManageInventoryComponent implements OnInit {
   onKeyUp(event: KeyboardEvent): void {
     if (event.key === 'Backspace') {
       // Backspace key pressed and search term is less than 3 characters
-      this.OpenModal(this.brandNameModal);
+      this.ngOnInit();
     }
   }
-  /**
-   * This method is used to add a brand to the brands array
-   * 
-   * @param id - The id of the shoe that is being managed
-   */
+
   ManageModalOpen(id: number): void {
 
     console.log("Shoe id " + id)

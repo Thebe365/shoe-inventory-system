@@ -58,11 +58,11 @@
     
                                     <div class="colors" >
     
-                                        <div class="color" [ngStyle]="{'background-color': 'black'}"></div>
+                                        <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}"></div>
                                     </div>
                                 </div>
                                 
-                                <p>Available sizes:</p>
+                                <p>Available sizes: <span class="size-box" *ngFor="let size of shoe.sizes">{{ size }}</span></p>
                                 <p>Quantity:</p>
                             </div>
             
