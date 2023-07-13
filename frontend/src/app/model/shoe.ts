@@ -1,10 +1,8 @@
 export class ShoeInstance {
     id: number
+    brandName: string;
     name: string;
-    brandId: number;
     color: string;
     size: string;
-    price: number;
-    brandName: string;
     quantity: number
 }
