@@ -33,7 +33,7 @@ public class SalesService {
         List<Brand> brands = brandRepository.findAll();
         List<Sales> sales = customerRepository.findSalesByDate(date);
 
-//        List<Sales> sales = customerRepository.findAll();
+// //       List<Sales> sales = customerRepository.findAll();
 
         List<BrandSalesDetails> salesResponse = new ArrayList<>();
 
