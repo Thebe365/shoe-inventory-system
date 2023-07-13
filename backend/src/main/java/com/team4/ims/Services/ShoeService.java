@@ -8,6 +8,7 @@ import com.team4.ims.Models.Shoe;
 import com.team4.ims.Repository.BrandRepository;
 import com.team4.ims.Repository.InventoryRepository;
 import com.team4.ims.Repository.ShoeRepository;
+import io.swagger.models.auth.In;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,7 @@ public class ShoeService {
 
 
         for (Shoe shoe : allShoes) {
+
             int shoeCount = (int) inventoryRepository.findAllByShoe(shoe).stream().count();
             List<String> sizes = inventoryRepository
                     .findAll()
@@ -65,6 +67,7 @@ public class ShoeService {
                     .colors(colors)
                     .sizes(sizes)
                     .quantity(shoeCount)
+//                    .price(shoe)
                     .build();
 
             responseShoes.add(shoes);
@@ -136,7 +139,7 @@ public class ShoeService {
 
     //Adds existing shoes to the database and updates inventory
     public ResponseEntity<String> addShoes(AddShoeRequest shoes){
-
+        System.out.println("shoes"+ shoes.toString());
         for (ShoeOrder shoe : shoes.getShoes()) {
             Optional<Shoe> newShoe = shoeRepository.findByName(shoe.getShoeName());
             Optional<Inventory> inventoryUnit = inventoryRepository.findInventoryByColorAndSizeAndShoe(shoe.getShoeColor(), shoe.getShoeSize(), newShoe.get());

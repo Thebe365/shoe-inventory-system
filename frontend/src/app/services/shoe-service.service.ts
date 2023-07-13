@@ -40,11 +40,16 @@ export class ShoeServiceService {
   //add shoes
   public addShoes(shoe: any) {
 
-    return this.http.request("POST", this.url + "shoes/createShoe", shoe);
+    return this.http.request("POST", this.url + "shoes/addShoe", shoe);
   }
 
   // delete brand by id
   public deleteBrandById(id: number) {
     return this.http.request("DELETE", this.url + `brand/${id}`);
+  }
+
+  // Order shoes
+  public orderShoes(shoes: any) {
+    return this.http.request("POST", this.url + "customer/order", shoes);
   }
 }

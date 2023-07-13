@@ -15,6 +15,7 @@ public class AllShoes {
     private List<String> colors;
     private List<String> sizes;
     private int quantity;
+//    private double price;
 
 
 }

@@ -49,6 +49,24 @@ public class ImsBackendApplication {
 				.build();
 		brandRepository.save(Adidas);
 
+		Brand converse = Brand.builder()
+				.name("converse")
+				.isAvailable(true)
+				.build();
+		brandRepository.save(converse);
+
+		Brand puma = Brand.builder()
+				.name("puma")
+				.isAvailable(true)
+				.build();
+		brandRepository.save(puma);
+
+		Brand vans = Brand.builder()
+				.name("vans")
+				.isAvailable(true)
+				.build();
+		brandRepository.save(vans);
+
 		Brand nike = brandRepository.findByName("nike").orElseThrow();
 		Brand adidas = brandRepository.findByName("adidas").orElseThrow();
 
@@ -84,12 +102,26 @@ public class ImsBackendApplication {
 				.isAvailable(true)
 				.build();
 		shoeRepository.save(shoe4);
+
+		Shoe shoe5 = Shoe.builder()
+				.name("old skool")
+				.brand(vans)
+				.isAvailable(true)
+				.build();
+		shoeRepository.save(shoe5);
+		Shoe shoe6 = Shoe.builder()
+				.name("era")
+				.brand(vans)
+				.isAvailable(true)
+				.build();
+		shoeRepository.save(shoe6);
+		
 		//
 		// //create inventory
 		//
 		Inventory inventory1 = Inventory.builder()
 				.shoe(shoe1)
-				.color("White")
+				.color("white")
 				.size("8")
 				.quantity(10)
 				.price(100.00)
@@ -98,7 +130,7 @@ public class ImsBackendApplication {
 		//
 		Inventory inventory2 = Inventory.builder()
 				.shoe(shoe2)
-				.color("White")
+				.color("white")
 				.size("8")
 				.quantity(10)
 				.price(100.00)

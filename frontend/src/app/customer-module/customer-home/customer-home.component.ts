@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
-import { faUser, faCartShopping, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCartShopping, faSearch, faTimes, faGreaterThan, faLessThan } from '@fortawesome/free-solid-svg-icons';
 import { HostListener, ElementRef, Renderer2 } from '@angular/core';
 import Swal  from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-customer-home',
@@ -11,13 +12,15 @@ import Swal  from 'sweetalert2';
 })
 export class CustomerHomeComponent implements OnInit{
 
-  constructor(private shoeService: ShoeServiceService) { }
+  constructor(private shoeService: ShoeServiceService, private http: HttpClient) { }
 
   // ICONS
   faUser = faUser;
   faCart = faCartShopping;
   faSearch = faSearch
   faTimes = faTimes
+  faGreaterThan = faGreaterThan
+  faLessThan = faLessThan
 
   cartOpen = false;
 
@@ -26,7 +29,20 @@ export class CustomerHomeComponent implements OnInit{
   cartTotal = 0
   shoes = []
   
+
+  color = ""
+  quantity = 1
+  size = 0
+
+  shoe = {
+    name: "",
+    color: "",
+    size: "",
+    brand: "",
+    quantity: 0
+  }
   modalShoe = {
+
     name: "",
     price: 0,
     colors: [],
@@ -72,7 +88,7 @@ export class CustomerHomeComponent implements OnInit{
       price: shoe.price,
       image: shoe.name,
       colors: shoe.colors,
-      quantity: shoe.quantity,
+      quantity: 1,
       sizes: shoe.sizes,
       id: shoe.id
     }
@@ -87,6 +103,32 @@ export class CustomerHomeComponent implements OnInit{
     backdrop.style.display = "block"
 
   }
+
+  reduceQuan(){
+
+    if(this.quantity > 1){
+      this.quantity--
+    }
+  }
+
+  increaseQuan(){
+
+    if(this.quantity < 10){
+      this.quantity++
+    }
+  }
+  
+  setColor(color: string){
+
+    this.color = color
+    console.log(color)
+  }
+
+  setSize(size: string){
+    this.size = Number(size)
+    console.log(size)
+  }
+
 
   // Close modal
   closeModal(){
@@ -157,14 +199,38 @@ export class CustomerHomeComponent implements OnInit{
         
     }else{
 
-      // find shoe by id and store in cart
-      this.cartList.push(this.shoes.find(shoe => shoe.id === id))
+      this.shoe.name = this.shoes.find(shoe => shoe.id === id).name
+      this.shoe.color = this.color
+      this.shoe.size = this.size.toString()
+      this.shoe.brand = this.shoes.find(shoe => shoe.id === id).brand
+      this.shoe.quantity = this.quantity
 
-      // shoe list to local storage
-      localStorage.setItem("cart", JSON.stringify(this.cartList))
+      // Check if shoe object has all required fields
+      if(this.shoe.name === "" || this.shoe.color === "" || this.shoe.size === "" || this.shoe.brand === "" || this.shoe.quantity === 0){
 
-      // cart list 
-      console.log(this.cartList)
+        // alert user that shoe is not in stock
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Select a color, size, and quantity for your shoe!'
+          
+          })
+
+      }else{
+
+        // find shoe by id and store in cart
+        this.cartList.push(this.shoe)
+
+        // shoe list to local storage
+        localStorage.setItem("cart", JSON.stringify(this.cartList))
+
+        // cart list 
+        console.log(this.cartList)
+
+        // close modal
+        this.closeModal()
+      }
+      
     }
       
 
@@ -190,5 +256,13 @@ export class CustomerHomeComponent implements OnInit{
 
     // remove cart list from local storage
     localStorage.removeItem("cart")
+  }
+
+  // checkout cart
+  checkout(){
+    console.log(this.cartList)
+    this.shoeService.orderShoes(this.cartList).subscribe(res => {
+      console.log(res)
+    })
   }
 }

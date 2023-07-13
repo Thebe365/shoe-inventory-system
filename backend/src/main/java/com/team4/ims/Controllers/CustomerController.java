@@ -1,12 +1,16 @@
 package com.team4.ims.Controllers;
 
 import com.team4.ims.DTOs.Inventory.shoeDTO.AddShoeRequest;
+import com.team4.ims.DTOs.Inventory.shoeDTO.AllShoes;
+import com.team4.ims.DTOs.Inventory.shoeDTO.ShoeOrder;
 import com.team4.ims.Services.CustomerService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -29,7 +33,7 @@ public class CustomerController {
 
 
     @PostMapping("order")
-    public ResponseEntity purchaseShoe(@RequestBody AddShoeRequest addShoeRequest){
+    public ResponseEntity purchaseShoe(@RequestBody List<ShoeOrder> addShoeRequest){
         return customerService.placeOrder(addShoeRequest);
     }
 

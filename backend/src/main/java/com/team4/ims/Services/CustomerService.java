@@ -2,6 +2,7 @@ package com.team4.ims.Services;
 
 
 import com.team4.ims.DTOs.Inventory.shoeDTO.AddShoeRequest;
+import com.team4.ims.DTOs.Inventory.shoeDTO.AllShoes;
 import com.team4.ims.DTOs.Inventory.shoeDTO.ShoeOrder;
 import com.team4.ims.Models.Inventory;
 import com.team4.ims.Models.Sales;
@@ -34,8 +35,8 @@ public class CustomerService {
 
 
     //Makes an order
-    public ResponseEntity<String> placeOrder(AddShoeRequest addShoe) {
-        for (ShoeOrder shoe : addShoe.getShoes()) {
+    public ResponseEntity<String> placeOrder(List<ShoeOrder> addShoe) {
+        for ( ShoeOrder shoe : addShoe) {
             Optional<Shoe> shoeCheck = shoeRepository.findByName(shoe.getShoeName());
             if (!shoeCheck.isPresent()) {
                 return ResponseEntity.badRequest().body("Shoe does not exist");
