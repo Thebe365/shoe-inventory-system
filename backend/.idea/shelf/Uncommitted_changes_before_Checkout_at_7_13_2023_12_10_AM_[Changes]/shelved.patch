@@ -1,0 +1,137 @@
+Index: src/main/java/com/team4/IMS/Configs/ApplicationConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.team4.IMS.Configs;\r\n\r\n\r\nimport com.team4.IMS.repository.UserRepository;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.context.annotation.Bean;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.security.authentication.AuthenticationManager;\r\nimport org.springframework.security.authentication.AuthenticationProvider;\r\nimport org.springframework.security.authentication.UsernamePasswordAuthenticationToken;\r\nimport org.springframework.security.authentication.dao.DaoAuthenticationProvider;\r\nimport org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;\r\nimport org.springframework.security.core.userdetails.UserDetailsService;\r\nimport org.springframework.security.core.userdetails.UsernameNotFoundException;\r\nimport org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\r\nimport org.springframework.security.crypto.password.PasswordEncoder;\r\nimport java.lang.String;\r\n\r\n@Configuration\r\n@RequiredArgsConstructor\r\npublic class ApplicationConfig {\r\n    private final UserRepository userRepository;\r\n\r\n    @Bean\r\n    public UserDetailsService userDetailsService() {\r\n        return username1 -> userRepository.findUserByEmail(username1)\r\n                .orElseThrow(() -> new UsernameNotFoundException(\"User not found\"));\r\n    }\r\n\r\n    @Bean\r\n    public AuthenticationProvider authenticationProvider(){\r\n        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();\r\n        authProvider.setUserDetailsService(userDetailsService());\r\n        authProvider.setPasswordEncoder(passwordEncoder());\r\n\r\n        return authProvider;\r\n    }\r\n\r\n    @Bean\r\n    public PasswordEncoder passwordEncoder() {\r\n\r\n        return new BCryptPasswordEncoder();\r\n    }\r\n\r\n    @Bean\r\n    public String String() {\r\n\r\n        return new String();\r\n    }\r\n\r\n    @Bean\r\n    public AuthenticationManager authenticationManager(\r\n            AuthenticationConfiguration configuration) throws Exception {\r\n        return configuration.getAuthenticationManager();\r\n    }\r\n\r\n    @Bean\r\n    public UsernamePasswordAuthenticationToken userAuth(String username, String password){\r\n        return new UsernamePasswordAuthenticationToken(username,password);\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/team4/IMS/Configs/ApplicationConfig.java b/src/main/java/com/team4/IMS/Configs/ApplicationConfig.java
+--- a/src/main/java/com/team4/IMS/Configs/ApplicationConfig.java	(revision 78be3c845b34a97f0a0e45b7e6a754cb49bb7522)
++++ b/src/main/java/com/team4/IMS/Configs/ApplicationConfig.java	(date 1689199729818)
+@@ -1,7 +1,7 @@
+ package com.team4.IMS.Configs;
+ 
+ 
+-import com.team4.IMS.repository.UserRepository;
++import com.team4.IMS.Repository.UserRepository;
+ import lombok.RequiredArgsConstructor;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+Index: src/main/java/com/team4/IMS/repository/InventoryRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.team4.IMS.repository;\r\n\r\nimport com.team4.IMS.Models.Inventory;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\n\r\npublic interface InventoryRepository extends JpaRepository<Inventory, Long> {\r\n    Inventory findInventoryByShoeId(Long id);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/team4/IMS/repository/InventoryRepository.java b/src/main/java/com/team4/IMS/repository/InventoryRepository.java
+--- a/src/main/java/com/team4/IMS/repository/InventoryRepository.java	(revision 78be3c845b34a97f0a0e45b7e6a754cb49bb7522)
++++ b/src/main/java/com/team4/IMS/repository/InventoryRepository.java	(date 1689199716264)
+@@ -1,4 +1,4 @@
+-package com.team4.IMS.repository;
++package com.team4.IMS.Repository;
+ 
+ import com.team4.IMS.Models.Inventory;
+ import org.springframework.data.jpa.repository.JpaRepository;
+Index: src/main/java/com/team4/IMS/Services/AuthenticationService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.team4.IMS.Services;\r\n\r\nimport com.team4.IMS.DTOs.Auth.AuthenticationRequest;\r\nimport com.team4.IMS.DTOs.Auth.AuthenticationResponse;\r\nimport com.team4.IMS.repository.UserRepository;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.security.authentication.AuthenticationManager;\r\nimport org.springframework.security.authentication.UsernamePasswordAuthenticationToken;\r\nimport org.springframework.stereotype.Service;\r\n\r\n@Service\r\n@RequiredArgsConstructor\r\npublic class AuthenticationService {\r\n    private final UserRepository userRepository;\r\n    private final JwtService jwtService;\r\n    private final AuthenticationManager authenticationManager;\r\n    public ResponseEntity<?> authenticate(AuthenticationRequest request) {\r\n       if(authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())).isAuthenticated()){\r\n            var user = userRepository.findUserByEmail(request.getEmail()).orElseThrow(() -> new RuntimeException(\"User already exists\"));\r\n            var jwtToken = jwtService.generateToken(user.getEmail(),user.getAdminId());\r\n            return ResponseEntity.ok().body(new AuthenticationResponse(jwtToken));\r\n        }else\r\n            return ResponseEntity.badRequest().body(\"User does not exist\");\r\n\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/team4/IMS/Services/AuthenticationService.java b/src/main/java/com/team4/IMS/Services/AuthenticationService.java
+--- a/src/main/java/com/team4/IMS/Services/AuthenticationService.java	(revision 78be3c845b34a97f0a0e45b7e6a754cb49bb7522)
++++ b/src/main/java/com/team4/IMS/Services/AuthenticationService.java	(date 1689199811917)
+@@ -2,7 +2,7 @@
+ 
+ import com.team4.IMS.DTOs.Auth.AuthenticationRequest;
+ import com.team4.IMS.DTOs.Auth.AuthenticationResponse;
+-import com.team4.IMS.repository.UserRepository;
++import com.team4.IMS.Repository.UserRepository;
+ import lombok.RequiredArgsConstructor;
+ import org.springframework.http.ResponseEntity;
+ import org.springframework.security.authentication.AuthenticationManager;
+Index: src/main/java/com/team4/IMS/repository/UserRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.team4.IMS.repository;\r\n\r\nimport com.team4.IMS.Models.User;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\n\r\nimport java.util.Optional;\r\n\r\npublic interface UserRepository extends JpaRepository<User, Long> {\r\n\r\n    Optional<User> findUserByEmail(String email);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/team4/IMS/repository/UserRepository.java b/src/main/java/com/team4/IMS/repository/UserRepository.java
+--- a/src/main/java/com/team4/IMS/repository/UserRepository.java	(revision 78be3c845b34a97f0a0e45b7e6a754cb49bb7522)
++++ b/src/main/java/com/team4/IMS/repository/UserRepository.java	(date 1689199716254)
+@@ -1,4 +1,4 @@
+-package com.team4.IMS.repository;
++package com.team4.IMS.Repository;
+ 
+ import com.team4.IMS.Models.User;
+ import org.springframework.data.jpa.repository.JpaRepository;
+Index: src/main/java/com/team4/IMS/repository/BrandRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.team4.IMS.repository;\r\n\r\nimport com.team4.IMS.Models.Brand;\r\nimport com.team4.IMS.Services.BrandService;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\n\r\nimport javax.swing.text.html.Option;\r\nimport java.util.Optional;\r\n\r\npublic interface BrandRepository extends JpaRepository<Brand, Long> {\r\n\r\n\r\n    Optional<Brand> findBrandByName(String name);\r\n\r\n    Brand findByName(String name);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/team4/IMS/repository/BrandRepository.java b/src/main/java/com/team4/IMS/repository/BrandRepository.java
+--- a/src/main/java/com/team4/IMS/repository/BrandRepository.java	(revision 78be3c845b34a97f0a0e45b7e6a754cb49bb7522)
++++ b/src/main/java/com/team4/IMS/repository/BrandRepository.java	(date 1689199716258)
+@@ -1,4 +1,4 @@
+-package com.team4.IMS.repository;
++package com.team4.IMS.Repository;
+ 
+ import com.team4.IMS.Models.Brand;
+ import com.team4.IMS.Services.BrandService;
+Index: src/main/java/com/team4/IMS/repository/ShoeRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.team4.IMS.repository;\r\n\r\nimport com.team4.IMS.Models.Brand;\r\nimport com.team4.IMS.Models.Shoe;\r\nimport lombok.NonNull;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.data.jpa.repository.Modifying;\r\nimport org.springframework.data.jpa.repository.Query;\r\nimport org.springframework.data.repository.query.Param;\r\n\r\nimport java.util.List;\r\n\r\npublic interface ShoeRepository extends JpaRepository<Shoe, Long>{\r\n    Shoe findByName(String name);\r\n    List<Shoe> findAllByName(String name);\r\n    List<Shoe> findAllByBrandId(Brand brand);\r\n\r\n    @Query(value = \"SELECT * FROM Shoe u WHERE u.color = :color AND u.size = :size AND u.name = :name\", nativeQuery = true)\r\n    Shoe findShoeByColorSizeAndName( @Param(\"color\") String color,\r\n                                     @Param(\"size\") String size,\r\n                                     @Param(\"name\") String name);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/team4/IMS/repository/ShoeRepository.java b/src/main/java/com/team4/IMS/repository/ShoeRepository.java
+--- a/src/main/java/com/team4/IMS/repository/ShoeRepository.java	(revision 78be3c845b34a97f0a0e45b7e6a754cb49bb7522)
++++ b/src/main/java/com/team4/IMS/repository/ShoeRepository.java	(date 1689199716249)
+@@ -1,4 +1,4 @@
+-package com.team4.IMS.repository;
++package com.team4.IMS.Repository;
+ 
+ import com.team4.IMS.Models.Brand;
+ import com.team4.IMS.Models.Shoe;
+Index: ../.vscode/settings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"java.compile.nullAnalysis.mode\": \"automatic\"\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.vscode/settings.json b/../.vscode/settings.json
+--- a/../.vscode/settings.json	(revision 78be3c845b34a97f0a0e45b7e6a754cb49bb7522)
++++ b/../.vscode/settings.json	(date 1689199490767)
+@@ -1,3 +1,4 @@
+ {
+-    "java.compile.nullAnalysis.mode": "automatic"
++    "java.compile.nullAnalysis.mode": "automatic",
++    "java.configuration.updateBuildConfiguration": "interactive"
+ }
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"NullableNotNullManager\">\r\n    <option name=\"myDefaultNullable\" value=\"org.jetbrains.annotations.Nullable\" />\r\n    <option name=\"myDefaultNotNull\" value=\"lombok.NonNull\" />\r\n    <option name=\"myNullables\">\r\n      <value>\r\n        <list size=\"14\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"com.android.annotations.Nullable\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"org.jspecify.nullness.Nullable\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNullable\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NullableDecl\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\r\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.Nullable\" />\r\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"org.eclipse.jdt.annotation.Nullable\" />\r\n          <item index=\"7\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\r\n          <item index=\"8\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\r\n          <item index=\"9\" class=\"java.lang.String\" itemvalue=\"jakarta.annotation.Nullable\" />\r\n          <item index=\"10\" class=\"java.lang.String\" itemvalue=\"javax.annotation.CheckForNull\" />\r\n          <item index=\"11\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\r\n          <item index=\"12\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.qual.Nullable\" />\r\n          <item index=\"13\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NullableType\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n    <option name=\"myNotNulls\">\r\n      <value>\r\n        <list size=\"14\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNonNull\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.qual.NonNull\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"jakarta.annotation.Nonnull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.NonNull\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NonNullType\" />\r\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"lombok.NonNull\" />\r\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\r\n          <item index=\"7\" class=\"java.lang.String\" itemvalue=\"org.jspecify.nullness.NonNull\" />\r\n          <item index=\"8\" class=\"java.lang.String\" itemvalue=\"com.android.annotations.NonNull\" />\r\n          <item index=\"9\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\r\n          <item index=\"10\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NonNullDecl\" />\r\n          <item index=\"11\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\r\n          <item index=\"12\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\r\n          <item index=\"13\" class=\"java.lang.String\" itemvalue=\"org.eclipse.jdt.annotation.NonNull\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_X\" default=\"true\" project-jdk-name=\"openjdk-20\" project-jdk-type=\"JavaSDK\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 78be3c845b34a97f0a0e45b7e6a754cb49bb7522)
++++ b/.idea/misc.xml	(date 1689199531613)
+@@ -52,5 +52,5 @@
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="openjdk-20" project-jdk-type="JavaSDK" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="openjdk-20" project-jdk-type="JavaSDK" />
+ </project>
+\ No newline at end of file

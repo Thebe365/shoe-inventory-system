@@ -56,6 +56,16 @@ public class AuthenticationController {
         }
     }
 
+    /**
+     * This method is used to register a new user
+     *
+     * @param registerDTO
+     * @return ResponseEntity<?>
+     *
+     *     may return JWT token if successful with status code 200
+     *     or return a message with status code 400
+     */
+
     @Operation(summary = "Register a new user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User Registration Successful",

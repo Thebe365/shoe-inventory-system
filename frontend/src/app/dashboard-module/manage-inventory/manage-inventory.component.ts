@@ -148,7 +148,11 @@ export class ManageInventoryComponent implements OnInit {
       this.ngOnInit();
     }
   }
-
+  /**
+   * This method is used to add a brand to the brands array
+   *
+   * @param id - The id of the shoe that is being managed
+   */
   ManageModalOpen(id: number): void {
 
     console.log("Shoe id " + id)

@@ -1,12 +1,10 @@
 package com.team4.ims.Controllers;
 
+import com.team4.ims.Services.SalesService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/sales/")
@@ -14,14 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @OpenAPIDefinition
 public class SalesController {
 
+    private final SalesService salesService;
+
     //brand performance endpoint
     /**
      * 1. Returns the total sales for all brands specific brand
      * 2. takes a date range as a filter
      */
-    @PostMapping("brands")
-    public ResponseEntity<?> getBrandPerformance() {
-        return null;
+    @GetMapping("brands/{startTime}")
+    public ResponseEntity<?> getBrandPerformance( @PathVariable(required = false) Long startTime) {
+        return salesService.brandPerformance(startTime) ;
     }
 
 
@@ -31,9 +31,9 @@ public class SalesController {
      * 1. Returns the total sales for each color
      * 2. takes a date range as a filter
      */
-    @GetMapping("popularColor")
-    public ResponseEntity<?> getPopularColor() {
-        return null;
+    @GetMapping("popularColor/{startTime}")
+    public ResponseEntity<?> getPopularColor(@PathVariable(required = false) Long startTime) {
+        return salesService.colorPerformance(startTime);
     }
 
     //Total sales permonth endpoint

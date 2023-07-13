@@ -29,6 +29,14 @@ public class BrandController {
 
 
     //Add a brand
+
+    /**
+     * This method is used to add a new brand
+     * @param addBrandRequest
+     * @return
+     * may return a message with status code 200
+     * or return a message with status code 400
+     */
     @Operation(summary = "Creating a new brand", description = "Creates a new brand")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Brands Successfully Retrieved",
@@ -43,6 +51,7 @@ public class BrandController {
 
 
     //Get all brands
+
 
     @Operation(summary = "Fetching all brands", description = "Fetching all brands")
     @ApiResponses(value = {
@@ -67,6 +76,7 @@ public class BrandController {
         })
     @GetMapping("/{id}")
     public ResponseEntity<Brand> getBrandsById(@PathVariable Long id){
+
         try{
             return service.getById(id);
         }catch(Exception ex){
@@ -77,11 +87,6 @@ public class BrandController {
 
 
     //Update Brand by id
-    @Operation(summary = "Updating a brand by its ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Brand Successfully Updated"),
-            @ApiResponse(responseCode = "404", description = "Brand not found"),
-    })
     @PutMapping
     public ResponseEntity updateBrandById(@RequestBody BrandById brandById){
         try{
@@ -94,11 +99,6 @@ public class BrandController {
 
 
     //Delete a brand
-    @Operation(summary = "Delete a brand by its ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Brand Successfully Deleted"),
-            @ApiResponse(responseCode = "404", description = "Brand not found brand my not exist or ID is wrong"),
-    })
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBrand(@PathVariable Long id) {
         try {
