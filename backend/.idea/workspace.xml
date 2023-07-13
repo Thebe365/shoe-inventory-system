@@ -4,27 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31d448af-6a02-46fb-9dd4-4628aec4f925" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/customer-module/customer-home/customer-home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/customer-module/customer-home/customer-home.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/customer-module/customer-home/customer-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/customer-module/customer-home/customer-home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dashboard-module/manage-inventory/manage-inventory.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/dashboard-module/manage-inventory/manage-inventory.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dashboard-module/order-shoes/order-shoes.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/dashboard-module/order-shoes/order-shoes.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/sign-in/sign-in.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/sign-in/sign-in.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/sign-in/sign-in.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/sign-in/sign-in.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/sign-in/sign-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/sign-in/sign-in.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/sign-up/sign-up.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/sign-up/sign-up.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/sign-up/sign-up.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/sign-up/sign-up.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/sign-up/sign-up.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/sign-up/sign-up.component.ts" afterDir="false" />
+    <list default="true" id="91ce5e82-ad43-4d55-a7f6-bcbbf1a37517" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_13_2023_12_01_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_13_2023_12_01_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Configs/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/BrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/DTOs/Sales/ColorDetailsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/DTOs/Sales/ColorDetailsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Models/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Models/Sales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/InventoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/SalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/SalesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/ShoeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/ShoeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Controllers/ShoeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Controllers/ShoeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails$BrandSalesDetailsBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails$BrandSalesDetailsBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/SalesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/SalesService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/ShoeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/ShoeService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -36,83 +42,72 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="master" />
+        <entry key="$PROJECT_DIR$/.." value="mutshidza_given" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2RjbSlUZYdZ2IcAcaiLG1F2kCFG" />
+  <component name="ProjectId" id="2SUOxOd1Atqa83zyyrRndzj3KXf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/thebe/Desktop/angular/inventory/backend&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "e2c1a1fd66344661dcef4fa9aafbce00",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.team4.ims.DTOs.Inventory" />
+      <recent name="com.team4.ims.DTOs.Sales" />
+      <recent name="com.team4.IMS.DTOs.Inventory.brandDTO" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ims 2nd">
-    <configuration name="ims 2nd" type="Application" factoryName="Application">
+  <component name="RunManager" selected="Application.ims">
+    <configuration name="ims" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.team4.ims.ImsBackendApplication" />
-      <module name="backend" />
+      <module name="IMS" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ims" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.team4.ims.ImsBackendApplication" />
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.team4.IMS.*" />
-          <option name="ENABLED" value="false" />
-        </pattern>
-      </extension>
+    <configuration name="ImsBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="IMS" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.team4.ims.ImsBackendApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.ims 2nd" />
-      <item itemvalue="Application.ims" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.ims" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="31d448af-6a02-46fb-9dd4-4628aec4f925" name="Changes" comment="" />
-      <created>1687766439241</created>
+      <changelist id="91ce5e82-ad43-4d55-a7f6-bcbbf1a37517" name="Changes" comment="" />
+      <created>1689197941839</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1687766439241</updated>
+      <updated>1689197941839</updated>
+      <workItem from="1689197943007" duration="1444000" />
+      <workItem from="1689200123673" duration="8054000" />
+      <workItem from="1689221218503" duration="2186000" />
     </task>
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>

@@ -41,6 +41,7 @@ http.cors();
                         "/swagger-ui.html",
                         "/api/v1/shoes/**",
                         "/api/v1/customer/**",
+                        "/api/v1/sales/**",
                         "/api/v1/brand/**")
                 .permitAll()
 //                .requestMatchers(

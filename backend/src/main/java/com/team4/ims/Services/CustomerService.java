@@ -37,34 +37,38 @@ public class CustomerService {
     public ResponseEntity<String> placeOrder(AddShoeRequest addShoe) {
         for (ShoeOrder shoe : addShoe.getShoes()) {
             Optional<Shoe> shoeCheck = shoeRepository.findByName(shoe.getShoeName());
-            if (shoeCheck == null) {
+            if (!shoeCheck.isPresent()) {
                 return ResponseEntity.badRequest().body("Shoe does not exist");
             }
 
             // Place order logic here
+            /**
+             *fetches all inventory items with the same shoe name
+             */
+            //fetchs all inventory items with the same shoe name
+            List<Inventory> inventory = inventoryRepository
+                    .findAllByShoe(shoeCheck.get());
 
-                List<Inventory> inventory = inventoryRepository
-                        .findAll().stream().filter(inventory1 -> inventory1.getShoe().equals(shoeCheck))
-                        .toList();
+            Optional<Inventory> unit = inventoryRepository.findInventoryByColorAndSizeAndShoe(shoe.getShoeColor(), shoe.getShoeSize(), shoeCheck.get());
+            System.out.println("unit: "+unit);
 
-            inventory.forEach(inventory1 -> {
-                if(inventory1.getColor().equals(shoe.getShoeColor()) && inventory1.getSize().equals(shoe.getShoeSize()))
-                {
-                    System.out.println("Shoe found in inventory");
-                    inventory1.setQuantity(inventory1.getQuantity() - shoe.getQuantity());
-                    inventoryRepository.save(inventory1);
+            if(unit.isPresent()){
 
-                    Sales sale = Sales.builder()
-                            .date(new Date())
-                            .inventoryId(inventory1)
-                            .totalPrice(inventory1.getPrice()*shoe.getQuantity())
-                            .quantity(shoe.getQuantity())
-                            .build();
-                    customerRepository.save(sale);
-                }
-                    }
-            );
+                System.out.println("Shoe found in inventory");
+                unit.get().setQuantity(unit.get().getQuantity() - shoe.getQuantity());
+                inventoryRepository.save(unit.get());
 
+                Sales sale = Sales.builder()
+                        .date(new Date())
+                        .inventoryId(unit.get())
+                        .totalPrice(unit.get().getPrice()*shoe.getQuantity())
+                        .quantity(shoe.getQuantity())
+                        .build();
+                customerRepository.save(sale);
+
+            } else{
+                 return ResponseEntity.badRequest().body("Shoe not found in inventory");
+            }
         }
 
         return ResponseEntity.ok("Order updated");
