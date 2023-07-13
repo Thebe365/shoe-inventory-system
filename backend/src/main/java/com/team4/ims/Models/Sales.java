@@ -27,6 +27,7 @@ public class Sales {
     private Double totalPrice;
 
     @NonNull
+    @Temporal(TemporalType.DATE)
     @Column(name = "date")
     private Date date;
 

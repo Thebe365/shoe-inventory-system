@@ -21,11 +21,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ShoeService {
 
-    @Autowired
+
     private final ShoeRepository shoeRepository;
-    @Autowired
     private final BrandRepository brandRepository;
-    @Autowired
     private final InventoryRepository inventoryRepository;
 
     //gets all shoes
@@ -141,52 +139,16 @@ public class ShoeService {
 
         for (ShoeOrder shoe : shoes.getShoes()) {
             Optional<Shoe> newShoe = shoeRepository.findByName(shoe.getShoeName());
-            if (newShoe.isEmpty()) {
+            Optional<Inventory> inventoryUnit = inventoryRepository.findInventoryByColorAndSizeAndShoe(shoe.getShoeColor(), shoe.getShoeSize(), newShoe.get());
+
+            if (newShoe.isEmpty() || inventoryUnit.isEmpty()) {
                 return ResponseEntity.badRequest().body("Shoe not found");
             }
 
-            inventoryRepository.findAllByShoe(newShoe.get())
-                    .forEach(inventory -> {
-                        System.out.println("inventory: " + inventory);
-                        System.out.println("inventory unit color:"+inventory.getColor() + " size:" + inventory.getSize());
-                        System.out.println("added shoe color:"+shoe.getShoeColor() + " size:" + shoe.getShoeSize());
-                        if (inventory.getColor().equals(shoe.getShoeColor()) && inventory.getSize().equals(shoe.getShoeSize())) {
-                            System.out.println("Inventory unit for shoe: " + inventory+ " " + shoe.getQuantity()+"was added");
-                            inventory.setQuantity(inventory.getQuantity() + shoe.getQuantity());
-                            inventoryRepository.save(inventory);
-                        }
-
-//                        else {
-//
-//                            Shoe shoe1 = Shoe.builder()
-//                                    .name(shoe.getShoeName())
-//                                    .brand(newShoe.get().getBrand())
-//                                    .isAvailable(true)
-//                                    .build();
-//                            shoeRepository.save(shoe1);
-//                            Inventory inventory1 = Inventory.builder()
-//                                    .shoe(shoe1)
-//                                    .color(shoe.getShoeColor())
-//                                    .size(shoe.getShoeSize())
-//                                    .quantity(shoe.getQuantity())
-//                                    .build();
-//                            inventoryRepository.save(inventory1);
-//                        }
-
-                    });
-
-
+            inventoryUnit.get().setQuantity(inventoryUnit.get().getQuantity() + shoe.getQuantity());
+            inventoryRepository.save(inventoryUnit.get());
 
         }
-
-
-
-
-
-
-
-
-
         return ResponseEntity.ok("Quantity updated");
 
     }
