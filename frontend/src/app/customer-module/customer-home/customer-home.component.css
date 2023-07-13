@@ -242,6 +242,12 @@ p{
     margin-top: 2rem;
 }
 
+.empty-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* SHOE MODAL */
 .back-drop{
     position: fixed;

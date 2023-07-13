@@ -13,7 +13,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class SignInComponent implements OnInit {
-  faCoffee = faCoffee;
+
   // Form
   loginForm: FormGroup;
 
@@ -43,14 +43,32 @@ export class SignInComponent implements OnInit {
       this.http.post('http://localhost:8080/api/v1/auth/authenticate', this.registrationData)
       .subscribe(
         (response) => {
-          localStorage.setItem("token",response["token"]);
-          sessionStorage.setItem("email", this.registrationData.email)
+          if (response) {
+            localStorage.setItem("token",response["token"]);
+            sessionStorage.setItem("email", this.registrationData.email)
 
-          this.route.navigate(["./dashboard"])
+            this.route.navigate(["./dashboard"])
+          }
+          else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Woops',
+              text: 'Could not log in, check your credentials',
+            })
+          }
+          
         },
-        (error) => {
-          console.error('Error occurred during user registration:', error);
-          // Handle error during registration (e.g., show an error message)
+        (error: Response) => {
+          
+          if(error.status === 401){
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Woops',
+              text: 'Could not log in, check your credentials',
+            })
+          }
+          
         }
       );
     }else{
@@ -58,7 +76,7 @@ export class SignInComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Woops',
-        text: 'Your code does not work',
+        text: 'Input fields are empty',
       })
     }
   }

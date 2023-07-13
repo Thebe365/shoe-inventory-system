@@ -27,13 +27,15 @@
     
                     <div class="form-cont">
                         <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
-                            <label for="">User name</label><br>
+                            <label for="">email</label><br>
                             <input type="text" formControlName="userName" name="userName" placeholder="Enter username"><br>
                             <label for="">Password</label><br>
                             <input type="password" formControlName="password" placeholder="Enter password"><br>
                             <button>Sign in</button>
+                            <a routerLink="./sign-up">Don't have an account?</a>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>

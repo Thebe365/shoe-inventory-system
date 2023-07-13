@@ -26,11 +26,9 @@
                     <h1>Sign in</h1>
     
                     <div class="form-cont">
-                        <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+                        <form [formGroup]="signupForm" (ngSubmit)="formSubmit()">
                             <label for="">Name</label><br>
                             <input type="text" formControlName="userName" name="userName" placeholder="Enter username"><br>
-                            <label for="">Last name</label><br>
-                            <input type="text" formControlName="lastName" name="lastName" placeholder="Enter last name"><br>
                             <label for="">Email</label><br>
                             <input type="text" formControlName="email" name="email" placeholder="Enter email address"><br>
                             <label for="">Password</label><br>
@@ -38,6 +36,7 @@
                             <label for="">Confirm password</label><br>
                             <input type="password" formControlName="passConf" placeholder="Confirm password">
                             <button>Sign in</button>
+                            <a routerLink="">Already have an account?</a>
                         </form>
                     </div>
                 </div>

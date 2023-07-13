@@ -32,30 +32,21 @@ export class ManageInventoryComponent implements OnInit {
       
     // Getting all brands
     this.apiService.getAllBrands().subscribe((res) =>{
-    
-      this.brands = Object.values(res)
-      console.log("Getting all brands")
-      console.log(this.brands)
+      
+      if(res){
+        this.brands = Object.values(res)
+        console.log("Getting all brands")
+        console.log(this.brands)
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Failed to get response!',
+        })
+      }
+      
         
       });
-
-    // // get all shoes
-    // this.apiService.getAllShoes().subscribe((res) =>{
-      
-    //   this.shoes = Object.values(res)
-    //   console.log("Getting all shoe")
-    //   console.log(this.shoes)
-    
-    // })
-
-    // // get shoes by brand name
-    // this.apiService.getShoesByBrandName("nike").subscribe((res) =>{ 
-      
-    //   this.shoes = Object.values(res)
-    //   console.log("Getting a shoe by brand name")
-    //   console.log(this.shoes)
-    
-    // })
 
       this.route.fragment.subscribe(fragment => {
         if (fragment === 'manage-brands') {
@@ -94,15 +85,22 @@ export class ManageInventoryComponent implements OnInit {
     // get shoe by brand name
     this.apiService.getShoesByBrandName(brandName).subscribe((res) =>{
 
-      this.brandName = brandName
+      if(res){
+        this.brandName = brandName
       
-      this.brandNameModal = brandName
+        this.brandNameModal = brandName
 
-      this.shoes = Object.values(res)
+        this.shoes = Object.values(res)
+      }else{
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Failed to get response!',
+        })
+      }
       
-      // res.foreach(shoe => {
-      //   this.shoes.push(shoe)
-      // }
+      
     })
 
     // Get the modal and the backdrop
