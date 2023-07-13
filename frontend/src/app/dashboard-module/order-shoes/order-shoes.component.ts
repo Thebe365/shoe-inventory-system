@@ -42,13 +42,12 @@ export class OrderShoesComponent implements OnInit{
 
 
   shoeobj = {
-    id : '',
-    brandName: '',
-    name: '',
-    color: '',
-    size: '',
-    quantity: ''
-    
+      "name": "",
+      "brand": "",
+      "color": "",
+      "size": "",
+      "price": 0,
+      "quantity": 0
   }
 
 
@@ -151,17 +150,18 @@ export class OrderShoesComponent implements OnInit{
 
   completeOrder(){
 
+    console.log("Shoes to add: ", this.shoesToAdd)
     //loop through allshoes and add to order
     this.apiServices.addShoes(this.shoeobj).subscribe((res) =>{
       if (res) {
         this.shoeobj = {
-          id: '',
-          brandName: '',
-          name: '',
-          color: '',
-          size: '',
-          quantity: ''
-        }
+          "name": "",
+          "brand": "",
+          "color": "",
+          "size": "",
+          "price": 0,
+          "quantity": 0
+      }
         console.log("Shoe added successfully: ",res)
       }
       else {
