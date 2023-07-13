@@ -1,6 +1,9 @@
 package com.team4.ims.DTOs.Auth;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
@@ -10,4 +13,5 @@ public class RegistrationRequest {
     private String name;
     private String password;
     private String email;
+
 }

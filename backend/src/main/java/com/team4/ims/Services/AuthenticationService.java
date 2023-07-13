@@ -28,17 +28,16 @@ public class AuthenticationService {
     public ResponseEntity<?> authenticate(AuthenticationRequest request) {
         if (authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())).isAuthenticated()) {
             var user = userRepository.findUserByEmail(request.getEmail());
-            var jwtToken = jwtService.generateToken(user.getEmail(), user.getId(), user.getRole());
+            var jwtToken = jwtService.generateToken(user.getEmail(),user.getId(),user.getRole());
             AuthenticationResponse response = AuthenticationResponse.builder()
                     .token(jwtToken)
                     .email(user.getEmail())
                     .role(user.getRole())
                     .build();
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok().body(response);
+        }else
+            return ResponseEntity.badRequest().body("User does not exist");
 
-        }else {
-            return ResponseEntity.badRequest().body("Invalid credetials");
-        }
     }
 
         //Register user
