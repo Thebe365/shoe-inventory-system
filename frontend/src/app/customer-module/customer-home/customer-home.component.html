@@ -117,16 +117,14 @@
 
             <ng-container *ngIf="shoes.length > 0" #noShoes>
                 
-                <div *ngFor="let shoe of shoes" class="item-card">
+                <div *ngFor="let shoe of shoes" class="item-card" (click)="displayModal(shoe.id)">
                 
-                    <img [src]="'../../../assets/images/sneakers/' + shoe.name + '.jpg'" (click)="displayModal(shoe.id)" alt="">
+                    <img [src]="'../../../assets/images/sneakers/' + shoe.name + '.jpg'" alt="">
                     
                     <div class="add-to-cart">
                         <strong><p>{{ shoe.name | titlecase }}</p></strong>
                         <p>Price: R {{ shoe.price }}</p>
-                        <div class="btn-cont">
-                            <button (click)="addToCart(shoe.id)">Add to cart</button>
-                        </div>
+                        
                     </div>
         
                 </div>
@@ -148,31 +146,36 @@
 
     <div class="modal-inner">
         <div class="shoe-image">
-            <img [src]="'../../../assets/images/sneakers/'+ shoe.name +'.jpg'" alt="">
+            <img [src]="'../../../assets/images/sneakers/'+ modalShoe.name +'.jpg'" alt="">
         </div>
         <div class="shoe-information">
-            <h1>{{ shoe.name | titlecase }}</h1>
+            <h1>{{ modalShoe.name | titlecase }}</h1>
             
             <div class="desc-item">
                 <Strong><p>Quantity:</p></Strong>
-                <div class="desc"><p>100</p></div>
+                <div class="desc"><p>{{ modalShoe.quantity }}</p></div>
             </div>
             <div class="desc-item">
                 <strong><p>Price:</p></strong>
 
-                <div class="desc"><p>R {{ shoe.price }}</p></div>
+                <div class="desc"><p>R {{ modalShoe.price }}</p></div>
             </div>
             <div class="desc-item">
                 <strong><p>Colors:</p></strong>
-                <div class="desc"><p></p></div>
+                <div class="desc">
+                    <div class="colors" >
+    
+                        <div class="color" *ngFor="let color of modalShoe.colors" [ngStyle]="{'background-color': color}"></div>
+                    </div>
+                </div>
             </div>
             <div class="desc-item">
-                <strong><p>Sizes:</p></strong>
-                <div class="desc"><p></p></div>
+                <strong><p>Sizes: </p></strong>
+                <div class="desc"><span class="size-box" *ngFor="let size of modalShoe.sizes">{{ size }}</span></div>
             </div>
 
             <div class="btn-cont">
-                <button>Add to cart</button>
+                <button (click)="addToCart(modalShoe.id)">Add to cart</button>
             </div>
         </div>
     </div>

@@ -105,8 +105,16 @@
                     </div>
                     <div class="left-content">
                         <p>Price: R {{ shoe.price }}</p><br>
-                        <p>Available Colors:</p><br>
-                        <p>Available Sizes:</p><br>
+                        <div class="available-colors">
+                            
+                            <p>Available Colors:</p>
+                            <div class="colors" >
+    
+                                <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}"></div>
+                            </div>
+                        </div>
+                        
+                        <p>Available Sizes: <span class="size-box" *ngFor="let size of shoe.sizes">{{ size }}</span></p><br>
                         <button class="btn-manage-modal" (click)="deleteShoe(shoe.id)">Delete</button>
     
                     </div>

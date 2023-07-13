@@ -1,8 +1,11 @@
 *{
+	
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppings', sans-serif;
+	
+
 }
 
 :host{
@@ -92,6 +95,8 @@
 	left: 60px;
 }
 .main .topbar{
+	position: fixed;
+	top: 0;
 	width: 100%;
 	background: #fff;
 	height: 60px;

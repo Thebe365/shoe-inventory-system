@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-<<<<<<< HEAD
-=======
-import { HttpClient } from '@angular/common/http';
->>>>>>> 131d0b8 (Customer services)
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -14,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./manage-inventory.component.css']
 })
 export class ManageInventoryComponent implements OnInit {
-  
+
 
   // Constructor
   constructor(private apiService: ShoeServiceService, private route: ActivatedRoute){}
@@ -27,54 +23,54 @@ export class ManageInventoryComponent implements OnInit {
   brands = [];
   brandName = '';
   searchTerm = '';
-  shoeObj = [] 
+  shoeObj = []
   brandNameModal = ''
   shoeId = 0;
   brandId = 0;
 
   ngOnInit(): void {
-      
+
     // Getting all brands
     this.apiService.getAllBrands().subscribe((res) =>{
-    
+
       this.brands = Object.values(res)
       console.log("Getting all brands")
       console.log(this.brands)
-        
+
       });
 
     // // get all shoes
     // this.apiService.getAllShoes().subscribe((res) =>{
-      
+
     //   this.shoes = Object.values(res)
     //   console.log("Getting all shoe")
     //   console.log(this.shoes)
-    
+
     // })
 
     // // get shoes by brand name
-    // this.apiService.getShoesByBrandName("nike").subscribe((res) =>{ 
-      
+    // this.apiService.getShoesByBrandName("nike").subscribe((res) =>{
+
     //   this.shoes = Object.values(res)
     //   console.log("Getting a shoe by brand name")
     //   console.log(this.shoes)
-    
+
     // })
 
       this.route.fragment.subscribe(fragment => {
         if (fragment === 'manage-brands') {
           this.OpenModal(this.brandNameModal)
         }
-  
+
       })
-  
+
       this.route.fragment.subscribe(fragment => {
         if (fragment === 'manage-shoe') {
           this.ManageModalOpen(this.shoeId)
         }
-  
+
       })
-    
+
   }
 
   CloseModal(): void {
@@ -82,15 +78,15 @@ export class ManageInventoryComponent implements OnInit {
     // Get the modal and the backdrop
     const modal = document.getElementById('modal')!
     const modal2 = document.getElementById('modal2')!
-   
+
 
     // close the modal and back drop
     modal.style.display = 'none'
     modal2.style.display = 'none'
-    
+
     // Enable scrolling abillity
     document.body.style.overflow = 'auto';
-    
+
   }
 
   OpenModal(brandName: string): void {
@@ -99,11 +95,11 @@ export class ManageInventoryComponent implements OnInit {
     this.apiService.getShoesByBrandName(brandName).subscribe((res) =>{
 
       this.brandName = brandName
-      
+
       this.brandNameModal = brandName
 
       this.shoes = Object.values(res)
-      
+
       // res.foreach(shoe => {
       //   this.shoes.push(shoe)
       // }
@@ -123,7 +119,7 @@ export class ManageInventoryComponent implements OnInit {
 
   /**
      * This function is used to filter the shoes array based on the name
-     * 
+     *
      * @returns - the search results
      */
   search(): void {
@@ -136,7 +132,7 @@ export class ManageInventoryComponent implements OnInit {
 
       // Non-empty search term, filter the shoes array
       this.shoes = this.shoes.filter((res: any) => {
-        
+
         // checking if the search term is in the shoes name
         return res.name.toLocaleLowerCase().includes(this.searchTerm.toLocaleLowerCase());
       });
@@ -144,7 +140,7 @@ export class ManageInventoryComponent implements OnInit {
   }
   /**
    * This function is used to detect if the user pressed the backspace key
-   * 
+   *
    * @param event - This variable is used to detect if the user pressed the backspace key
    */
   onKeyUp(event: KeyboardEvent): void {
@@ -186,6 +182,6 @@ export class ManageInventoryComponent implements OnInit {
     })
   }
 
-  
+
 
 }

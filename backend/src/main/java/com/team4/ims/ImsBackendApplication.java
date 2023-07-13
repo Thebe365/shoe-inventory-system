@@ -11,14 +11,14 @@ import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@Import({com.team4.ims.Configs.CorsConfig.class})
+@Import({ com.team4.ims.Configs.CorsConfig.class })
 public class ImsBackendApplication {
 
+	public ImsBackendApplication(UserRepository userRepository, BrandRepository brandRepository,
+			ShoeRepository shoeRepository, PasswordEncoder passwordEncoder, InventoryRepository inventoryRepository) {
 
-	public ImsBackendApplication(UserRepository userRepository, BrandRepository brandRepository, ShoeRepository shoeRepository, PasswordEncoder passwordEncoder, InventoryRepository inventoryRepository) {
-
-//		 Create users (ADMIN and CUSTOMER)
-		User admin =User.builder()
+		// Create users (ADMIN and CUSTOMER)
+		User admin = User.builder()
 				.email("admin@admin.com")
 				.password(passwordEncoder.encode("admin"))
 				.role(Roles.ADMIN)
@@ -27,7 +27,7 @@ public class ImsBackendApplication {
 
 		System.out.println("admin: " + admin.getPassword());
 
-		User customer =User.builder()
+		User customer = User.builder()
 				.email("user@user.com")
 				.password(passwordEncoder.encode("user"))
 				.role(Roles.CUSTOMER)
@@ -36,22 +36,26 @@ public class ImsBackendApplication {
 
 		System.out.println("customer: " + customer.getPassword());
 
-
 		// Create brands (nike, adidas)
-		Brand nike = Brand.builder()
+		Brand Nike = Brand.builder()
 				.name("nike")
 				.isAvailable(true)
 				.build();
-		brandRepository.save(nike);
+		brandRepository.save(Nike);
 
-		Brand adidas = Brand.builder()
+		Brand Adidas = Brand.builder()
 				.name("adidas")
 				.isAvailable(true)
 				.build();
-		brandRepository.save(adidas);
+		brandRepository.save(Adidas);
 
+		Brand nike = brandRepository.findByName("nike").orElseThrow();
+		Brand adidas = brandRepository.findByName("adidas").orElseThrow();
 
-//		create shoes and inventory
+		System.out.println("nike: " + nike.getId());
+		System.out.println("adidas: " + adidas.getId());
+
+		// create shoes and inventory
 
 		Shoe shoe1 = Shoe.builder()
 				.name("air force 1")
@@ -68,7 +72,7 @@ public class ImsBackendApplication {
 		shoeRepository.save(shoe2);
 
 		Shoe shoe3 = Shoe.builder()
-				.name("air max 90")
+				.name("jordan 23")
 				.brand(nike)
 				.isAvailable(true)
 				.build();
@@ -80,9 +84,9 @@ public class ImsBackendApplication {
 				.isAvailable(true)
 				.build();
 		shoeRepository.save(shoe4);
-//
-//		//create inventory
-//
+		//
+		// //create inventory
+		//
 		Inventory inventory1 = Inventory.builder()
 				.shoe(shoe1)
 				.color("White")
@@ -91,7 +95,7 @@ public class ImsBackendApplication {
 				.price(100.00)
 				.build();
 		inventoryRepository.save(inventory1);
-//
+		//
 		Inventory inventory2 = Inventory.builder()
 				.shoe(shoe2)
 				.color("White")
@@ -164,52 +168,51 @@ public class ImsBackendApplication {
 				.build();
 		inventoryRepository.save(inventory9);
 
-
-
-
-
-
-
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ImsBackendApplication.class, args);
 	}
 
-/**
- * User Stories:
- * 1. A user can add new brands to the system (2HRS)
- * 2. A user can add new shoes to the system (3HRS)
- * 3. A user can delist/relist shoes and brands making them unavailable (2HRS) (Discuss with DA)
- * 4. A user can view a list of all available brands and their corresponding shoes(1HR)
- * 1. A user can view graphs and charts or sales data (6HRS)
- * 7.
- *
- *
- * @Frontend
- * 1. Enabling update functionality for updating shoes
- * 2. Enabling the adding shoes functionality
- * 3. Enabling the adding brands functionality
- * 4. Enabling the filter option on the sales data chart
- * 5. Separate services
- * @Backend
- * 1. Connecting to SQL Server DB
- * 2. Fix Query for native queries***DONE***
- * 3. Editing delete so that the shoe is marked as unavailable instead of deleting it ***DONE***
- * 4. Grouping shoe data for each shoe in (Fetch shoe by brand endpoint) **DONE**
- * 5. Create an endpoint for the graph data displayed on overview page
- * 6.
- */
-
-//Sales Endpoint
 	/**
-	 * 1. Return Sales for a specific month [array of sales information for that month(specified by user)]
-	 * 		1.2. Filter by month range
-	 * 		1.3. Filter by Shoe
+	 * User Stories:
+	 * 1. A user can add new brands to the system (2HRS)
+	 * 2. A user can add new shoes to the system (3HRS)
+	 * 3. A user can delist/relist shoes and brands making them unavailable (2HRS)
+	 * (Discuss with DA)
+	 * 4. A user can view a list of all available brands and their corresponding
+	 * shoes(1HR)
+	 * 1. A user can view graphs and charts or sales data (6HRS)
+	 * 7.
+	 *
+	 *
+	 * @Frontend
+	 *           1. Enabling update functionality for updating shoes
+	 *           2. Enabling the adding shoes functionality
+	 *           3. Enabling the adding brands functionality
+	 *           4. Enabling the filter option on the sales data chart
+	 *           5. Separate services
+	 * @Backend
+	 *          1. Connecting to SQL Server DB
+	 *          2. Fix Query for native queries***DONE***
+	 *          3. Editing delete so that the shoe is marked as unavailable instead
+	 *          of deleting it ***DONE***
+	 *          4. Grouping shoe data for each shoe in (Fetch shoe by brand
+	 *          endpoint) **DONE**
+	 *          5. Create an endpoint for the graph data displayed on overview page
+	 *          6.
+	 */
+
+	// Sales Endpoint
+	/**
+	 * 1. Return Sales for a specific month [array of sales information for that
+	 * month(specified by user)]
+	 * 1.2. Filter by month range
+	 * 1.3. Filter by Shoe
 	 * 2. returns most popular brands [based on total highest sales per brand]
 	 * 3. returns most popular shoes [based on total highest sales per shoe]
 	 * 4. return the total sales for a specific months
-	 * 		4.1. Filter by month range
+	 * 4.1. Filter by month range
 	 */
 
 }

@@ -25,9 +25,13 @@ export class CustomerHomeComponent implements OnInit{
   cartList = []
   cartTotal = 0
   shoes = []
-  shoe = {
+  
+  modalShoe = {
     name: "",
     price: 0,
+    colors: [],
+    quantity: 0,
+    sizes: [],
     image: "",
     id: 0
   }
@@ -63,10 +67,13 @@ export class CustomerHomeComponent implements OnInit{
     // Find shoe by id
     const shoe = this.shoes.find(shoe => shoe.id === id)
 
-    this.shoe = {
+    this.modalShoe = {
       name: shoe.name,
       price: shoe.price,
       image: shoe.name,
+      colors: shoe.colors,
+      quantity: shoe.quantity,
+      sizes: shoe.sizes,
       id: shoe.id
     }
 
@@ -128,6 +135,7 @@ export class CustomerHomeComponent implements OnInit{
     this.shoeService.getAllShoes().subscribe(res => {
 
       this.shoes = Object.values(res);
+      console.log("Displaying all shoes")
       console.log(this.shoes)
     
     })

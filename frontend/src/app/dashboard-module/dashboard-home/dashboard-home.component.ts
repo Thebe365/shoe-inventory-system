@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { faChartBar, faSearch, faBars, faUser, faEdit, faGears, faSignOut, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.component.html',

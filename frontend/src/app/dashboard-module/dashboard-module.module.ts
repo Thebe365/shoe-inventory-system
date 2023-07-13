@@ -6,9 +6,10 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { OverviewComponent } from './overview/overview.component';
 import { OrderShoesComponent } from './order-shoes/order-shoes.component';
 import { ManageInventoryComponent } from './manage-inventory/manage-inventory.component';
-
+import { ShoeInstance } from '../model/shoe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShoeServiceService } from '../services/shoe-service.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OrderShoesComponent,
     ManageInventoryComponent,
     
+    
+  ],
+  providers: [
+    ShoeInstance,
+    ShoeServiceService
   ],
   imports: [
     CommonModule,

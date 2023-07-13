@@ -27,13 +27,13 @@ public class Sales {
     private Double totalPrice;
 
     @NonNull
+    @Temporal(TemporalType.DATE)
     @Column(name = "date")
     private Date date;
 
     @NonNull
-    @OneToOne(targetEntity = Inventory.class,cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Inventory.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id", referencedColumnName = "inventory_id")
     private Inventory inventoryId;
-
 
 }
