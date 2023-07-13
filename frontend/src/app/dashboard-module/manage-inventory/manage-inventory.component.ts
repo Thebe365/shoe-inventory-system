@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 import { ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-manage-inventory',
@@ -149,7 +148,11 @@ export class ManageInventoryComponent implements OnInit {
       this.ngOnInit();
     }
   }
-
+  /**
+   * This method is used to add a brand to the brands array
+   *
+   * @param id - The id of the shoe that is being managed
+   */
   ManageModalOpen(id: number): void {
 
     console.log("Shoe id " + id)

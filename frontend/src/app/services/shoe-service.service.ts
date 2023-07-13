@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,7 +39,8 @@ export class ShoeServiceService {
 
   //add shoes
   public addShoes(shoe: any) {
-    return this.http.request("POST", this.url + "shoes/addShoe", { body: shoe });
+
+    return this.http.request("POST", this.url + "shoes/createShoe", shoe);
   }
 
   // delete brand by id

@@ -6,26 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="91ce5e82-ad43-4d55-a7f6-bcbbf1a37517" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_13_2023_12_01_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_13_2023_12_01_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Configs/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/BrandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/DTOs/Sales/ColorDetailsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/DTOs/Sales/ColorDetailsResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Models/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Models/Sales.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/CustomerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/InventoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/CustomerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/SalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/SalesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/ShoeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/ShoeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Controllers/ShoeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Controllers/ShoeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails$BrandSalesDetailsBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails$BrandSalesDetailsBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/SalesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/SalesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/ShoeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/ShoeService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +84,7 @@
       <updated>1689197941839</updated>
       <workItem from="1689197943007" duration="1444000" />
       <workItem from="1689200123673" duration="8054000" />
-      <workItem from="1689221218503" duration="2186000" />
+      <workItem from="1689221218503" duration="3065000" />
     </task>
     <servers />
   </component>

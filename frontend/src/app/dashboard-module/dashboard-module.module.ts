@@ -18,7 +18,6 @@ import { ShoeServiceService } from '../services/shoe-service.service';
     OrderShoesComponent,
     ManageInventoryComponent,
     
-    
   ],
   providers: [
     ShoeInstance,
