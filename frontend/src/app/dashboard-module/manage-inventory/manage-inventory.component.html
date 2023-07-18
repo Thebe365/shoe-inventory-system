@@ -19,6 +19,38 @@
             </div>
         </div>
 
+        <!-- A modal to add a new shoe -->
+        <!-- <div class="add-modal">
+            <div class="modal-content">
+                <form>
+                    <div class="field">
+                        Name <input type="text" value="">
+                    </div>
+
+                    <div class="field">
+                        Brand <input type="text" [value]="">
+                    </div>
+
+                    <div class="field">
+                        Color <input type="text" value="">
+                    </div>
+
+                    <div class="field">
+                        Size <input type="text" value="">
+                    </div>
+
+                    <div class="field">
+                        Price <input type="text" value="">
+                    </div>
+
+                    <div class="field">
+                        Quantity <input type="text" value="">
+                    </div>
+                    
+                </form>
+            </div>
+        </div> -->
+
 
         <!-- Modal -->
        <div class="modal-backdrop" (click)="CloseModal()" id="modal"></div>
@@ -26,7 +58,9 @@
         <!-- <span class="modal-close">&times;</span> -->
         
         <div class="modal" id="modal2">
-
+            <!-- <div class="modal-buttons">
+                <button>Add Shoe</button>
+            </div> -->
             <div class="modal-header">
                 <h3>{{ brandName | titlecase }}</h3>
 
@@ -63,13 +97,15 @@
                                 </div>
                                 
                                 <p>Available sizes: <span class="size-box" *ngFor="let size of shoe.sizes">{{ size }}</span></p>
-                                <p>Quantity:</p>
+                                <p>Quantity: {{shoe.quantity}}</p>
                             </div>
             
                             <div class="modal-buttons">
                                 <button class="manage-button"(click)='ManageModalOpen(shoe.id)' [routerLink]="['/dashboard/manage-inventory', { modal: 'manage-shoes' }]">Manage</button>
                             </div>
                         </div>
+
+                        
                         
                     </div>
                 </ng-container>

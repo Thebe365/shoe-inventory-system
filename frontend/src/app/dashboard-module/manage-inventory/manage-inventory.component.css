@@ -386,3 +386,11 @@ span{
     border: 1px solid grey;
     margin: 3px;
   }
+
+  .add-modal {
+    position: absolute;
+    top: 30px;
+    left: 25%;
+    display: flex;
+    justify-content: center;
+}

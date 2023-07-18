@@ -27,6 +27,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.OPTIONS)
                 .permitAll()
+                .requestMatchers(HttpMethod.GET)
+                .permitAll()
+                .requestMatchers(HttpMethod.POST)
+                .permitAll()
                 .requestMatchers(
                         "/api/v1/auth/**",
                         "/h2-console/**",

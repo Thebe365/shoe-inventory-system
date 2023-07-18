@@ -42,12 +42,12 @@ export class OrderShoesComponent implements OnInit{
 
 
   shoeobj = {
-    name: '',
-    brandId: '',
-    color: '',
-    size: '',
-    price: '',
-    brandName: ''
+      "name": "",
+      "brand": "",
+      "color": "",
+      "size": "",
+      "price": 0,
+      "quantity": 0
   }
 
 
@@ -69,12 +69,10 @@ export class OrderShoesComponent implements OnInit{
 
     // Order shoes form
     this.orderForm = this.formBuilder.group({
+      brandName: ['', Validators.required],
       name: ['', Validators.required],
-      brandId: [, Validators.required],
       color: ['', Validators.required],
       size: ['', Validators.required],
-      price: [, Validators.required],
-      brandName: ['', Validators.required],
       quantity: [, Validators.required]
     })
 
@@ -105,17 +103,15 @@ export class OrderShoesComponent implements OnInit{
   addShoe(){
     
 
-    // create shoe object
-    // this.shoeobj.name = this.orderForm.controls['name'].value
-    // this.shoeobj.brandId = this.targetShoe.brandId
-    // this.shoeobj.brandName = this.orderForm.controls['brandName'].value
-    // this.shoeobj.color = this.orderForm.controls['color'].value
-    // this.shoeobj.size = this.orderForm.controls['size'].value
-    // this.shoeobj.price = this.targetShoe.price
+    this.orderForm.setValue({
+      brandName: this.orderForm.value.brandName,
+      name: this.orderForm.value.name,
+      color: this.orderForm.value.color,
+      size: this.orderForm.value.size,
+      quantity: this.orderForm.value.quantity
+    })
     this.allShoes.forEach(element => {
       if(element.name == this.orderForm.value.name){
-        this.orderForm.controls['price'].setValue(element.price)
-        this.orderForm.controls['brandId'].setValue(element.brandId)
         this.targetShoe = element
       }
     })
@@ -136,14 +132,7 @@ export class OrderShoesComponent implements OnInit{
       this.shoesToAdd.push(this.shoeobj)
       
       //clear shoe object
-      this.shoeobj = {
-        name: '',
-        brandId: '',
-        color: '',
-        size: '',
-        price: '',
-        brandName: ''
-      }
+      
       
       // clear form
       this.orderForm.reset()
@@ -161,10 +150,24 @@ export class OrderShoesComponent implements OnInit{
 
   completeOrder(){
 
+    console.log("Shoes to add: ", this.shoesToAdd)
     //loop through allshoes and add to order
-    this.apiServices.addShoes(this.shoesToAdd).subscribe((res) =>{
-
+    this.apiServices.addShoes(this.shoeobj).subscribe((res) =>{
+      if (res) {
+        this.shoeobj = {
+          "name": "",
+          "brand": "",
+          "color": "",
+          "size": "",
+          "price": 0,
+          "quantity": 0
+      }
+        console.log("Shoe added successfully: ",res)
+      }
+      else {
+        console.error("Error adding shoe: ", res)
+      }
     })
-    this.shoesToAdd = []
+    
   }
 }

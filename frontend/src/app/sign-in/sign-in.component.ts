@@ -46,7 +46,12 @@ export class SignInComponent implements OnInit {
           localStorage.setItem("token",response["token"]);
           sessionStorage.setItem("email", this.registrationData.email)
 
-          this.route.navigate(["./dashboard"])
+          if(response["role"] == "ADMIN"){
+            this.route.navigate(["dashboard"])
+          }else{
+            this.route.navigate(["./shop"])
+          }
+          
         },
         (error) => {
           console.error('Error occurred during user registration:', error);

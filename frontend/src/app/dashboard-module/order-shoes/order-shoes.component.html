@@ -49,12 +49,13 @@
                         <button type="submit" class="order-button">Add</button>
                     </span>
                 </div>
+            </form>
     
                 <!-- SHOE LIST CONTAINER -->
                 <div class="shoe-list-container">
                     <label for="box" class="subtitle-label">List of Shoes</label>
                     
-                    <ng-container *ngIf="shoesToAdd.length > 0; else noShoes">
+                    <!-- <ng-container *ngIf="shoesToAdd.length > 0; else noShoes"> -->
                         <div class="box">
                             <table class="shoe-table" cellspacing="0" cellpadding="0">
                                     <th>Brand</th>
@@ -84,7 +85,7 @@
                                     </tbody>
                             </table>
                         </div>
-                    </ng-container>
+                    <!-- </ng-container> -->
                     <ng-template #noShoes>
                         <div class="box">
                             <div class="empty-list">
@@ -97,12 +98,11 @@
                     <div class="bottom-contain">
                         <label class="title-2x">Total: R</label>
                         <div class="order-btn">
-                            <button [disabled]="shoesToAdd.length == 0" class="order-complete-btn" (click)="completeOrder()">Complete Order</button>
+                            <button class="order-complete-btn" (click)="completeOrder()">Complete Order</button>
                         </div>
                     </div>
                     
                 </div>
-            </form>
             
         </div>
     </div>
