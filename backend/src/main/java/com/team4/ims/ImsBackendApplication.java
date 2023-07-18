@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@Import({ com.team4.ims.Configs.CorsConfig.class })
 public class ImsBackendApplication {
 
 	public ImsBackendApplication(UserRepository userRepository, BrandRepository brandRepository,
