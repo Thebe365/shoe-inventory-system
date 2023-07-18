@@ -35,12 +35,14 @@ export class CustomerHomeComponent implements OnInit{
   size = 0
 
   shoe = {
-    name: "",
-    color: "",
-    size: "",
-    brand: "",
-    quantity: 0
+    "shoeName": "",
+    "shoeColor": "",
+    "shoeSize": "",
+    "shoeBrand": "",
+    "quantity": 0
   }
+
+  shoeList = []
   modalShoe = {
 
     name: "",
@@ -199,14 +201,14 @@ export class CustomerHomeComponent implements OnInit{
         
     }else{
 
-      this.shoe.name = this.shoes.find(shoe => shoe.id === id).name
-      this.shoe.color = this.color
-      this.shoe.size = this.size.toString()
-      this.shoe.brand = this.shoes.find(shoe => shoe.id === id).brand
+      this.shoe.shoeName = this.shoes.find(shoe => shoe.id === id).name
+      this.shoe.shoeColor = this.color
+      this.shoe.shoeSize = this.size.toString()
+      this.shoe.shoeBrand = this.shoes.find(shoe => shoe.id === id).brand
       this.shoe.quantity = this.quantity
 
       // Check if shoe object has all required fields
-      if(this.shoe.name === "" || this.shoe.color === "" || this.shoe.size === "" || this.shoe.brand === "" || this.shoe.quantity === 0){
+      if(this.shoe.shoeName === "" || this.shoe.shoeColor === "" || this.shoe.shoeSize === "" || this.shoe.shoeBrand === "" || this.shoe.quantity === 0){
 
         // alert user that shoe is not in stock
         Swal.fire({

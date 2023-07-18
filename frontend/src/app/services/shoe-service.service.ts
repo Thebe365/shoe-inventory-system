@@ -49,6 +49,6 @@ export class ShoeServiceService {
 
   // Order shoes
   public orderShoes(shoes: any) {
-    return this.http.request("POST", this.url + "customer/order", shoes);
+    return this.http.post(this.url + "customer/order", shoes);
   }
 }
