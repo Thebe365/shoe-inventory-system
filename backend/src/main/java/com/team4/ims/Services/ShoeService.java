@@ -144,15 +144,24 @@ public class ShoeService {
             Optional<Shoe> newShoe = shoeRepository.findByName(shoe.getShoeName());
             Optional<Inventory> inventoryUnit = inventoryRepository.findInventoryByColorAndSizeAndShoe(shoe.getShoeColor(), shoe.getShoeSize(), newShoe.get());
 
-            if (newShoe.isEmpty() || inventoryUnit.isEmpty()) {
+            if (newShoe.isEmpty()) {
                 return ResponseEntity.badRequest().body("Shoe not found");
+            } else if (inventoryUnit.isEmpty()) {
+                Inventory newInventory = Inventory.builder().shoe(newShoe.get())
+                        .size(shoe.getShoeSize())
+                        .color(shoe.getShoeColor())
+                        .quantity(shoe.getQuantity())
+                        .price(100.00)
+                        .build();
+                inventoryRepository.save(newInventory);
+                continue;
             }
 
             inventoryUnit.get().setQuantity(inventoryUnit.get().getQuantity() + shoe.getQuantity());
             inventoryRepository.save(inventoryUnit.get());
 
         }
-        return ResponseEntity.ok("Quantity updated");
+        return ResponseEntity.ok().body("Quantity updated");
 
     }
 

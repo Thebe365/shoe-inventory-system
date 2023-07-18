@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91ce5e82-ad43-4d55-a7f6-bcbbf1a37517" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/BrandRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/ShoeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Configs/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Configs/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Configs/SecurityConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Configs/WebConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Controllers/BrandController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Controllers/CustomerController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Auth/AuthenticationResponse$AuthenticationResponseBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Auth/AuthenticationResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Auth/RegistrationRequest$RegistrationRequestBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Auth/RegistrationRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Inventory/shoeDTO/AllShoes$AllShoesBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Inventory/shoeDTO/AllShoes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/ImsBackendApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Repository/BrandRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Repository/CustomerRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Repository/InventoryRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Repository/ShoeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Repository/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/AuthenticationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/BrandService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/CustomerService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/SalesService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/ShoeService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/ShoeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/ShoeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dashboard-module/manage-inventory/manage-inventory.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/dashboard-module/manage-inventory/manage-inventory.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +85,7 @@
       <workItem from="1689197943007" duration="1444000" />
       <workItem from="1689200123673" duration="8054000" />
       <workItem from="1689221218503" duration="3813000" />
-      <workItem from="1689699126327" duration="3226000" />
+      <workItem from="1689699126327" duration="5904000" />
     </task>
     <servers />
   </component>

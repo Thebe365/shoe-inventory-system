@@ -42,12 +42,15 @@ export class OrderShoesComponent implements OnInit{
 
 
   shoeobj = {
-      "name": "",
-      "brand": "",
-      "color": "",
-      "size": "",
-      "price": 0,
-      "quantity": 0
+    "shoeName": "",
+    "shoeColor": "",
+    "shoeSize": "",
+    "shoeBrand": "",
+    "quantity": 0
+  }
+
+  addShoeObj = {
+    "shoes": []
   }
 
 
@@ -151,17 +154,49 @@ export class OrderShoesComponent implements OnInit{
   completeOrder(){
 
     console.log("Shoes to add: ", this.shoesToAdd)
-    //loop through allshoes and add to order
-    this.apiServices.addShoes(this.shoeobj).subscribe((res) =>{
+    //loop through allshoes and add to order to send a request body of structure {
+//   "shoes": [
+//     {
+//       "shoeName": "string",
+//       "shoeColor": "string",
+//       "shoeSize": "string",
+//       "shoeBrand": "string",
+//       "quantity": 0
+//     }
+//   ]
+// }
+    this.shoesToAdd.forEach(element => {
+      this.shoeobj = {
+        "shoeName": element.name,
+        "shoeBrand": element.brandName,
+        "shoeColor": element.color,
+        "shoeSize": element.size,
+        "quantity": element.quantity
+      }
+      this.addShoeObj.shoes.push(this.shoeobj)
+    });
+
+    console.log("Shoes to add: ", this.addShoeObj)
+
+
+
+
+    this.apiServices.addShoes(this.addShoeObj).subscribe((res) =>{
       if (res) {
         this.shoeobj = {
-          "name": "",
-          "brand": "",
-          "color": "",
-          "size": "",
-          "price": 0,
+          "shoeName": "",
+          "shoeColor": "",
+          "shoeSize": "",
+          "shoeBrand": "",
           "quantity": 0
-      }
+        }
+
+        this.addShoeObj = {
+          "shoes": []
+        }
+
+        // this.shoesToAdd = []
+
         console.log("Shoe added successfully: ",res)
       }
       else {

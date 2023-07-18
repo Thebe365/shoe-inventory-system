@@ -178,11 +178,12 @@ export class ManageInventoryComponent implements OnInit {
   }
 
   // Delete shoe
-  deleteShoe(id: number): void {
-    this.apiService.deleteShoesById(id).subscribe((res) =>{
+  deleteShoe(id: any): void {
+    console.log("Deleting shoe with id " + id)
+    // this.apiService.deleteShoesById(id).subscribe((res) =>{
 
 
-    })
+    // })
   }
 
 

@@ -39,8 +39,7 @@ export class ShoeServiceService {
 
   //add shoes
   public addShoes(shoe: any) {
-
-    return this.http.request("POST", this.url + "shoes/addShoe", shoe);
+    return this.http.post(this.url + "shoes/addShoe", shoe);
   }
 
   // delete brand by id
