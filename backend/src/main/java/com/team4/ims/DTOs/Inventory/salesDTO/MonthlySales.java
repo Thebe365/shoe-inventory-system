@@ -1,4 +1,4 @@
-package com.team4.ims.DTOs.Auth;
+package com.team4.ims.DTOs.Inventory.salesDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegistrationRequest {
-    private String name;
-    private String password;
-    private String email;
-
+public class MonthlySales {
+    private int month;
+    private int totalSales;
 }

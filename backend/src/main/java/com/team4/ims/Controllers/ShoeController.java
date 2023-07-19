@@ -92,9 +92,9 @@ public class ShoeController {
             @ApiResponse(responseCode = "200", description = "Shoe Successfully delisted and inventory updated"),
             @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
     })
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<?> deleteShoe(@PathVariable Long id) {
-        return service.deleteShoe(id);
+    @PostMapping("delete")
+    public ResponseEntity<?> deleteShoe(@RequestBody DeleteShoeRequest shoe) {
+        return service.deleteShoe(shoe);
     }
 
     //Create a new shoe and add it to inventory
@@ -119,5 +119,16 @@ public class ShoeController {
     public ResponseEntity<?> searchShoes(@RequestBody FindShoeRequest request) {
         return service.findShoe(request);
     }
+
+    @Operation(summary = "get price of shoe", description = "get price of shoe")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "returns the price of the specified shoe"),
+            @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
+    })
+    @PostMapping("getPrice")
+    public ResponseEntity<?> getPrice(@RequestBody GetPriceRequest request) {
+        return service.getPrice(request);
+    }
 }
+
 

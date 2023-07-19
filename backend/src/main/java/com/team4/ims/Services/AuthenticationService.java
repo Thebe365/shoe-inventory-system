@@ -13,6 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -24,33 +26,43 @@ public class AuthenticationService {
 
     //Authenticate user (Login)
     public ResponseEntity<?> authenticate(AuthenticationRequest request) {
-       if(authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())).isAuthenticated()){
+        if (authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())).isAuthenticated()) {
             var user = userRepository.findUserByEmail(request.getEmail());
             var jwtToken = jwtService.generateToken(user.getEmail(),user.getId(),user.getRole());
-            return ResponseEntity.ok().body(new AuthenticationResponse(jwtToken));
+            AuthenticationResponse response = AuthenticationResponse.builder()
+                    .token(jwtToken)
+                    .email(user.getEmail())
+                    .role(user.getRole())
+                    .build();
+            return ResponseEntity.ok().body(response);
         }else
             return ResponseEntity.badRequest().body("User does not exist");
 
     }
 
-    //Register user
-    public ResponseEntity<?> register(RegistrationRequest request) {
-        if(userRepository.findUserByEmail(request.getEmail()) != null){
-            User newUser = User.builder()
-                    .email(request.getEmail())
-                    .password(passwordEncoder.encode(request.getPassword()))
-                    .role(Roles.CUSTOMER)
-                    .build();
+        //Register user
+        public ResponseEntity<?> register (RegistrationRequest request){
+            Optional<User> user = userRepository.findByEmail(request.getEmail());
 
-            userRepository.save(newUser);
-            AuthenticationResponse response = AuthenticationResponse.builder()
-                    .token(jwtService.generateToken(newUser.getEmail(),newUser.getId(),newUser.getRole()))
-                    .build();
+            if (user.isEmpty()) {
+                User newUser = User.builder()
+                        .email(request.getEmail())
+                        .password(passwordEncoder.encode(request.getPassword()))
+                        .role(Roles.CUSTOMER)
+                        .build();
 
-            return ResponseEntity.ok().body(response);
-        }else
-            return ResponseEntity.badRequest().body("User already exists");
+                userRepository.save(newUser);
+                AuthenticationResponse response = AuthenticationResponse.builder()
+                        .token(jwtService.generateToken(newUser.getEmail(), newUser.getId(), newUser.getRole()))
+                        .email(newUser.getEmail())
+                        .role(newUser.getRole())
+                        .build();
+
+                return ResponseEntity.ok().body(response);
+            } else
+                return ResponseEntity.badRequest().body("User already exists");
+        }
     }
-}
+
 
 

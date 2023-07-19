@@ -27,6 +27,13 @@ export class ManageInventoryComponent implements OnInit {
   shoeId = 0;
   brandId = 0;
 
+
+  Shoe = {
+    "name": "",
+    "size": 0,
+    "color": "",
+  }
+
   ngOnInit(): void {
 
     // Getting all brands
@@ -99,6 +106,8 @@ export class ManageInventoryComponent implements OnInit {
 
       this.shoes = Object.values(res)
 
+      console.log(this.shoes)
+
       // res.foreach(shoe => {
       //   this.shoes.push(shoe)
       // }
@@ -153,14 +162,14 @@ export class ManageInventoryComponent implements OnInit {
    *
    * @param id - The id of the shoe that is being managed
    */
-  ManageModalOpen(id: number): void {
+  ManageModalOpen(Shoe: any): void {
+    console.log("Manage modal open")
+    console.log(Shoe)
 
-    console.log("Shoe id " + id)
-    this.shoeId = id
+    
+    console.log(Shoe)
 
-    let shoe = this.shoes.find(shoe => shoe.id === id)
-
-    this.shoeObj = [shoe]
+    this.shoeObj = [Shoe]
     const manageModalBackdrop = document.getElementById('manage-backdrop')!
     const manageModal = document.getElementById('manage-modal')!
 
@@ -178,11 +187,28 @@ export class ManageInventoryComponent implements OnInit {
   }
 
   // Delete shoe
-  deleteShoe(id: number): void {
-    this.apiService.deleteShoesById(id).subscribe((res) =>{
+  deleteShoe(id: any): void {
+    console.log("Deleting shoe with id " + id)
+    //checking that color and size are selected
+    if (this.Shoe.color === "" || this.Shoe.size === 0) {
+      alert("Please select a color and size")
+    } else {
+    this.Shoe.name = id.name
+    }
+    this.apiService.deleteShoesById(this.Shoe).subscribe((res) => {
+      console.log(res)
+    }
+    )
+  }
 
+  selectSize(size: any): void {
+    console.log("Size selected " + size)
+    this.Shoe.size = size
+  }
 
-    })
+  selectColor(color: any): void {
+    console.log("Color selected " + color)
+    this.Shoe.color = color
   }
 
 

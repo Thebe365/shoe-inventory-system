@@ -20,7 +20,7 @@
         </div>
 
         <!-- A modal to add a new shoe -->
-        <div class="add-modal">
+        <!-- <div class="add-modal">
             <div class="modal-content">
                 <form>
                     <div class="field">
@@ -49,7 +49,7 @@
                     
                 </form>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- Modal -->
@@ -58,9 +58,9 @@
         <!-- <span class="modal-close">&times;</span> -->
         
         <div class="modal" id="modal2">
-            <div class="modal-buttons">
+            <!-- <div class="modal-buttons">
                 <button>Add Shoe</button>
-            </div>
+            </div> -->
             <div class="modal-header">
                 <h3>{{ brandName | titlecase }}</h3>
 
@@ -101,7 +101,7 @@
                             </div>
             
                             <div class="modal-buttons">
-                                <button class="manage-button"(click)='ManageModalOpen(shoe.id)' [routerLink]="['/dashboard/manage-inventory', { modal: 'manage-shoes' }]">Manage</button>
+                                <button class="manage-button"(click)='ManageModalOpen(shoe)' [routerLink]="['/dashboard/manage-inventory', { modal: 'manage-shoes' }]">Manage</button>
                             </div>
                         </div>
 
@@ -146,12 +146,12 @@
                             <p>Available Colors:</p>
                             <div class="colors" >
     
-                                <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}"></div>
+                                <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}" (click)="selectColor(color)"></div>
                             </div>
                         </div>
                         
-                        <p>Available Sizes: <span class="size-box" *ngFor="let size of shoe.sizes">{{ size }}</span></p><br>
-                        <button class="btn-manage-modal" (click)="deleteShoe(shoe.id)">Delete</button>
+                        <p>Available Sizes: <span class="size-box" *ngFor="let size of shoe.sizes" (click)="selectSize(size)">{{ size }}</span></p><br>
+                        <button class="btn-manage-modal" (click)="deleteShoe(shoe)">Delete</button>
     
                     </div>
                 </div>

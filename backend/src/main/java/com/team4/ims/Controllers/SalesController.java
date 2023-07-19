@@ -41,9 +41,9 @@ public class SalesController {
      * 1. Returns the total sales for each month
      * 2. takes a date range as a filter
      */
-    @GetMapping("totalSalesPerMonth")
-    public ResponseEntity<?> getTotalSalesPerMonth() {
-        return null;
+    @GetMapping("totalSalesPerMonth/{startTime}")
+    public ResponseEntity<?> getTotalSalesPerMonth(@PathVariable Long startTime) {
+        return salesService.getTotalSalesPerMonth(startTime);
     }
 
 

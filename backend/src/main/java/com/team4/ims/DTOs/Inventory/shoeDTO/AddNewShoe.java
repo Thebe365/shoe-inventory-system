@@ -7,7 +7,7 @@ public class AddNewShoe {
     private String name;
     private String brand;
     private String color;
-    private String size;
+    private int size;
     private double price;
     private int quantity;
 }

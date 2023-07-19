@@ -1,21 +1,20 @@
 package com.team4.ims;
 
 import com.team4.ims.Models.*;
-import com.team4.ims.Repository.BrandRepository;
-import com.team4.ims.Repository.InventoryRepository;
-import com.team4.ims.Repository.ShoeRepository;
-import com.team4.ims.Repository.UserRepository;
+import com.team4.ims.Repository.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@Import({ com.team4.ims.Configs.CorsConfig.class })
 public class ImsBackendApplication {
 
-	public ImsBackendApplication(UserRepository userRepository, BrandRepository brandRepository,
-			ShoeRepository shoeRepository, PasswordEncoder passwordEncoder, InventoryRepository inventoryRepository) {
+	public ImsBackendApplication(UserRepository userRepository,
+								 BrandRepository brandRepository,
+								 ShoeRepository shoeRepository,
+								 PasswordEncoder passwordEncoder,
+								 InventoryRepository inventoryRepository,
+								 CustomerRepository customerRepository) {
 
 		// Create users (ADMIN and CUSTOMER)
 		User admin = User.builder()
@@ -48,6 +47,24 @@ public class ImsBackendApplication {
 				.isAvailable(true)
 				.build();
 		brandRepository.save(Adidas);
+
+		Brand converse = Brand.builder()
+				.name("converse")
+				.isAvailable(true)
+				.build();
+		brandRepository.save(converse);
+
+		Brand puma = Brand.builder()
+				.name("puma")
+				.isAvailable(true)
+				.build();
+		brandRepository.save(puma);
+
+		Brand vans = Brand.builder()
+				.name("vans")
+				.isAvailable(true)
+				.build();
+		brandRepository.save(vans);
 
 		Brand nike = brandRepository.findByName("nike").orElseThrow();
 		Brand adidas = brandRepository.findByName("adidas").orElseThrow();
@@ -84,13 +101,27 @@ public class ImsBackendApplication {
 				.isAvailable(true)
 				.build();
 		shoeRepository.save(shoe4);
+
+		Shoe shoe5 = Shoe.builder()
+				.name("old skool")
+				.brand(vans)
+				.isAvailable(true)
+				.build();
+		shoeRepository.save(shoe5);
+		Shoe shoe6 = Shoe.builder()
+				.name("era")
+				.brand(vans)
+				.isAvailable(true)
+				.build();
+		shoeRepository.save(shoe6);
+		
 		//
 		// //create inventory
 		//
 		Inventory inventory1 = Inventory.builder()
 				.shoe(shoe1)
-				.color("White")
-				.size("8")
+				.color("white")
+				.size(8)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -98,8 +129,8 @@ public class ImsBackendApplication {
 		//
 		Inventory inventory2 = Inventory.builder()
 				.shoe(shoe2)
-				.color("White")
-				.size("8")
+				.color("white")
+				.size(8)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -108,7 +139,7 @@ public class ImsBackendApplication {
 		Inventory inventory3 = Inventory.builder()
 				.shoe(shoe1)
 				.color("blue")
-				.size("9")
+				.size(9)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -117,7 +148,7 @@ public class ImsBackendApplication {
 		Inventory inventory4 = Inventory.builder()
 				.shoe(shoe2)
 				.color("red")
-				.size("9")
+				.size(9)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -126,7 +157,7 @@ public class ImsBackendApplication {
 		Inventory inventory5 = Inventory.builder()
 				.shoe(shoe1)
 				.color("yellow")
-				.size("10")
+				.size(10)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -135,7 +166,7 @@ public class ImsBackendApplication {
 		Inventory inventory6 = Inventory.builder()
 				.shoe(shoe2)
 				.color("green")
-				.size("10")
+				.size(10)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -144,7 +175,7 @@ public class ImsBackendApplication {
 		Inventory inventory7 = Inventory.builder()
 				.shoe(shoe3)
 				.color("black")
-				.size("11")
+				.size(11)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -153,7 +184,7 @@ public class ImsBackendApplication {
 		Inventory inventory8 = Inventory.builder()
 				.shoe(shoe4)
 				.color("black")
-				.size("11")
+				.size(11)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -162,11 +193,76 @@ public class ImsBackendApplication {
 		Inventory inventory9 = Inventory.builder()
 				.shoe(shoe3)
 				.color("white")
-				.size("12")
+				.size(12)
 				.quantity(10)
 				.price(100.00)
 				.build();
 		inventoryRepository.save(inventory9);
+
+//		//Sales table
+//		Sales sale1 = Sales.builder()
+//				.inventoryId(inventory1)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale1);
+//
+//		Sales sale2 = Sales.builder()
+//				.inventoryId(inventory2)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale2);
+//
+//		Sales sale3 = Sales.builder()
+//				.inventoryId(inventory3)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale3);
+//
+//		Sales sale4 = Sales.builder()
+//				.inventoryId(inventory4)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale4);
+//
+//		Sales sale5 = Sales.builder()
+//				.inventoryId(inventory5)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale5);
+//
+//		Sales sale6 = Sales.builder()
+//				.inventoryId(inventory6)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale6);
+//
+//		Sales sale7 = Sales.builder()
+//				.inventoryId(inventory7)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale7);
+//
+//		Sales sale8 = Sales.builder()
+//				.inventoryId(inventory8)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale8);
 
 	}
 

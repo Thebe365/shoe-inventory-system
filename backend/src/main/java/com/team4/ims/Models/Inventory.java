@@ -7,7 +7,7 @@ import lombok.*;
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor(force = true)
+@NoArgsConstructor
 @Entity
 @Table(name = "Inventory")
 public class Inventory {
@@ -31,7 +31,7 @@ public class Inventory {
 
     @NonNull
     @Column(name = "size")
-    private String size;
+    private int size;
 
     @NonNull
     @Column(name = "price")

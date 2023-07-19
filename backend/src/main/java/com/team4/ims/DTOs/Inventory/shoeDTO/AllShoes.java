@@ -13,8 +13,9 @@ public class AllShoes {
     private String brand;
     private String name;
     private List<String> colors;
-    private List<String> sizes;
+    private List<Integer> sizes;
     private int quantity;
+//    private double price;
 
 
 }
