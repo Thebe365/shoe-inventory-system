@@ -5,26 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91ce5e82-ad43-4d55-a7f6-bcbbf1a37517" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_13_2023_12_01_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_13_2023_12_01_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_13_2023_12_10_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_13_2023_12_10_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Configs/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/BrandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Controllers/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/DTOs/Sales/ColorDetailsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/DTOs/Sales/ColorDetailsResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Models/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Models/Sales.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/CustomerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Repository/InventoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/SalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/SalesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/ShoeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team4/ims/Services/ShoeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Controllers/ShoeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Controllers/ShoeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails$BrandSalesDetailsBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails$BrandSalesDetailsBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/DTOs/Sales/BrandSalesRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/SalesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/SalesService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Configs/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Configs/SecurityConfiguration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/ShoeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/team4/ims/Services/ShoeService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,21 +39,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "e2c1a1fd66344661dcef4fa9aafbce00",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;e2c1a1fd66344661dcef4fa9aafbce00&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.team4.ims.DTOs.Sales" />
@@ -77,7 +63,7 @@
   <component name="RunManager" selected="Application.ims">
     <configuration name="ims" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.team4.ims.ImsBackendApplication" />
-      <module name="IMS" />
+      <module name="backend" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -89,6 +75,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.ims" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -106,6 +95,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
