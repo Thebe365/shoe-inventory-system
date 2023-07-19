@@ -14,5 +14,5 @@ public class BrandShoes {
     private Brand brand;
     private int quantity;
     private List<String> colors;
-    private List<String> sizes;
+    private List<Integer> sizes;
 }

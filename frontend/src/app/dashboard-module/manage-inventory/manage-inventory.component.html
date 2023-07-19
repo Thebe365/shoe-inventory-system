@@ -101,7 +101,7 @@
                             </div>
             
                             <div class="modal-buttons">
-                                <button class="manage-button"(click)='ManageModalOpen(shoe.id)' [routerLink]="['/dashboard/manage-inventory', { modal: 'manage-shoes' }]">Manage</button>
+                                <button class="manage-button"(click)='ManageModalOpen(shoe)' [routerLink]="['/dashboard/manage-inventory', { modal: 'manage-shoes' }]">Manage</button>
                             </div>
                         </div>
 
@@ -146,12 +146,12 @@
                             <p>Available Colors:</p>
                             <div class="colors" >
     
-                                <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}"></div>
+                                <div class="color" *ngFor="let color of shoe.colors" [ngStyle]="{'background-color': color}" (click)="selectColor(color)"></div>
                             </div>
                         </div>
                         
-                        <p>Available Sizes: <span class="size-box" *ngFor="let size of shoe.sizes">{{ size }}</span></p><br>
-                        <button class="btn-manage-modal" (click)="deleteShoe(shoe.id)">Delete</button>
+                        <p>Available Sizes: <span class="size-box" *ngFor="let size of shoe.sizes" (click)="selectSize(size)">{{ size }}</span></p><br>
+                        <button class="btn-manage-modal" (click)="deleteShoe(shoe)">Delete</button>
     
                     </div>
                 </div>

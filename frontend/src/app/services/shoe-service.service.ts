@@ -33,8 +33,8 @@ export class ShoeServiceService {
   }
 
   // Delete shoes by id
-  public deleteShoesById(id: number) {
-    return this.http.request("DELETE", this.url + `shoes/delete/${id}`);
+  public deleteShoesById(Shoe: Object) {
+    return this.http.post(this.url + "shoes/delete", Shoe);
   }
 
   //add shoes

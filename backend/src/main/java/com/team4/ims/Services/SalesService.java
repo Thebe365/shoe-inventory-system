@@ -7,7 +7,6 @@ import com.team4.ims.Models.Sales;
 import com.team4.ims.Repository.BrandRepository;
 import com.team4.ims.Repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -61,11 +60,12 @@ public class SalesService {
 
     //gets color performance
     public ResponseEntity<List<ColorDetailsResponse>> colorPerformance(Long startTime){
-        if(startTime == null){
-            startTime = 0L;
-        }
+//        if(startTime == null){
+//            startTime = 0L;
+//        }
 
         Date date = new Date(startTime);
+        System.out.println("Start date: "+ date);
         List<Sales> sales = customerRepository.findSalesByDate(date);
         List<String> colors = sales.stream().map(sale -> sale.getInventoryId().getColor()).toList();
         List<ColorDetailsResponse> colorDetailsResponses = new ArrayList<>();

@@ -8,9 +8,7 @@ import com.team4.ims.Models.Shoe;
 import com.team4.ims.Repository.BrandRepository;
 import com.team4.ims.Repository.InventoryRepository;
 import com.team4.ims.Repository.ShoeRepository;
-import io.swagger.models.auth.In;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +37,7 @@ public class ShoeService {
         for (Shoe shoe : allShoes) {
 
             int shoeCount = (int) inventoryRepository.findAllByShoe(shoe).stream().count();
-            List<String> sizes = inventoryRepository
+            List<Integer> sizes = inventoryRepository
                     .findAll()
                     .stream()
                     .filter(inventory -> inventory
@@ -86,14 +84,18 @@ public class ShoeService {
     public ResponseEntity<List<BrandShoes>> getShoesByBrand(String brandName){
         System.out.println("Brand name: " + brandName);
         Optional<Brand> brand = brandRepository.findByName(brandName);
-        // TODO: Find all shoe belonging to a specific brand in the inventory
+
         System.out.println("brand: " + brand);
-        var shoes =shoeRepository.findAll().stream().filter(shoe -> shoe.getBrand().getName().equals(brandName)).toList();
+        var shoes =shoeRepository.findAll()
+                .stream()
+                .filter(shoe -> shoe.getBrand().getName().equals(brandName))
+                .filter(shoe -> shoe.getIsAvailable().equals(true))
+                .toList();
 
         List<BrandShoes> brandShoesList = new ArrayList<>();
 
         for (Shoe shoeNames : shoes) {
-            List<String> sizes = inventoryRepository
+            List<Integer> sizes = inventoryRepository
                     .findAll()
                     .stream()
                     .filter(inventory -> inventory
@@ -101,6 +103,7 @@ public class ShoeService {
                             .getName()
                             .equals(shoeNames.getName())
                     )
+                    .distinct()
                     .map(Inventory::getSize)
                     .toList();
             List<String> colors = inventoryRepository
@@ -111,6 +114,7 @@ public class ShoeService {
                             .getName()
                             .equals(shoeNames.getName())
                     )
+                    .distinct()
                     .map(Inventory::getColor)
                     .toList();
             int shoeQuantity = (int) inventoryRepository.findAllByShoe(shoeNames).stream().count();
@@ -148,7 +152,7 @@ public class ShoeService {
                 return ResponseEntity.badRequest().body("Shoe not found");
             } else if (inventoryUnit.isEmpty()) {
                 Inventory newInventory = Inventory.builder().shoe(newShoe.get())
-                        .size(shoe.getShoeSize())
+                        .size(Integer.parseInt((shoe.getShoeSize())))
                         .color(shoe.getShoeColor())
                         .quantity(shoe.getQuantity())
                         .price(100.00)
@@ -166,13 +170,18 @@ public class ShoeService {
     }
 
     //Deletes a shoe from the database by ID
-    public ResponseEntity<?> deleteShoe(Long id){
+    public ResponseEntity<?> deleteShoe(DeleteShoeRequest shoe){
         //Sets the shoe to unavailable
-        Shoe shoe = shoeRepository.findById(id).orElseThrow(() -> new RuntimeException("Shoe not found"));
-        shoe.setIsAvailable(false);
-        shoeRepository.save(shoe);
+        Optional<Shoe> shoeToDelete = shoeRepository.findByName(shoe.getName());
+        if (shoeToDelete.isEmpty()){
+            return ResponseEntity.badRequest().body("Shoe not found");
+        }else{
 
-        return ResponseEntity.ok("Shoe deleted");
+            shoeToDelete.get().setIsAvailable(false);
+            shoeRepository.save(shoeToDelete.get());
+            return ResponseEntity.ok().body("Shoe deleted");
+        }
+
     }
 
     //Searches for shoes by name
@@ -224,7 +233,12 @@ public class ShoeService {
             inventoryRepository.save(newInventory);
 
         }else{
-            return ResponseEntity.badRequest().body("The shoe already exists");
+            if(shoeCheck.get().getIsAvailable().equals(false)){
+                shoeCheck.get().setIsAvailable(true);
+                shoeRepository.save(shoeCheck.get());
+            }else{
+                return ResponseEntity.badRequest().body("This shoe already exists");
+            }
         }
 
 

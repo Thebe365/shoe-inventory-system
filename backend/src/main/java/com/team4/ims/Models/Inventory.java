@@ -31,7 +31,7 @@ public class Inventory {
 
     @NonNull
     @Column(name = "size")
-    private String size;
+    private int size;
 
     @NonNull
     @Column(name = "price")

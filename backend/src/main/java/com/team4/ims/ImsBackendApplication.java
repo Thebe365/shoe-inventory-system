@@ -121,7 +121,7 @@ public class ImsBackendApplication {
 		Inventory inventory1 = Inventory.builder()
 				.shoe(shoe1)
 				.color("white")
-				.size("8")
+				.size(8)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -130,7 +130,7 @@ public class ImsBackendApplication {
 		Inventory inventory2 = Inventory.builder()
 				.shoe(shoe2)
 				.color("white")
-				.size("8")
+				.size(8)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -139,7 +139,7 @@ public class ImsBackendApplication {
 		Inventory inventory3 = Inventory.builder()
 				.shoe(shoe1)
 				.color("blue")
-				.size("9")
+				.size(9)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -148,7 +148,7 @@ public class ImsBackendApplication {
 		Inventory inventory4 = Inventory.builder()
 				.shoe(shoe2)
 				.color("red")
-				.size("9")
+				.size(9)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -157,7 +157,7 @@ public class ImsBackendApplication {
 		Inventory inventory5 = Inventory.builder()
 				.shoe(shoe1)
 				.color("yellow")
-				.size("10")
+				.size(10)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -166,7 +166,7 @@ public class ImsBackendApplication {
 		Inventory inventory6 = Inventory.builder()
 				.shoe(shoe2)
 				.color("green")
-				.size("10")
+				.size(10)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -175,7 +175,7 @@ public class ImsBackendApplication {
 		Inventory inventory7 = Inventory.builder()
 				.shoe(shoe3)
 				.color("black")
-				.size("11")
+				.size(11)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -184,7 +184,7 @@ public class ImsBackendApplication {
 		Inventory inventory8 = Inventory.builder()
 				.shoe(shoe4)
 				.color("black")
-				.size("11")
+				.size(11)
 				.quantity(10)
 				.price(100.00)
 				.build();
@@ -193,7 +193,7 @@ public class ImsBackendApplication {
 		Inventory inventory9 = Inventory.builder()
 				.shoe(shoe3)
 				.color("white")
-				.size("12")
+				.size(12)
 				.quantity(10)
 				.price(100.00)
 				.build();
