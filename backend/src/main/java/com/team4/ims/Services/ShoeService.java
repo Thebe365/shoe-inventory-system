@@ -250,4 +250,14 @@ public class ShoeService {
         return countShoes(brandRepository.findById(brandId).get().getName());
     }
 
+    public ResponseEntity<Double> getPrice(GetPriceRequest request) {
+        Optional<Shoe> shoe = shoeRepository.findByName(request.getShoeName());
+        if (shoe.isPresent()) {
+            Optional<Inventory> inventory = inventoryRepository.findInventoryByColorAndSizeAndShoe(request.getColor(), String.valueOf(request.getSize()), shoe.get());
+            return inventory.map(value -> ResponseEntity.ok(value.getPrice())).orElseGet(() -> ResponseEntity.notFound().build());
+
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

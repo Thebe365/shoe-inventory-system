@@ -119,5 +119,16 @@ public class ShoeController {
     public ResponseEntity<?> searchShoes(@RequestBody FindShoeRequest request) {
         return service.findShoe(request);
     }
+
+    @Operation(summary = "get price of shoe", description = "get price of shoe")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "returns the price of the specified shoe"),
+            @ApiResponse(responseCode = "400", description = "Shoe not found or does not exist")
+    })
+    @PostMapping("getPrice")
+    public ResponseEntity<?> getPrice(@RequestBody GetPriceRequest request) {
+        return service.getPrice(request);
+    }
 }
+
 

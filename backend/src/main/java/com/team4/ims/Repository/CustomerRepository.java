@@ -2,6 +2,8 @@ package com.team4.ims.Repository;
 
 import com.team4.ims.Models.Sales;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -9,7 +11,8 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Sales, Long> {
-    List<Sales> findSalesByDate(Date date);
+    @Query("SELECT s FROM Sales s WHERE s.date >= :date")
+    List<Sales> findAfterDate(@Param("date") Date date);
 
 
     /**

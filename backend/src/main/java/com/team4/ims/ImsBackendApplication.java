@@ -1,20 +1,20 @@
 package com.team4.ims;
 
 import com.team4.ims.Models.*;
-import com.team4.ims.Repository.BrandRepository;
-import com.team4.ims.Repository.InventoryRepository;
-import com.team4.ims.Repository.ShoeRepository;
-import com.team4.ims.Repository.UserRepository;
+import com.team4.ims.Repository.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class ImsBackendApplication {
 
-	public ImsBackendApplication(UserRepository userRepository, BrandRepository brandRepository,
-			ShoeRepository shoeRepository, PasswordEncoder passwordEncoder, InventoryRepository inventoryRepository) {
+	public ImsBackendApplication(UserRepository userRepository,
+								 BrandRepository brandRepository,
+								 ShoeRepository shoeRepository,
+								 PasswordEncoder passwordEncoder,
+								 InventoryRepository inventoryRepository,
+								 CustomerRepository customerRepository) {
 
 		// Create users (ADMIN and CUSTOMER)
 		User admin = User.builder()
@@ -198,6 +198,71 @@ public class ImsBackendApplication {
 				.price(100.00)
 				.build();
 		inventoryRepository.save(inventory9);
+
+//		//Sales table
+//		Sales sale1 = Sales.builder()
+//				.inventoryId(inventory1)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale1);
+//
+//		Sales sale2 = Sales.builder()
+//				.inventoryId(inventory2)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale2);
+//
+//		Sales sale3 = Sales.builder()
+//				.inventoryId(inventory3)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale3);
+//
+//		Sales sale4 = Sales.builder()
+//				.inventoryId(inventory4)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale4);
+//
+//		Sales sale5 = Sales.builder()
+//				.inventoryId(inventory5)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale5);
+//
+//		Sales sale6 = Sales.builder()
+//				.inventoryId(inventory6)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale6);
+//
+//		Sales sale7 = Sales.builder()
+//				.inventoryId(inventory7)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale7);
+//
+//		Sales sale8 = Sales.builder()
+//				.inventoryId(inventory8)
+//				.date(new Date())
+//				.quantity(12)
+//				.totalPrice(1200.00)
+//				.build();
+//		customerRepository.save(sale8);
 
 	}
 
