@@ -157,9 +157,10 @@ p{
 }
 
 .search-inner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80vw, 1fr));
+    /* justify-content: center;
+    align-items: center; */
 }
 
 /* SEARCH FILTER */
@@ -203,6 +204,10 @@ p{
     width: 50px;
     text-align: center;
     /* margin: 3px; */
+}
+
+.search-box{
+    width: 100%;
 }
 
 .size-box:hover{
