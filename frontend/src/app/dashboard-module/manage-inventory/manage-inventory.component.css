@@ -293,6 +293,7 @@ span{
     animation: opacityAnim 0.3s ease-in-out forwards;
     display: none;
   }
+
   .manage-modal{
     position: fixed;
     top: 50%;
@@ -394,3 +395,113 @@ span{
     display: flex;
     justify-content: center;
 }
+.brand-modal-inner h2{
+  margin-top: 0;
+}
+/* ADD BRAND MODAL */
+
+.add-brand-btn{
+  position: fixed;
+  right: 3rem;
+  bottom: 2rem;
+
+}
+
+.add-brand-btn button{
+  padding: 10px 10px;
+  width: 100px;
+  border: none;
+  outline: none;
+  background-color: #003147;
+  color: white;
+}
+
+.add-brand-btn button:hover{
+  background-color: #2087fd;
+  cursor: pointer;
+  transition-duration: .3s;
+}
+
+.add-brand-modal{
+
+  position: fixed;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -55%);
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  width: 400px;
+  height: fit-content;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  display: none;
+  align-items: center;
+  z-index: 4;
+  
+}
+
+.name-input{
+  outline: none;
+  border: none;
+  padding: 8px 10px;
+  width: 280px;
+}
+
+form{
+  margin-top: 30px;
+}
+
+.name-input, .image-input{
+  background-color: #f5f5f5;
+  margin: 10px 0;
+  /* width: 300px; */
+
+}
+
+.image-input{
+  width: 300px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-inner h3, p{
+  text-align: center;
+  margin: 5px;
+}
+
+.image-inner{
+  width: fit-content;
+}
+
+.image-input input{
+
+  align-self: center;
+  border: 1px solid gray;
+
+}
+
+.image-input input::-webkit-file-upload-button{
+  padding: 8px 10px;
+  border: none;
+  color: white;
+  background-color: #003147;
+}
+
+form button{
+  width: 300px;
+  padding: 8px 10px;
+  border: none;
+  background-color: #003147;
+  color: white;
+  margin-top: 10px;
+}
+
+button:hover{
+  background-color: #2087fd;
+  cursor: pointer;
+}
+

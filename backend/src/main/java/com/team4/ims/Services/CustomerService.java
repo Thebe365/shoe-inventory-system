@@ -46,7 +46,7 @@ public class CustomerService {
             /**
              *fetches all inventory items with the same shoe name
              */
-            //fetchs all inventory items with the same shoe name
+            //fetches all inventory items with the same shoe name
             List<Inventory> inventory = inventoryRepository
                     .findAllByShoe(shoeCheck.get());
 

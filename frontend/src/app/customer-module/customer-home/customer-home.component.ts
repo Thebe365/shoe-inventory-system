@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 import { faUser, faCartShopping, faSearch, faTimes, faGreaterThan, faLessThan } from '@fortawesome/free-solid-svg-icons';
-import { HostListener, ElementRef, Renderer2 } from '@angular/core';
+import { HostListener } from '@angular/core';
 import Swal  from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 

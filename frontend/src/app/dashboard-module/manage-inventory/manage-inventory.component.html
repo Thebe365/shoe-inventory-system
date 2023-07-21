@@ -168,3 +168,32 @@
 
 </div>
 
+<!-- ADD BRAND MODAL -->
+<div class="add-brand-modal" id="add-brand-modal">
+    <div class="brand-modal-inner">
+        <h2>Add new brand</h2>
+
+        <form action="">
+
+            <label for="">Brand name</label><br>
+            <input class="name-input" type="text" #fileDropRef placeholder="Enter brand name">
+
+            <div class="image-input" appDnd (change)="fileDroped($any($event.target).value)">
+
+                <div class="image-inner">
+                    <h3>Drag a file</h3>
+                    <p>or</p>
+                    <input type="file" accept="image/*">
+                </div>
+                
+            </div>
+
+            <button>Add brand</button>
+        </form>
+        
+    </div>
+</div>
+
+<div class="add-brand-btn">
+    <button (click)="openAddModal()">Add brand</button>
+</div>

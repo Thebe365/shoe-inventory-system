@@ -10,12 +10,14 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
 import { ShoeServiceService } from './services/shoe-service.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DashboardModuleModule } from './dashboard-module/dashboard-module.module';
+import { DndDirective } from './dnd.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    DndDirective
   ],
   imports: [
     BrowserModule,

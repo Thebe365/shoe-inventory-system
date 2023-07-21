@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { ShoeServiceService } from 'src/app/services/shoe-service.service';
 import { ActivatedRoute } from '@angular/router';
@@ -26,7 +26,8 @@ export class ManageInventoryComponent implements OnInit {
   brandNameModal = ''
   shoeId = 0;
   brandId = 0;
-
+  brandModal
+  addModalOpen = false
 
   Shoe = {
     "name": "",
@@ -35,6 +36,8 @@ export class ManageInventoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.brandModal = document.getElementById('add-brand-modal')
 
     // Getting all brands
     this.apiService.getAllBrands().subscribe((res) =>{
@@ -178,23 +181,35 @@ export class ManageInventoryComponent implements OnInit {
   }
 
   ManageModalClose(): void {
+
     const manageModalBackdrop = document.getElementById('manage-backdrop')!
     const manageModal = document.getElementById('manage-modal')!
 
     manageModalBackdrop.style.display = 'none'
     manageModal.style.display = 'none'
 
+    if(this.addModalOpen === true){
+
+      this.brandModal.style.display = 'none'
+      this.addModalOpen = false
+    }
+
   }
 
   // Delete shoe
   deleteShoe(id: any): void {
+
     console.log("Deleting shoe with id " + id)
+
     //checking that color and size are selected
     if (this.Shoe.color === "" || this.Shoe.size === 0) {
+
       alert("Please select a color and size")
     } else {
+
     this.Shoe.name = id.name
     }
+
     this.apiService.deleteShoesById(this.Shoe).subscribe((res) => {
       console.log(res)
     }
@@ -211,6 +226,22 @@ export class ManageInventoryComponent implements OnInit {
     this.Shoe.color = color
   }
 
+  // open brand modal
+  openAddModal(){
 
+    // const brandModal = document.getElementById('add-brand-modal')
+    const manageModalBackdrop = document.getElementById('manage-backdrop')!
+
+    console.log(this.brandModal)
+    this.brandModal.style.display = 'flex'
+    manageModalBackdrop.style.display = 'block'
+
+    this.addModalOpen = true
+  }
+
+
+  fileDroped(file: any){
+    console.log("File has been droped")
+  }
 
 }
